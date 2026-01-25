@@ -4,21 +4,28 @@ import Experience from "./components/Experience";
 import Home from "./components/Home";
 import NavBar from "./components/NavBar";
 import Project from "./components/Project";
-import TechStack from "./components/TechStack";
+import TechnicalSkills from "./components/TechnicalSkills";
 import Footer from "./components/Footer";
+import BackToTop from "./components/BackToTop";
+import ScrollProgressBar from "./components/ScrollProgressBar";
+import { DarkModeProvider } from "./context/DarkModeContext";
 
 function App() {
   return (
-    <div>
-      <NavBar />
-      <Home />
-      <About />
-      <Project />
-      <TechStack />
-      <Experience />
-      <Contact />
-      <Footer />
-    </div>
+    <DarkModeProvider>
+      <div>
+        <ScrollProgressBar />
+        <NavBar />
+        <Home />
+        <About />
+        <Project />
+        <TechnicalSkills />
+        <Experience />
+        <Contact />
+        <Footer />
+        <BackToTop />
+      </div>
+    </DarkModeProvider>
   );
 }
 
