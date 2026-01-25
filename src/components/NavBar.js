@@ -23,30 +23,32 @@ const NavBar = () => {
     },
     {
       id: 4,
-      name: "Career",
-      link: "experience",
+      name: "Technical Skills",
+      link: "skills",
     },
     {
       id: 5,
-      name: "Technical Skills",
-      link: "skills",
+      name: "Career",
+      link: "experience",
     },
     {
       id: 6,
       name: "Contact",
       link: "contact",
     },
-     {
+    {
       id: 7,
       name: "Footer",
-      link: "Footer",
+      link: "footer",
     },
   ];
 
   return (
     <div className="flex justify-between items-center w-full h-20 px-4 text-[#C5A059] bg-[#FAF9F6] border-b border-[#EADBC8] fixed z-50">
       <div>
-        <h1 className="body-font font-name text-5xl ml-2 font-bold text-[#3E2723]">Soumya Dubey</h1>
+        <h1 className="body-font font-name text-5xl ml-2 font-bold text-[#3E2723]">
+          Soumya Dubey
+        </h1>
       </div>
 
       <ul className="hidden md:flex">

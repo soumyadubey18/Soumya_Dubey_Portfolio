@@ -1,4 +1,3 @@
-import React from "react";
 import SpirriDB from "../assets/project/spirri-db.png";
 import HomeAuto from "../assets/project/home-automation.png";
 import Internship from "../assets/project/internship.png";
