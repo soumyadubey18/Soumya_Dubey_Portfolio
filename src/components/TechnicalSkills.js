@@ -146,7 +146,7 @@ const TechnicalSkills = () => {
           {techs.map(({ id, icon, title, description }) => (
             <div
               key={id}
-              className={`flex flex-col items-center justify-center p-8 rounded-3xl bg-white border border-[#EADBC8] hover:border-[#C5A059] shadow-sm hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 dark:bg-[#2d2d2d] dark:border-[#444] dark:hover:border-[#C5A059] ${isVisible ? "fade-in" : ""}`}
+              className={`flex flex-col items-center justify-center p-8 rounded-3xl ${isDarkMode ? "bg-[#2d2d2d] border-[#444]" : "bg-white border-[#EADBC8]"} hover:border-[#C5A059] shadow-sm hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 ${isVisible ? "fade-in" : ""}`}
             >
               <div className="mb-4 transform transition-transform group-hover:scale-110">
                 {icon}
@@ -187,7 +187,7 @@ const TechnicalSkills = () => {
           {softSkills.map(({ id, icon, title, description }) => (
             <div
               key={id}
-              className={`flex flex-col items-center justify-center p-8 rounded-3xl bg-[#FAF3E0] border border-[#EADBC8] hover:border-[#C5A059] shadow-sm hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 dark:bg-[#2d2d2d] dark:border-[#444] dark:hover:border-[#C5A059] ${isVisible ? "fade-in" : ""}`}
+              className={`flex flex-col items-center justify-center p-8 rounded-3xl ${isDarkMode ? "bg-[#2d2d2d] border-[#444]" : "bg-[#FAF3E0] border-[#EADBC8]"} hover:border-[#C5A059] shadow-sm hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 ${isVisible ? "fade-in" : ""}`}
             >
               <div className="mb-4">
                 {React.cloneElement(icon, {
