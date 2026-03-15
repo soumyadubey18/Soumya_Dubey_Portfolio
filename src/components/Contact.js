@@ -73,15 +73,11 @@ const Contact = () => {
   return (
     <div
       name="contact"
-      className={`w-full min-h-screen ${isDarkMode ? "bg-[#1a1a1a] text-[#B0B0B0]" : "bg-[#FAF9F6] text-[#3E2723]"} py-24 border-t ${isDarkMode ? "border-[#333]" : "border-[#EADBC8]"} transition-colors duration-300`}
+      className={`w-full min-h-screen ${isDarkMode ? "bg-[#1a1a1a] text-[#B0B0B0]" : "bg-[#FAF9F6] text-[#3E2723]"} py-16 border-t ${isDarkMode ? "border-[#333]" : "border-[#EADBC8]"} transition-colors duration-300`}
     >
       <div className="flex flex-col p-4 justify-center max-w-screen-lg mx-auto h-full">
         <div className="pb-12 text-center md:text-left">
-          <p
-            className={`text-5xl font-extrabold inline rounded-sm`}
-          >
-            Contact
-          </p>
+          <p className={`text-5xl font-extrabold inline rounded-sm`}>Contact</p>
           <p
             className={`py-6 text-lg ${isDarkMode ? "text-[#B0B0B0]" : "text-[#5D4037]"}`}
           >

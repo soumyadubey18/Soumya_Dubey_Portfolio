@@ -72,7 +72,7 @@ const Portfolio = () => {
     <div
       name="project"
       ref={ref}
-      className={`w-full min-h-screen ${isDarkMode ? "bg-[#1a1a1a] text-[#B0B0B0] border-[#333]" : "bg-[#F5F5DC]/30 text-[#3E2723] border-[#EADBC8]"} py-24 border-t transition-colors duration-300`}
+      className={`w-full min-h-screen ${isDarkMode ? "bg-[#1a1a1a] text-[#B0B0B0] border-[#333]" : "bg-[#F5F5DC]/30 text-[#3E2723] border-[#EADBC8]"} py-16 border-t transition-colors duration-300`}
     >
       <div className="max-w-screen-lg p-4 mx-auto flex flex-col justify-center w-full h-full">
         <div className="pb-12 text-center md:text-left">

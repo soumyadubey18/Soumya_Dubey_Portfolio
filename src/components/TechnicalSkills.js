@@ -127,7 +127,7 @@ const TechnicalSkills = () => {
     <div
       name="skills"
       ref={ref}
-      className={`w-full min-h-screen ${isDarkMode ? "bg-[#1a1a1a] text-[#c5b9b9] border-[#333]" : "bg-[#FAF9F6] text-[#3E2723] border-[#EADBC8]"} py-24 border-t transition-colors duration-300`}
+      className={`w-full min-h-screen ${isDarkMode ? "bg-[#1a1a1a] text-[#c5b9b9] border-[#333]" : "bg-[#FAF9F6] text-[#3E2723] border-[#EADBC8]"} py-16 border-t transition-colors duration-300`}
     >
       <div className="max-w-screen-lg mx-auto p-4 flex flex-col justify-center w-full h-full">
         <div className="pb-12 text-center md:text-left">
@@ -168,9 +168,7 @@ const TechnicalSkills = () => {
         <div id="soft-skills" className="pb-12 text-center md:text-left">
           <p
             className={`text-5xl font-extrabold inline ${
-              isDarkMode
-                ? "text-[#C5A059]"
-                : "text-[#3E2723]"
+              isDarkMode ? "text-[#C5A059]" : "text-[#3E2723]"
             } rounded-sm`}
           >
             Soft Skills

@@ -82,15 +82,13 @@ const Experience = () => {
   return (
     <div
       name="experience"
-      className={`w-full min-h-screen ${isDarkMode ? "bg-[#1a1a1a] text-[#c5b9b9] border-[#333]" : "bg-[#FAF9F6] text-[#3E2723] border-[#EADBC8]"} py-24 border-t transition-colors duration-300`}
+      className={`w-full min-h-screen ${isDarkMode ? "bg-[#1a1a1a] text-[#c5b9b9] border-[#333]" : "bg-[#FAF9F6] text-[#3E2723] border-[#EADBC8]"} py-16 border-t transition-colors duration-300`}
     >
       <div
         className={`max-w-screen-lg mx-auto p-4 flex flex-col justify-center w-full h-full ${isDarkMode ? "text-[#c5b9b9]" : "text-[#3E2723]"}`}
       >
         <div className="pb-12 text-center md:text-left">
-          <p className="text-5xl font-extrabold inline rounded-sm">
-            Career
-          </p>
+          <p className="text-5xl font-extrabold inline rounded-sm">Career</p>
           <p
             className={`py-8 text-lg max-w-2xl ${isDarkMode ? "text-gray-400" : "text-[#5D4037]"}`}
           >
