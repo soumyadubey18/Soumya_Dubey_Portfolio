@@ -10,7 +10,7 @@ const About = () => {
       <div className="max-w-screen-lg p-4 mx-auto flex flex-col justify-center w-full h-full">
         <div className="pb-12 text-center md:text-left">
           <p
-            className={`text-5xl font-extrabold inline border-b-8 ${isDarkMode ? "border-[#C5A059]/20" : "border-[#C5A059]/10"} rounded-sm`}
+            className={`text-5xl font-extrabold inline rounded-sm`}
           >
             The Story
           </p>

@@ -132,7 +132,7 @@ const TechnicalSkills = () => {
       <div className="max-w-screen-lg mx-auto p-4 flex flex-col justify-center w-full h-full">
         <div className="pb-12 text-center md:text-left">
           <p
-            className={`text-5xl font-extrabold inline border-b-8 ${isDarkMode ? "text-[#C5A059] border-[#C5A059]/40" : "text-[#3E2723] border-[#C5A059]/10"} rounded-sm`}
+            className={`text-5xl font-extrabold inline ${isDarkMode ? "text-[#C5A059]" : "text-[#3E2723]"} rounded-sm`}
           >
             Technical Skills
           </p>
@@ -167,10 +167,10 @@ const TechnicalSkills = () => {
 
         <div id="soft-skills" className="pb-12 text-center md:text-left">
           <p
-            className={`text-5xl font-extrabold inline border-b-8 ${
+            className={`text-5xl font-extrabold inline ${
               isDarkMode
-                ? "text-[#C5A059] border-[#C5A059]/40"
-                : "text-[#3E2723] border-[#C5A059]/10"
+                ? "text-[#C5A059]"
+                : "text-[#3E2723]"
             } rounded-sm`}
           >
             Soft Skills

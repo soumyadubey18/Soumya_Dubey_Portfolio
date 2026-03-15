@@ -78,7 +78,7 @@ const Contact = () => {
       <div className="flex flex-col p-4 justify-center max-w-screen-lg mx-auto h-full">
         <div className="pb-12 text-center md:text-left">
           <p
-            className={`text-5xl font-extrabold inline border-b-8 ${isDarkMode ? "border-[#C5A059]/20" : "border-[#C5A059]/10"} rounded-sm`}
+            className={`text-5xl font-extrabold inline rounded-sm`}
           >
             Contact
           </p>

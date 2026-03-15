@@ -11,6 +11,10 @@
     font-family: "Raleway", sans-serif;
     scroll-behavior: smooth;
   }
+  
+  a {
+    text-decoration: none;
+  }
 }
 
 @layer utilities {

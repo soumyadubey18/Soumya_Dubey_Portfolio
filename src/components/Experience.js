@@ -88,7 +88,7 @@ const Experience = () => {
         className={`max-w-screen-lg mx-auto p-4 flex flex-col justify-center w-full h-full ${isDarkMode ? "text-[#c5b9b9]" : "text-[#3E2723]"}`}
       >
         <div className="pb-12 text-center md:text-left">
-          <p className="text-5xl font-extrabold inline border-b-8 border-[#C5A059]/10 rounded-sm">
+          <p className="text-5xl font-extrabold inline rounded-sm">
             Career
           </p>
           <p

@@ -25,7 +25,7 @@ function Footer() {
         <div className="grid md:grid-cols-3 gap-12 mb-12">
           {/* Connect */}
           <div className="text-center md:text-left">
-            <h2 className="text-2xl font-bold mb-4 border-b-2 border-[#C5A059] inline-block pb-1">
+            <h2 className="text-2xl font-bold mb-4 inline-block pb-1">
               Let's Connect
             </h2>
             <p className="text-[#D7CCC8] max-w-sm mx-auto md:mx-0 leading-relaxed mb-6 text-sm">
