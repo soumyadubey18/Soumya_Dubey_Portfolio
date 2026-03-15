@@ -58,7 +58,7 @@ const Home = () => {
               className="text-white font-bold px-8 py-4 my-2 flex items-center gap-2 rounded-full bg-gradient-to-r from-[#C5A059] to-[#8B6F47] cursor-pointer hover:scale-105 duration-300 shadow-xl shadow-[#C5A059]/30 transition-all group"
               title="Download Resume"
               onClick={() => {
-                const fileId = "1Rk1L_hOGaEbf9Rqq5Sc9A7LTX46dThun";
+                const fileId = "1PSer_lOFSLe99zHEYgvO2-1jczQT52PA";
                 const downloadUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
                 const link = document.createElement("a");
                 link.href = downloadUrl;

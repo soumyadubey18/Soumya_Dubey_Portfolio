@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.037f3e85.css",
-    "main.js": "/static/js/main.d27a1fa3.js",
+    "main.js": "/static/js/main.c5102255.js",
     "static/media/spirri-db.png": "/static/media/spirri-db.25a012e5662b409b9d3f.png",
     "static/media/oven-app.png": "/static/media/oven-app.f85d3b23d904c3d7eb9f.png",
     "static/media/home-automation.png": "/static/media/home-automation.78a99316e353b6407607.png",
@@ -11,10 +11,10 @@
     "static/media/myimage.jpg": "/static/media/myimage.6147f4827d855cc10a0b.jpg",
     "index.html": "/index.html",
     "main.037f3e85.css.map": "/static/css/main.037f3e85.css.map",
-    "main.d27a1fa3.js.map": "/static/js/main.d27a1fa3.js.map"
+    "main.c5102255.js.map": "/static/js/main.c5102255.js.map"
   },
   "entrypoints": [
     "static/css/main.037f3e85.css",
-    "static/js/main.d27a1fa3.js"
+    "static/js/main.c5102255.js"
   ]
 }
