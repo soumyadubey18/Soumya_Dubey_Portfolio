@@ -134,7 +134,7 @@ const TechnicalSkills = () => {
           <p
             className={`text-5xl font-extrabold inline border-b-8 ${isDarkMode ? "text-[#C5A059] border-[#C5A059]/40" : "text-[#3E2723] border-[#C5A059]/10"} rounded-sm`}
           >
-            Tech Stack
+            Technical Skills
           </p>
           <p className="py-8 text-lg text-[#5D4037] max-w-2xl">
             A specialized toolkit optimized for modern web engineering and
@@ -151,15 +151,21 @@ const TechnicalSkills = () => {
               <div className="mb-4 transform transition-transform group-hover:scale-110">
                 {icon}
               </div>
-              <p className={`font-bold text-xl ${isDarkMode ? "text-[#C5A059]" : "text-[#3E2723]"}`}>{title}</p>
-              <p className={`text-[10px] uppercase tracking-[0.2em] ${isDarkMode ? "text-[#B0B0B0]" : "text-[#8D6E63]"} mt-3 font-black`}>
+              <p
+                className={`font-bold text-xl ${isDarkMode ? "text-[#C5A059]" : "text-[#3E2723]"}`}
+              >
+                {title}
+              </p>
+              <p
+                className={`text-[10px] uppercase tracking-[0.2em] ${isDarkMode ? "text-[#B0B0B0]" : "text-[#8D6E63]"} mt-3 font-black`}
+              >
                 {description}
               </p>
             </div>
           ))}
         </div>
 
-        <div className="pb-12 text-center md:text-left">
+        <div id="soft-skills" className="pb-12 text-center md:text-left">
           <p
             className={`text-5xl font-extrabold inline border-b-8 ${
               isDarkMode
@@ -189,8 +195,14 @@ const TechnicalSkills = () => {
                   size: 40,
                 })}
               </div>
-              <p className={`font-bold text-xl ${isDarkMode ? "text-[#C5A059]" : "text-[#3E2723]"}`}>{title}</p>
-              <p className={`text-[10px] uppercase tracking-[0.2em] ${isDarkMode ? "text-[#B0B0B0]" : "text-[#8D6E63]"} mt-3 font-black`}>
+              <p
+                className={`font-bold text-xl ${isDarkMode ? "text-[#C5A059]" : "text-[#3E2723]"}`}
+              >
+                {title}
+              </p>
+              <p
+                className={`text-[10px] uppercase tracking-[0.2em] ${isDarkMode ? "text-[#B0B0B0]" : "text-[#8D6E63]"} mt-3 font-black`}
+              >
                 {description}
               </p>
             </div>

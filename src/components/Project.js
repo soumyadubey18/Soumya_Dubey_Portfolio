@@ -1,5 +1,6 @@
 import { useDarkMode } from "../context/DarkModeContext";
 import useScrollAnimation from "../hooks/useScrollAnimation";
+import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import SpirriDB from "../assets/project/spirri-db.png";
 import HomeAuto from "../assets/project/home-automation.png";
 import Internship from "../assets/project/internship.png";
@@ -17,7 +18,8 @@ const Portfolio = () => {
       title: "10Oven",
       description:
         "A modern web application for oven control and recipe management, built with JavaScript.",
-      link: "https://github.com/soumyadubey18/10Oven",
+      github: "https://github.com/soumyadubey18/10Oven",
+      demo: "https://soumyadubey18.github.io/10Oven",
     },
     {
       id: 2,
@@ -25,7 +27,8 @@ const Portfolio = () => {
       title: "Spirri DB Project",
       description:
         "Developed robust backend modules and conducted thorough validations for seamless system integration.",
-      link: "https://github.com/soumyadubey18/SpirriDB",
+      github: "https://github.com/soumyadubey18/SpirriDB",
+      demo: null, // Backend project, no live demo
     },
     {
       id: 3,
@@ -33,7 +36,8 @@ const Portfolio = () => {
       title: "Home Automation & Security",
       description:
         "Created an Arduino-based system for appliance control and security using GSM and Bluetooth modules.",
-      link: "https://github.com/soumyadubey18/HomeAutomation",
+      github: "https://github.com/soumyadubey18/HomeAutomation",
+      demo: null, // Hardware project, no live demo
     },
     {
       id: 4,
@@ -41,7 +45,8 @@ const Portfolio = () => {
       title: "Calculator App",
       description:
         "A sleek, responsive calculator application with modern UI/UX design principles.",
-      link: "https://github.com/soumyadubey18/Calculator",
+      github: "https://github.com/soumyadubey18/Calculator",
+      demo: "https://soumyadubey18.github.io/Calculator",
     },
     {
       id: 5,
@@ -49,7 +54,8 @@ const Portfolio = () => {
       title: "Cat_js",
       description:
         "Interactive web application featuring playful cat-themed elements and dynamic interactions.",
-      link: "https://github.com/soumyadubey18/Cat_js",
+      github: "https://github.com/soumyadubey18/Cat_js",
+      demo: "https://soumyadubey18.github.io/Cat_js",
     },
     {
       id: 6,
@@ -57,7 +63,8 @@ const Portfolio = () => {
       title: "Web Development Internship",
       description:
         "Built responsive web features using HTML, CSS, JavaScript, and PHP at XpertReview Software Solution.",
-      link: "https://github.com/soumyadubey18/BootstrapWebsite",
+      github: "https://github.com/soumyadubey18/BootstrapWebsite",
+      demo: "https://soumyadubey18.github.io/BootstrapWebsite",
     },
   ];
 
@@ -72,7 +79,7 @@ const Portfolio = () => {
           <p
             className={`text-5xl font-extrabold inline border-b-8 ${isDarkMode ? "text-[#C5A059] border-[#C5A059]/40" : "text-[#3E2723] border-[#C5A059]/10"} rounded-sm`}
           >
-            Featured Work
+            Works
           </p>
           <p
             className={`py-8 text-lg ${isDarkMode ? "text-[#B0B0B0]" : "text-[#5D4037]"} max-w-2xl`}
@@ -83,42 +90,64 @@ const Portfolio = () => {
         </div>
 
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-12 px-4 sm:px-0">
-          {portfolios.map(({ id, src, title, description, link }) => (
+          {portfolios.map(({ id, src, title, description, github, demo }) => (
             <div
               key={id}
               className={`group relative ${isDarkMode ? "bg-[#2d2d2d] border-[#444]" : "bg-white border-[#EADBC8]"} rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border ${isVisible ? "fade-in" : ""}`}
             >
-              <a href={link} target="_blank" rel="noreferrer">
-                <div className="relative overflow-hidden aspect-video">
-                  <img
-                    src={src}
-                    alt={title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div
-                    className={`absolute inset-0 ${isDarkMode ? "bg-[#C5A059]/10" : "bg-[#3E2723]/10"} group-hover:bg-transparent transition-colors duration-500`}
-                  />
-                </div>
-                <div className="p-8">
-                  <div className="flex justify-between items-start mb-4">
-                    <h3
-                      className={`font-bold text-xl ${isDarkMode ? "text-white group-hover:text-[#C5A059]" : "text-[#3E2723] group-hover:text-[#C5A059]"} transition-colors`}
-                    >
-                      {title}
-                    </h3>
-                    <span
-                      className={`${isDarkMode ? "text-white/30 group-hover:text-[#C5A059]" : "text-[#3E2723]/30 group-hover:text-[#C5A059]"} transform group-hover:translate-x-1 transition-all`}
-                    >
-                      →
-                    </span>
-                  </div>
-                  <p
-                    className={`text-sm ${isDarkMode ? "text-[#B0B0B0]" : "text-[#8D6E63]"} leading-relaxed font-medium`}
+              <div
+                className="relative overflow-hidden aspect-video cursor-pointer"
+                onClick={() =>
+                  demo
+                    ? window.open(demo, "_blank")
+                    : window.open(github, "_blank")
+                }
+              >
+                <img
+                  src={src}
+                  alt={title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div
+                  className={`absolute inset-0 ${isDarkMode ? "bg-[#C5A059]/10" : "bg-[#3E2723]/10"} group-hover:bg-transparent transition-colors duration-500`}
+                />
+              </div>
+              <div className="p-8">
+                <div className="flex justify-between items-start mb-4">
+                  <h3
+                    className={`font-bold text-xl ${isDarkMode ? "text-white group-hover:text-[#C5A059]" : "text-[#3E2723] group-hover:text-[#C5A059]"} transition-colors`}
                   >
-                    {description}
-                  </p>
+                    {title}
+                  </h3>
                 </div>
-              </a>
+                <p
+                  className={`text-sm ${isDarkMode ? "text-[#B0B0B0]" : "text-[#8D6E63]"} leading-relaxed font-medium mb-6`}
+                >
+                  {description}
+                </p>
+                <div className="flex gap-3">
+                  <a
+                    href={github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={`flex-1 flex items-center justify-center gap-2 text-center py-2 px-4 rounded-lg border transition-all duration-300 ${isDarkMode ? "border-[#C5A059] text-[#C5A059] hover:bg-[#C5A059] hover:text-black" : "border-[#C5A059] text-[#C5A059] hover:bg-[#C5A059] hover:text-white"}`}
+                  >
+                    <FaGithub size={16} />
+                    Code
+                  </a>
+                  {demo && (
+                    <a
+                      href={demo}
+                      target="_blank"
+                      rel="noreferrer"
+                      className={`flex-1 flex items-center justify-center gap-2 text-center py-2 px-4 rounded-lg border transition-all duration-300 ${isDarkMode ? "border-[#C5A059] text-[#C5A059] hover:bg-[#C5A059] hover:text-black" : "border-[#C5A059] text-[#C5A059] hover:bg-[#C5A059] hover:text-white"}`}
+                    >
+                      <FaExternalLinkAlt size={16} />
+                      Demo
+                    </a>
+                  )}
+                </div>
+              </div>
             </div>
           ))}
         </div>

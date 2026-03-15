@@ -30,16 +30,21 @@ const NavBar = () => {
     },
     {
       id: 5,
+      name: "Soft Skills",
+      link: "soft-skills",
+    },
+    {
+      id: 6,
       name: "Career",
       link: "experience",
     },
     {
-      id: 6,
+      id: 7,
       name: "Contact",
       link: "contact",
     },
     {
-      id: 7,
+      id: 8,
       name: "Footer",
       link: "footer",
     },
