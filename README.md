@@ -102,7 +102,7 @@
 ## 📬 Contact & Connect
 
 - **Email**: [dubeysoumya8@gmail.com](mailto:dubeysoumya8@gmail.com)
-- **LinkedIn**: [linkedin.com/in/soumya-dubey-752aa818](https://linkedin.com/in/soumya-dubey-752aa818)
+- **LinkedIn**: [www.linkedin.com/in/soumya-dubey-752aa818](https://www.www.linkedin.com/in/soumya-dubey-752aa818)
 - **GitHub**: [github.com/soumyadubey18](https://github.com/soumyadubey18)
 - **Location**: Bengaluru, Karnataka, India
 
