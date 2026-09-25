@@ -180,7 +180,7 @@ const Contact = () => {
               {/* Social Profiles */}
               <div className="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center gap-3">
                 <a
-                  href="https://linkedin.com/in/soumya-dubey-752aa818"
+                  href="https://www.www.linkedin.com/in/soumya-dubey-752aa818"
                   target="_blank"
                   rel="noreferrer"
                   className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl border text-xs font-semibold transition-colors ${
