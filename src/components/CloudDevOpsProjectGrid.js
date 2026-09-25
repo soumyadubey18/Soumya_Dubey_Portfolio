@@ -214,8 +214,8 @@ def record_attendance():
       "Implemented JWT authentication and RBAC for 4 distinct roles: ADMIN, TRAINER, PLACEMENT, and STUDENT.",
       "Engineered relational schemas and Prisma ORM migrations with SQLite and PostgreSQL compatibility.",
     ],
-    github: "https://github.com/soumyadubey18/CareerBridge",
-    demo: "https://soumyadubey18.github.io/CareerBridge",
+    github: "https://github.com/soumyadubey18/careerbridge-placement-management-system",
+    demo: "https://careerbridge-placement-management.netlify.app",
     snippetTitle: "Role-Based Access Control Middleware (Node.js/Express)",
     snippet: `// Role-based Access Control Middleware
 export const authorizeRoles = (...allowedRoles) => {
