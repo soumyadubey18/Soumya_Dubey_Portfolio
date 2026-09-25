@@ -60,7 +60,7 @@ const Footer = ({ onOpenResume }) => {
 
           <div className="flex items-center gap-3">
             <a
-              href="https://linkedin.com/in/soumya-dubey-752aa818"
+              href="https://www.www.linkedin.com/in/soumya-dubey-752aa818"
               target="_blank"
               rel="noreferrer"
               aria-label="LinkedIn"
