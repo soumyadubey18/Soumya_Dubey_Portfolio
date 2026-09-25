@@ -1,70 +1,112 @@
-# Getting Started with Create React App
+# Soumya Dubey — Cloud & DevOps Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![React](https://img.shields.io/badge/React-18.x-61dafb?logo=react&logoColor=black)](https://react.dev)
+[![AWS](https://img.shields.io/badge/AWS-Cloud%20Infra-FF9900?logo=amazon-aws&logoColor=white)](https://aws.amazon.com/)
+[![Terraform](https://img.shields.io/badge/Terraform-IaC-7B42BC?logo=terraform&logoColor=white)](https://www.terraform.io/)
+[![Docker](https://img.shields.io/badge/Docker-Containers-2496ED?logo=docker&logoColor=white)](https://www.docker.com/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![Framer Motion](https://img.shields.io/badge/Framer_Motion-Animations-black?logo=framer&logoColor=white)](https://www.framer.com/motion/)
 
-## Available Scripts
+> **Associate Cloud Engineer & Junior DevOps Engineer** based in Bengaluru, Karnataka, India.  
+> Specializing in AWS Cloud Infrastructure, Linux Server Administration, Terraform Infrastructure as Code (IaC), Docker Containerization, and Continuous CI/CD Pipelines with production full-stack software experience.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 🌟 Interactive Engineering Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. **Interactive AWS Cloud Infrastructure Topology & IaC Inspector**
+   - Visual map of cloud infrastructure: VPC CIDR `10.0.0.0/16`, Public/Private Subnets, Internet Gateways, Security Groups, EC2 `t3.micro`, persistent EBS `gp3` ext4 volume, and encrypted S3 storage buckets.
+   - Clickable nodes reveal real-time specifications and copyable Terraform HCL declarations and Linux Bash setup scripts.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+2. **Live Cloud & DevOps Motion Engine & Telemetry Radar**
+   - High-fidelity animated SVG flow lines with continuous glowing packet dashes connecting Code Commit, GitHub Actions CI, AWS ECR Registry, and EC2 Cloud Nodes.
+   - 360-degree rotating INFRAFORENSICS radar screen that scans 140+ system processes and computes deterministic `SHA-256` DNA drift hashes.
+   - Interactive simulation controls: `🚀 Simulate Deploy Cycle`, `🔍 Scan Drift`, and `⚡ Velocity Toggle`.
 
-### `npm test`
+3. **Interactive Floating 3D 'Skill Cloud'**
+   - Orbiting tech stack nodes (AWS, Docker, Terraform, Linux, Python, GitHub Actions, TypeScript, PostgreSQL, Git) revolving smoothly around a central DevOps core nexus.
+   - Hovering any node decelerates orbital velocity, illuminates the tech icon with a brand halo, and opens a glass proficiency modal showing percentage ratings, verified tags, and concrete application details.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+4. **DevOps Interactive Workbench CLI Sandbox**
+   - Simulated interactive Linux shell terminal supporting `help`, `aws --version`, `terraform plan`, `docker ps`, `uname -a`, and `infraforensics --snapshot` with authentic terminal output.
 
-### `npm run build`
+5. **Framer Motion Project Showcase Cards**
+   - Designed with subtle spring hover lifts (`scale: 1.025`, `y: -5`) and multi-layer ambient glowing borders.
+   - Features mac-style terminal headers and live system viewports:
+     - **INFRAFORENSICS**: System telemetry engine & cryptographic DNA fingerprinting.
+     - **Dockerized CI/CD Pipeline**: GitHub Actions + AWS ECR + Amazon EC2 automated delivery.
+     - **AWS Terraform Blueprint**: Declarative multi-tier cloud provisioning.
+     - **EC2 Linux Web Server**: Storage volume mounting (`mkfs.ext4 /dev/xvdf` at `/mnt/data`).
+     - **Smart Attendance Platform**: CIDR network subnet-validated Python Flask gateway.
+     - **CareerBridge**: 4-role RBAC authorization matrix & REST API suite.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+6. **Career Timeline Stream & Verified Credentials**
+   - Detailed history spanning **Besant Technologies** (AWS & DevOps Training), **Indpro AB** (Software Developer / Trainee Engineer), and **Paathshala Ascension** (Freelance Web Developer).
+   - Education: B.Tech in Electronics & Communication Engineering (ECE) and Diploma in ECE.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+7. **Interactive Resume Viewer & Download Drawer**
+   - In-app PDF preview modal and one-click direct download of the official resume.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## 🛠️ Technology Stack
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+| Domain | Technologies & Tools |
+| :--- | :--- |
+| **Cloud Computing** | AWS (EC2, S3, EBS, IAM, VPC, Subnets, Route Tables, Security Groups, Internet Gateways) |
+| **DevOps & IaC** | Terraform (HCL), Docker, AWS ECR, GitHub Actions CI/CD |
+| **Operating Systems** | Linux (Amazon Linux 2023, Ubuntu Server), Bash / Shell Scripting, SSH Key Auth, Systemd |
+| **Languages & Web** | Python 3 (`psutil`), TypeScript, JavaScript (ES6+), React 18, Node.js, Express.js, HTML5, CSS3 |
+| **Databases & Tools** | PostgreSQL, SQLite3, Git / GitHub, Postman, Swagger, JIRA, VS Code |
+| **Styling & Motion** | Tailwind CSS, Framer Motion, HTML5 Canvas 60fps Particle Physics |
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 🚀 Getting Started Locally
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Prerequisites
+- [Node.js](https://nodejs.org/) (v18.x or higher)
+- [npm](https://www.npmjs.com/) (v9.x or higher)
 
-## Learn More
+### Installation
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/soumyadubey18/portfolio.git
+   cd portfolio
+   ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+2. **Install project dependencies**:
+   ```bash
+   npm install
+   ```
 
-### Code Splitting
+3. **Start the development server**:
+   ```bash
+   npm start
+   ```
+   Open [http://localhost:3000](http://localhost:3000) in your web browser.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+4. **Validate and lint the codebase**:
+   ```bash
+   npm run lint
+   ```
 
-### Analyzing the Bundle Size
+5. **Build for production**:
+   ```bash
+   npm run build
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+## 📬 Contact & Connect
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- **Email**: [dubeysoumya8@gmail.com](mailto:dubeysoumya8@gmail.com)
+- **LinkedIn**: [linkedin.com/in/soumya-dubey-752aa818](https://linkedin.com/in/soumya-dubey-752aa818)
+- **GitHub**: [github.com/soumyadubey18](https://github.com/soumyadubey18)
+- **Location**: Bengaluru, Karnataka, India
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 📄 License
+This project is open source and available under the [MIT License](LICENSE).

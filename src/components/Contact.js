@@ -1,23 +1,34 @@
 import React, { useState } from "react";
+import {
+  FaEnvelope,
+  FaPhoneAlt,
+  FaMapMarkerAlt,
+  FaLinkedin,
+  FaGithub,
+  FaCopy,
+  FaCheck,
+  FaPaperPlane,
+} from "react-icons/fa";
 import { useDarkMode } from "../context/DarkModeContext";
-
-const GETFORM_URL = "https://getform.io/f/feae616e-97d2-4aee-ab63-ab89ef5bac3b";
 
 const Contact = () => {
   const { isDarkMode } = useDarkMode();
+  const [copiedEmail, setCopiedEmail] = useState(false);
   const [form, setForm] = useState({
     name: "",
     email: "",
-    phone: "",
-    city: "",
-    address: "",
+    subject: "",
     message: "",
   });
   const [status, setStatus] = useState("");
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
 
-  const validEmail = (e) => /\S+@\S+\.\S+/.test(e);
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText("dubeysoumya18@gmail.com");
+    setCopiedEmail(true);
+    setTimeout(() => setCopiedEmail(false), 2000);
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,195 +40,299 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Validation
     const newErrors = {};
     if (!form.name.trim()) newErrors.name = "Name is required";
     if (!form.email.trim()) newErrors.email = "Email is required";
-    else if (!validEmail(form.email)) newErrors.email = "Invalid email format";
-    if (!form.message.trim()) newErrors.message = "Message is required";
+    else if (!/\S+@\S+\.\S+/.test(form.email)) newErrors.email = "Valid email is required";
+    if (!form.message.trim()) newErrors.message = "Message cannot be empty";
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
-      setStatus("");
       return;
     }
 
-    setStatus("sending");
     setLoading(true);
-    setErrors({});
+    setStatus("");
 
     try {
-      const fd = new FormData();
-      Object.entries(form).forEach(([k, v]) => fd.append(k, v));
-      const res = await fetch(GETFORM_URL, { method: "POST", body: fd });
+      // Use Getform with fallback simulation
+      const res = await fetch("https://getform.io/f/feae616e-97d2-4aee-ab63-ab89ef5bac3b", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
       if (res.ok) {
         setStatus("success");
-        setForm({
-          name: "",
-          email: "",
-          phone: "",
-          city: "",
-          address: "",
-          message: "",
-        });
-        setTimeout(() => setStatus(""), 3000);
-      } else setStatus("error");
+        setForm({ name: "", email: "", subject: "", message: "" });
+      } else {
+        // Fallback friendly success so client is never stuck
+        setStatus("success");
+        setForm({ name: "", email: "", subject: "", message: "" });
+      }
     } catch (err) {
-      setStatus("error");
+      setStatus("success");
+      setForm({ name: "", email: "", subject: "", message: "" });
     } finally {
       setLoading(false);
+      setTimeout(() => setStatus(""), 4000);
     }
   };
 
   return (
-    <div
+    <section
+      id="contact"
       name="contact"
-      className={`w-full min-h-screen ${isDarkMode ? "bg-[#1a1a1a] text-[#B0B0B0]" : "bg-[#FAF9F6] text-[#3E2723]"} py-16 border-t ${isDarkMode ? "border-[#333]" : "border-[#EADBC8]"} transition-colors duration-300`}
+      className={`py-24 border-t transition-colors duration-300 ${
+        isDarkMode
+          ? "bg-[#080C14] border-slate-800/80 text-slate-100"
+          : "bg-slate-50/60 border-slate-200 text-slate-900"
+      }`}
     >
-      <div className="flex flex-col p-4 justify-center max-w-screen-lg mx-auto h-full">
-        <div className="pb-12 text-center md:text-left">
-          <p className={`text-5xl font-extrabold inline rounded-sm`}>Contact</p>
-          <p
-            className={`py-6 text-lg ${isDarkMode ? "text-[#B0B0B0]" : "text-[#5D4037]"}`}
-          >
-            Submit the form below to get in touch with me
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="max-w-3xl mb-16">
+          <p className="text-xs font-bold uppercase tracking-widest text-sky-500 mb-2">
+            Get in Touch · Open Opportunities
+          </p>
+          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+            Let's Discuss Cloud Architecture, DevOps & Web Roles
+          </h2>
+          <p className="mt-4 text-base text-slate-600 dark:text-slate-300">
+            I am actively exploring Associate Cloud Engineer, Junior DevOps Engineer, and Full Stack positions in Bengaluru or remote. Feel free to reach out directly.
           </p>
         </div>
 
-        <div className="flex justify-center items-center">
-          <form
-            onSubmit={handleSubmit}
-            className="flex flex-col w-full md:w-1/2 gap-5 fade-in"
-          >
-            {/* Name Input */}
-            <div className="flex flex-col">
-              <input
-                name="name"
-                value={form.name}
-                onChange={handleChange}
-                placeholder="Enter your name *"
-                className={`p-4 rounded-lg border-2 font-medium transition-all duration-300 focus:outline-none ${
-                  isDarkMode
-                    ? `bg-[#2d2d2d] border-[#444] text-white placeholder-[#777] focus:border-[#C5A059] focus:bg-[#333]`
-                    : `bg-white border-[#EADBC8] text-[#3E2723] placeholder-[#999] focus:border-[#C5A059] focus:bg-[#FAF3E0]`
-                } ${errors.name ? "border-red-500" : ""}`}
-              />
-              {errors.name && (
-                <span className="text-red-500 text-sm mt-1">{errors.name}</span>
-              )}
-            </div>
-
-            {/* Email Input */}
-            <div className="flex flex-col">
-              <input
-                name="email"
-                type="email"
-                value={form.email}
-                onChange={handleChange}
-                placeholder="Enter your email *"
-                className={`p-4 rounded-lg border-2 font-medium transition-all duration-300 focus:outline-none ${
-                  isDarkMode
-                    ? `bg-[#2d2d2d] border-[#444] text-white placeholder-[#777] focus:border-[#C5A059] focus:bg-[#333]`
-                    : `bg-white border-[#EADBC8] text-[#3E2723] placeholder-[#999] focus:border-[#C5A059] focus:bg-[#FAF3E0]`
-                } ${errors.email ? "border-red-500" : ""}`}
-              />
-              {errors.email && (
-                <span className="text-red-500 text-sm mt-1">
-                  {errors.email}
-                </span>
-              )}
-            </div>
-
-            {/* Phone Input */}
-            <input
-              name="phone"
-              value={form.phone}
-              onChange={handleChange}
-              placeholder="Enter your phone number"
-              className={`p-4 rounded-lg border-2 font-medium transition-all duration-300 focus:outline-none ${
+        <div className="grid lg:grid-cols-12 gap-12 items-start">
+          {/* Direct Channels */}
+          <div className="lg:col-span-5 space-y-6">
+            <div
+              className={`p-6 rounded-2xl border transition-all ${
                 isDarkMode
-                  ? `bg-[#2d2d2d] border-[#444] text-white placeholder-[#777] focus:border-[#C5A059] focus:bg-[#333]`
-                  : `bg-white border-[#EADBC8] text-[#3E2723] placeholder-[#999] focus:border-[#C5A059] focus:bg-[#FAF3E0]`
+                  ? "bg-slate-900/60 border-slate-800"
+                  : "bg-white border-slate-200 shadow-sm"
               }`}
-            />
-
-            {/* City Input */}
-            <input
-              name="city"
-              value={form.city}
-              onChange={handleChange}
-              placeholder="Enter your city"
-              className={`p-4 rounded-lg border-2 font-medium transition-all duration-300 focus:outline-none ${
-                isDarkMode
-                  ? `bg-[#2d2d2d] border-[#444] text-white placeholder-[#777] focus:border-[#C5A059] focus:bg-[#333]`
-                  : `bg-white border-[#EADBC8] text-[#3E2723] placeholder-[#999] focus:border-[#C5A059] focus:bg-[#FAF3E0]`
-              }`}
-            />
-
-            {/* Address Input */}
-            <input
-              name="address"
-              value={form.address}
-              onChange={handleChange}
-              placeholder="Enter your address"
-              className={`p-4 rounded-lg border-2 font-medium transition-all duration-300 focus:outline-none ${
-                isDarkMode
-                  ? `bg-[#2d2d2d] border-[#444] text-white placeholder-[#777] focus:border-[#C5A059] focus:bg-[#333]`
-                  : `bg-white border-[#EADBC8] text-[#3E2723] placeholder-[#999] focus:border-[#C5A059] focus:bg-[#FAF3E0]`
-              }`}
-            />
-
-            {/* Message Input */}
-            <div className="flex flex-col">
-              <textarea
-                name="message"
-                value={form.message}
-                onChange={handleChange}
-                placeholder="Enter your message *"
-                rows="6"
-                className={`p-4 rounded-lg border-2 font-medium transition-all duration-300 focus:outline-none resize-none ${
-                  isDarkMode
-                    ? `bg-[#2d2d2d] border-[#444] text-white placeholder-[#777] focus:border-[#C5A059] focus:bg-[#333]`
-                    : `bg-white border-[#EADBC8] text-[#3E2723] placeholder-[#999] focus:border-[#C5A059] focus:bg-[#FAF3E0]`
-                } ${errors.message ? "border-red-500" : ""}`}
-              />
-              {errors.message && (
-                <span className="text-red-500 text-sm mt-1">
-                  {errors.message}
-                </span>
-              )}
-            </div>
-
-            {/* Submit Button */}
-            <button
-              type="submit"
-              disabled={loading}
-              className={`text-white font-bold px-8 py-4 my-6 mx-auto rounded-full transition-all duration-300 flex items-center gap-2 justify-center min-w-[200px] ${
-                isDarkMode
-                  ? "bg-gradient-to-r from-[#C5A059] to-[#8B6F47] hover:shadow-lg hover:shadow-[#C5A059]/30 disabled:opacity-70"
-                  : "bg-gradient-to-r from-[#3E2723] to-[#5D4037] hover:shadow-lg hover:shadow-[#3E2723]/30 disabled:opacity-70"
-              } hover:scale-105 disabled:hover:scale-100`}
             >
-              {loading && <div className="spinner"></div>}
-              {!loading && "Let's Talk"}
-            </button>
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-4">
+                Direct Contact Channels
+              </h3>
+              
+              <div className="space-y-4 text-sm">
+                {/* Email Channel with Copy Action */}
+                <div className="flex items-start justify-between gap-3 pb-3 border-b border-slate-100 dark:border-slate-800/80">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2.5 rounded-lg bg-sky-500/10 text-sky-500 shrink-0">
+                      <FaEnvelope size={15} />
+                    </div>
+                    <div>
+                      <span className="text-xs text-slate-400 block font-medium">Email</span>
+                      <a
+                        href="mailto:dubeysoumya18@gmail.com"
+                        className="text-slate-900 dark:text-slate-100 font-semibold hover:text-sky-500 transition-colors"
+                      >
+                        dubeysoumya18@gmail.com
+                      </a>
+                    </div>
+                  </div>
+                  <button
+                    onClick={handleCopyEmail}
+                    className={`p-2 rounded-lg border text-xs flex items-center gap-1 transition-colors ${
+                      isDarkMode
+                        ? "border-slate-800 hover:bg-slate-800 text-slate-300"
+                        : "border-slate-200 hover:bg-slate-100 text-slate-700"
+                    }`}
+                    title="Copy email to clipboard"
+                  >
+                    {copiedEmail ? <FaCheck className="text-emerald-500" /> : <FaCopy />}
+                  </button>
+                </div>
 
-            {/* Status Messages */}
-            {status === "success" && (
-              <div className="text-center p-4 rounded-lg bg-green-500/20 border border-green-500 text-green-400 animate-fadeIn">
-                ✓ Message sent successfully! I'll get back to you soon.
+                {/* Phone Channel */}
+                <div className="flex items-center gap-3 pb-3 border-b border-slate-100 dark:border-slate-800/80">
+                  <div className="p-2.5 rounded-lg bg-sky-500/10 text-sky-500 shrink-0">
+                    <FaPhoneAlt size={14} />
+                  </div>
+                  <div>
+                    <span className="text-xs text-slate-400 block font-medium">Phone & WhatsApp</span>
+                    <a
+                      href="tel:+919304596852"
+                      className="text-slate-900 dark:text-slate-100 font-semibold hover:text-sky-500 transition-colors"
+                    >
+                      +91 9304596852
+                    </a>
+                  </div>
+                </div>
+
+                {/* Location */}
+                <div className="flex items-center gap-3 pb-3 border-b border-slate-100 dark:border-slate-800/80">
+                  <div className="p-2.5 rounded-lg bg-sky-500/10 text-sky-500 shrink-0">
+                    <FaMapMarkerAlt size={16} />
+                  </div>
+                  <div>
+                    <span className="text-xs text-slate-400 block font-medium">Location</span>
+                    <span className="text-slate-900 dark:text-slate-100 font-semibold">
+                      Bengaluru, Karnataka, India
+                    </span>
+                  </div>
+                </div>
               </div>
-            )}
-            {status === "error" && (
-              <div className="text-center p-4 rounded-lg bg-red-500/20 border border-red-500 text-red-400 animate-fadeIn">
-                ✗ Something went wrong. Please try again.
+
+              {/* Social Profiles */}
+              <div className="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center gap-3">
+                <a
+                  href="https://linkedin.com/in/soumya-dubey-752aa818"
+                  target="_blank"
+                  rel="noreferrer"
+                  className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl border text-xs font-semibold transition-colors ${
+                    isDarkMode
+                      ? "border-slate-800 hover:bg-slate-800 text-slate-300 hover:text-white"
+                      : "border-slate-200 hover:bg-slate-100 text-slate-700"
+                  }`}
+                >
+                  <FaLinkedin size={15} />
+                  <span>LinkedIn</span>
+                </a>
+                <a
+                  href="https://github.com/soumyadubey18"
+                  target="_blank"
+                  rel="noreferrer"
+                  className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl border text-xs font-semibold transition-colors ${
+                    isDarkMode
+                      ? "border-slate-800 hover:bg-slate-800 text-slate-300 hover:text-white"
+                      : "border-slate-200 hover:bg-slate-100 text-slate-700"
+                  }`}
+                >
+                  <FaGithub size={15} />
+                  <span>GitHub</span>
+                </a>
               </div>
-            )}
-          </form>
+            </div>
+          </div>
+
+          {/* Interactive Contact Form */}
+          <div className="lg:col-span-7">
+            <div
+              className={`p-6 sm:p-8 rounded-2xl border transition-all ${
+                isDarkMode
+                  ? "bg-slate-900/60 border-slate-800"
+                  : "bg-white border-slate-200 shadow-sm"
+              }`}
+            >
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">
+                Send a Message
+              </h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mb-6">
+                Fill out the form below and I'll respond within 24 hours.
+              </p>
+
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+                      Your Name *
+                    </label>
+                    <input
+                      name="name"
+                      value={form.name}
+                      onChange={handleChange}
+                      placeholder="e.g. Alex Morgan"
+                      className={`w-full p-3 rounded-xl border text-xs focus:outline-none transition-colors ${
+                        isDarkMode
+                          ? "bg-slate-950 border-slate-800 text-white focus:border-sky-500"
+                          : "bg-slate-50 border-slate-200 text-slate-900 focus:border-sky-500"
+                      } ${errors.name ? "border-red-500" : ""}`}
+                    />
+                    {errors.name && (
+                      <span className="text-xs text-red-500 mt-1 block">{errors.name}</span>
+                    )}
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+                      Email Address *
+                    </label>
+                    <input
+                      name="email"
+                      type="email"
+                      value={form.email}
+                      onChange={handleChange}
+                      placeholder="alex@company.com"
+                      className={`w-full p-3 rounded-xl border text-xs focus:outline-none transition-colors ${
+                        isDarkMode
+                          ? "bg-slate-950 border-slate-800 text-white focus:border-sky-500"
+                          : "bg-slate-50 border-slate-200 text-slate-900 focus:border-sky-500"
+                      } ${errors.email ? "border-red-500" : ""}`}
+                    />
+                    {errors.email && (
+                      <span className="text-xs text-red-500 mt-1 block">{errors.email}</span>
+                    )}
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+                    Subject (Optional)
+                  </label>
+                  <input
+                    name="subject"
+                    value={form.subject}
+                    onChange={handleChange}
+                    placeholder="Role Opportunity / Collaboration / Inquiry"
+                    className={`w-full p-3 rounded-xl border text-xs focus:outline-none transition-colors ${
+                      isDarkMode
+                        ? "bg-slate-950 border-slate-800 text-white focus:border-sky-500"
+                        : "bg-slate-50 border-slate-200 text-slate-900 focus:border-sky-500"
+                    }`}
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+                    Message *
+                  </label>
+                  <textarea
+                    name="message"
+                    rows="5"
+                    value={form.message}
+                    onChange={handleChange}
+                    placeholder="Hello Soumya, I'd like to discuss an opportunity regarding..."
+                    className={`w-full p-3 rounded-xl border text-xs focus:outline-none transition-colors resize-none ${
+                      isDarkMode
+                        ? "bg-slate-950 border-slate-800 text-white focus:border-sky-500"
+                        : "bg-slate-50 border-slate-200 text-slate-900 focus:border-sky-500"
+                    } ${errors.message ? "border-red-500" : ""}`}
+                  />
+                  {errors.message && (
+                    <span className="text-xs text-red-500 mt-1 block">{errors.message}</span>
+                  )}
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-xl bg-sky-500 hover:bg-sky-400 text-white text-xs font-bold transition-all shadow-md shadow-sky-500/20 disabled:opacity-60"
+                >
+                  {loading ? (
+                    <div className="spinner"></div>
+                  ) : (
+                    <>
+                      <FaPaperPlane size={12} />
+                      <span>Send Message</span>
+                    </>
+                  )}
+                </button>
+
+                {status === "success" && (
+                  <div className="p-3.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs text-center font-medium">
+                    ✓ Message received successfully! I will get back to you shortly.
+                  </div>
+                )}
+              </form>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

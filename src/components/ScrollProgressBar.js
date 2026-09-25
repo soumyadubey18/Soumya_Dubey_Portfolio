@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
-import { useDarkMode } from "../context/DarkModeContext";
 
 const ScrollProgressBar = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
-  const { isDarkMode } = useDarkMode();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,11 +18,7 @@ const ScrollProgressBar = () => {
 
   return (
     <div
-      className={`fixed top-20 left-0 h-1 ${
-        isDarkMode
-          ? "bg-[#C5A059]"
-          : "bg-gradient-to-r from-[#3E2723] to-[#C5A059]"
-      } transition-all duration-300 z-50`}
+      className="fixed top-20 left-0 h-0.5 bg-gradient-to-r from-sky-500 via-sky-400 to-amber-500 transition-all duration-150 z-50 pointer-events-none"
       style={{ width: `${scrollProgress}%` }}
     />
   );

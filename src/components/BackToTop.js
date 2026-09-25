@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
 import { FaArrowUp } from "react-icons/fa";
-import { useDarkMode } from "../context/DarkModeContext";
 
 const BackToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const { isDarkMode } = useDarkMode();
 
   const toggleVisibility = () => {
     if (window.pageYOffset > 300) {
@@ -31,14 +29,11 @@ const BackToTop = () => {
       {isVisible && (
         <button
           onClick={scrollToTop}
-          className={`fixed bottom-8 right-8 p-4 rounded-full shadow-lg hover:scale-110 transition-all duration-300 z-40 animate-fadeIn ${
-            isDarkMode
-              ? "bg-[#C5A059] text-white hover:bg-[#8B6F47]"
-              : "bg-[#3E2723] text-white hover:bg-[#5D4037]"
-          }`}
-          title="Back to top"
+          className="fixed bottom-6 right-6 p-3.5 rounded-xl shadow-lg hover:scale-105 active:scale-95 transition-all duration-200 z-40 bg-sky-500 hover:bg-sky-400 text-white shadow-sky-500/20"
+          title="Scroll back to top"
+          aria-label="Back to top"
         >
-          <FaArrowUp size={20} />
+          <FaArrowUp size={15} />
         </button>
       )}
     </>
