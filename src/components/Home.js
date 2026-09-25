@@ -137,7 +137,7 @@ const Home = ({ onOpenResume }) => {
               </a>
               <span className="text-slate-700">·</span>
               <a
-                href="https://linkedin.com/in/soumya-dubey-752aa818"
+                href="https://www.www.linkedin.com/in/soumya-dubey-752aa818"
                 target="_blank"
                 rel="noreferrer"
                 className="flex items-center gap-1.5 hover:text-sky-400 transition-colors"
