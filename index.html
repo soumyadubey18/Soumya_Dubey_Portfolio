@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0B0F17" />
+  <title>Soumya Dubey | Cloud & DevOps Engineer</title>
+  <meta name="description" content="Portfolio of Soumya Dubey, Cloud & DevOps Engineer specializing in AWS infrastructure, Docker containerization, Terraform IaC, Linux systems administration, and automated CI/CD pipelines." />
+  <meta name="keywords" content="Soumya Dubey, Cloud Engineer, DevOps Engineer, AWS, Terraform, Docker, CI/CD, Linux, React, Node.js, Python, Bengaluru" />
+  <meta name="author" content="Soumya Dubey" />
+  <meta property="og:title" content="Soumya Dubey | Cloud & DevOps Engineer" />
+  <meta property="og:description" content="Explore interactive AWS cloud architecture blueprints, zero-downtime CI/CD engine, DevOps terminal workbench, and production projects." />
+  <meta property="og:type" content="website" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Tailwind CSS CDN with Custom Configuration -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brandDark: '#090D16',
+            cardDark: '#0B0F19',
+          },
+          animation: {
+            'shimmer': 'shimmer 2.5s linear infinite',
+            'pulse-subtle': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          },
+          keyframes: {
+            shimmer: {
+              '0%': { backgroundPosition: '-200% 0' },
+              '100%': { backgroundPosition: '200% 0' },
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #090D16;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #38bdf8;
+    }
+    .bg-dot-pattern {
+      background-image: radial-gradient(rgba(148, 163, 184, 0.12) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-[#090D16] dark:text-slate-100 font-sans antialiased selection:bg-sky-500 selection:text-white bg-dot-pattern transition-colors duration-300">
+
+  <!-- Reading Depth Progress Bar -->
+  <div class="fixed top-0 left-0 right-0 h-[3px] z-[60] bg-transparent pointer-events-none">
+    <div id="scrollProgressBar" class="h-full bg-gradient-to-r from-sky-400 via-indigo-500 to-amber-400 transition-all duration-75 ease-out w-0"></div>
+  </div>
+
+  <!-- FLOATING INTERACTIVE NAVBAR -->
+  <header class="fixed top-0 left-0 right-0 z-50 px-3 sm:px-6 pt-3 pb-2 transition-all duration-300">
+    <div class="max-w-7xl mx-auto rounded-2xl px-3 sm:px-5 h-16 flex items-center justify-between border bg-white/85 dark:bg-[#090D16]/90 backdrop-blur-xl border-slate-200/90 dark:border-slate-800/80 shadow-lg shadow-black/10 dark:shadow-black/50">
+      
+      <!-- Brand Identity (SD / Soumya Dubey / Cloud & DevOps Engineer) -->
+      <div class="flex items-center gap-3">
+        <div class="flex items-center gap-2.5">
+          <!-- Interactive Multi-State 3D Avatar (Click to cycle mode) -->
+          <button id="avatarBtn" class="relative w-9 h-9 rounded-xl bg-gradient-to-tr from-sky-500 via-indigo-500 to-amber-500 p-[1.5px] shadow-lg shadow-sky-500/25 group cursor-pointer focus:outline-none transition-transform duration-200 hover:scale-105 active:scale-95" title="Click to cycle avatar mode (SD · Cloud · Terminal · Velocity)">
+            <div class="absolute -inset-0.5 rounded-xl bg-gradient-to-r from-sky-400 via-amber-400 to-sky-400 opacity-60 blur-[2px] group-hover:opacity-100 transition-opacity animate-pulse"></div>
+            <div class="relative w-full h-full rounded-[10px] bg-[#090D16] flex items-center justify-center text-white font-black text-xs font-mono select-none">
+              <span id="avatarText" class="bg-gradient-to-r from-sky-400 to-amber-300 bg-clip-text text-transparent font-bold">SD</span>
+            </div>
+          </button>
+
+          <!-- Name & Interactive Cycling Role -->
+          <div class="flex flex-col">
+            <a href="#home" class="group flex items-center gap-1.5 cursor-pointer">
+              <span id="brandName" class="text-sm sm:text-base font-extrabold tracking-tight text-slate-900 dark:text-white group-hover:text-sky-400 transition-colors">
+                Soumya Dubey
+              </span>
+              <span class="text-[11px] opacity-0 group-hover:opacity-100 transition-opacity">✨</span>
+            </a>
+
+            <!-- Interactive Role Ticker with terminal cursor & click-to-cycle -->
+            <button id="roleTickerBtn" class="flex items-center gap-1 text-[10px] text-slate-400 font-mono -mt-0.5 text-left group hover:text-sky-400 transition-colors focus:outline-none" title="Click to cycle engineering specialty">
+              <span class="text-sky-500 font-bold">&gt;</span>
+              <span id="roleTickerText" class="whitespace-nowrap font-medium text-slate-500 dark:text-slate-400 group-hover:text-sky-400 transition-all">Cloud & DevOps Engineer</span>
+              <span class="w-1.5 h-3 bg-sky-400 inline-block animate-pulse"></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Interactive Availability Pill with Status Popover -->
+        <div class="relative hidden lg:block">
+          <button id="statusBtn" class="flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-medium border bg-emerald-500/10 border-emerald-500/30 text-emerald-500 hover:bg-emerald-500/20 transition-all" title="Click to view availability & quick contact">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>Available</span>
+          </button>
+
+          <!-- Status Dropdown Popover -->
+          <div id="statusMenu" class="hidden absolute top-full left-0 mt-2 w-72 p-4 rounded-2xl border shadow-2xl z-50 bg-white dark:bg-[#0B0F19] border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white">
+            <div class="flex items-center gap-2 mb-2 pb-2 border-b border-slate-200 dark:border-slate-800">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
+              <span class="text-xs font-bold text-emerald-500 uppercase tracking-wider">Open for Opportunities</span>
+            </div>
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-3">
+              Targeting Cloud Engineer, DevOps Specialist, or SRE roles. Ready for immediate joining in Bengaluru or remote.
+            </p>
+            <div class="text-[11px] font-mono text-slate-500 mb-3 flex items-center gap-1.5">
+              <i class="fa-solid fa-location-dot text-amber-500"></i>
+              <span>Bengaluru, KA · Hybrid / Remote</span>
+            </div>
+            <div class="flex gap-2">
+              <button onclick="copyEmail()" class="flex-1 flex items-center justify-center gap-1.5 py-1.5 px-2 rounded-xl text-xs font-semibold bg-sky-500 hover:bg-sky-400 text-white transition-colors">
+                <i class="fa-regular fa-copy"></i>
+                <span id="copyEmailText">Copy Email</span>
+              </button>
+              <a href="#contact" class="flex items-center justify-center gap-1 py-1.5 px-2.5 rounded-xl text-xs font-semibold border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
+                <i class="fa-solid fa-paper-plane text-[10px]"></i>
+                <span>Connect</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden xl:flex items-center gap-1 p-1 rounded-2xl text-xs font-medium">
+        <a href="#cloud-architecture" class="nav-link px-3 py-1.5 rounded-xl text-slate-600 dark:text-slate-300 hover:text-sky-500 dark:hover:text-white transition-colors">Architecture</a>
+        <a href="#pipeline-motion" class="nav-link px-3 py-1.5 rounded-xl text-slate-600 dark:text-slate-300 hover:text-sky-500 dark:hover:text-white transition-colors">Live Engine</a>
+        <a href="#devops-workbench" class="nav-link px-3 py-1.5 rounded-xl text-slate-600 dark:text-slate-300 hover:text-sky-500 dark:hover:text-white transition-colors">Workbench</a>
+        <a href="#skills" class="nav-link px-3 py-1.5 rounded-xl text-slate-600 dark:text-slate-300 hover:text-sky-500 dark:hover:text-white transition-colors">Skills</a>
+        <a href="#project" class="nav-link px-3 py-1.5 rounded-xl text-slate-600 dark:text-slate-300 hover:text-sky-500 dark:hover:text-white transition-colors">Projects</a>
+        <a href="#github-activity" class="nav-link px-3 py-1.5 rounded-xl text-slate-600 dark:text-slate-300 hover:text-sky-500 dark:hover:text-white transition-colors">Activity</a>
+        <a href="#experience" class="nav-link px-3 py-1.5 rounded-xl text-slate-600 dark:text-slate-300 hover:text-sky-500 dark:hover:text-white transition-colors">Timeline</a>
+        <a href="#contact" class="nav-link px-3 py-1.5 rounded-xl text-slate-600 dark:text-slate-300 hover:text-sky-500 dark:hover:text-white transition-colors">Contact</a>
+      </nav>
+
+      <!-- Right Action Controls -->
+      <div class="flex items-center gap-2">
+        <!-- Spotlight Search Trigger (Cmd+K) -->
+        <button onclick="toggleCommandPalette()" class="flex items-center gap-2 px-2.5 py-1.5 rounded-xl border text-xs bg-slate-100/80 dark:bg-slate-900/70 border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 hover:text-sky-500 transition-all">
+          <i class="fa-solid fa-magnifying-glass text-xs"></i>
+          <span class="hidden sm:inline font-mono text-[11px]">Search</span>
+          <kbd class="hidden md:inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-mono border bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300">⌘K</kbd>
+        </button>
+
+        <!-- Social Icons -->
+        <a href="https://github.com/soumyadubey18" target="_blank" rel="noreferrer" class="hidden sm:flex p-2 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:text-sky-500 transition-colors">
+          <i class="fa-brands fa-github text-sm"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/soumya-dubey-752aa8185" target="_blank" rel="noreferrer" class="hidden sm:flex p-2 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:text-sky-500 transition-colors">
+          <i class="fa-brands fa-linkedin text-sm"></i>
+        </a>
+
+        <!-- Dark Mode Toggle Button -->
+        <button id="themeToggleBtn" onclick="toggleTheme()" class="p-2 rounded-xl border border-slate-200 dark:border-slate-800 text-amber-500 bg-slate-50 dark:bg-slate-900 transition-transform active:scale-90">
+          <i id="themeIcon" class="fa-solid fa-sun text-sm"></i>
+        </button>
+
+        <!-- Resume Modal Trigger -->
+        <button onclick="openResumeModal()" class="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-xl bg-sky-500 hover:bg-sky-400 text-white transition-all shadow-md shadow-sky-500/25 active:scale-95 whitespace-nowrap">
+          <i class="fa-solid fa-file-arrow-down text-xs"></i>
+          <span class="hidden sm:inline">Resume</span>
+        </button>
+
+        <!-- Mobile Menu Hamburger -->
+        <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="xl:hidden p-2 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 bg-slate-100 dark:bg-slate-900">
+          <i id="mobileMenuIcon" class="fa-solid fa-bars text-sm"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobileMenu" class="hidden xl:hidden mt-2 p-5 rounded-3xl border shadow-2xl bg-white/95 dark:bg-[#090D16]/95 border-slate-200 dark:border-slate-800 backdrop-blur-2xl">
+      <div class="grid grid-cols-2 gap-2 mb-4">
+        <a href="#cloud-architecture" onclick="toggleMobileMenu()" class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-xs font-semibold flex items-center gap-2 text-slate-700 dark:text-slate-300"><i class="fa-solid fa-network-wired text-sky-500"></i> Architecture</a>
+        <a href="#pipeline-motion" onclick="toggleMobileMenu()" class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-xs font-semibold flex items-center gap-2 text-slate-700 dark:text-slate-300"><i class="fa-solid fa-rocket text-sky-500"></i> Live Engine</a>
+        <a href="#devops-workbench" onclick="toggleMobileMenu()" class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-xs font-semibold flex items-center gap-2 text-slate-700 dark:text-slate-300"><i class="fa-solid fa-terminal text-sky-500"></i> Workbench</a>
+        <a href="#skills" onclick="toggleMobileMenu()" class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-xs font-semibold flex items-center gap-2 text-slate-700 dark:text-slate-300"><i class="fa-solid fa-screwdriver-wrench text-sky-500"></i> Skills</a>
+        <a href="#project" onclick="toggleMobileMenu()" class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-xs font-semibold flex items-center gap-2 text-slate-700 dark:text-slate-300"><i class="fa-solid fa-diagram-project text-sky-500"></i> Projects</a>
+        <a href="#github-activity" onclick="toggleMobileMenu()" class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-xs font-semibold flex items-center gap-2 text-slate-700 dark:text-slate-300"><i class="fa-solid fa-calendar-days text-sky-500"></i> Activity</a>
+        <a href="#experience" onclick="toggleMobileMenu()" class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-xs font-semibold flex items-center gap-2 text-slate-700 dark:text-slate-300"><i class="fa-solid fa-timeline text-sky-500"></i> Timeline</a>
+        <a href="#contact" onclick="toggleMobileMenu()" class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-xs font-semibold flex items-center gap-2 text-slate-700 dark:text-slate-300"><i class="fa-solid fa-envelope text-sky-500"></i> Contact</a>
+      </div>
+      <button onclick="openResumeModal(); toggleMobileMenu();" class="w-full py-2.5 rounded-xl bg-sky-500 text-white text-xs font-bold flex items-center justify-center gap-2 shadow-md">
+        <i class="fa-solid fa-file-arrow-down"></i>
+        <span>View Full ATS Resume</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section id="home" class="relative pt-32 pb-20 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        <!-- Left Column -->
+        <div class="lg:col-span-7 flex flex-col text-left">
+          <!-- Availability Badge -->
+          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-500 text-xs font-semibold max-w-fit mb-6">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+            <span>Open to Cloud & DevOps Roles · Bengaluru & Remote</span>
+          </div>
+
+          <!-- Hero Title -->
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.12]">
+            Hi, I'm <span class="text-slate-900 dark:text-white">Soumya Dubey</span><br />
+            <span class="bg-gradient-to-r from-sky-500 via-sky-400 to-amber-500 bg-clip-text text-transparent">
+              Associate Cloud & DevOps Engineer
+            </span>
+          </h1>
+
+          <!-- Value Proposition -->
+          <p class="mt-6 text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
+            Software Developer with 1+ years of professional full-stack experience in React.js, Node.js, Express.js and REST APIs, specializing in AWS Cloud infrastructure and DevOps automation. Hands-on with 
+            <strong class="text-slate-900 dark:text-white font-semibold">AWS (EC2, S3, EBS, IAM, VPC), Linux Administration, Docker containerization, and Terraform Infrastructure as Code (IaC)</strong>.
+          </p>
+
+          <!-- Core Tech Badges -->
+          <div class="mt-6 flex flex-wrap items-center gap-2">
+            <span class="px-3 py-1 rounded-md text-xs font-mono font-medium border border-amber-500/30 text-amber-500 bg-amber-500/10"><i class="fa-brands fa-aws mr-1.5"></i>AWS Cloud</span>
+            <span class="px-3 py-1 rounded-md text-xs font-mono font-medium border border-purple-500/30 text-purple-400 bg-purple-500/10"><i class="fa-solid fa-cubes mr-1.5"></i>Terraform IaC</span>
+            <span class="px-3 py-1 rounded-md text-xs font-mono font-medium border border-sky-500/30 text-sky-400 bg-sky-500/10"><i class="fa-brands fa-docker mr-1.5"></i>Docker CI/CD</span>
+            <span class="px-3 py-1 rounded-md text-xs font-mono font-medium border border-yellow-500/30 text-yellow-400 bg-yellow-500/10"><i class="fa-brands fa-linux mr-1.5"></i>Linux CLI</span>
+            <span class="px-3 py-1 rounded-md text-xs font-mono font-medium border border-blue-500/30 text-blue-400 bg-blue-500/10"><i class="fa-brands fa-python mr-1.5"></i>Python Scripting</span>
+          </div>
+
+          <!-- CTAs -->
+          <div class="mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
+            <button onclick="openResumeModal()" class="flex items-center gap-2 px-6 py-3.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-white font-semibold text-sm shadow-lg shadow-sky-500/25 transition-all">
+              <i class="fa-solid fa-file-arrow-down"></i>
+              <span>View & Download Resume</span>
+            </button>
+            <a href="#project" class="flex items-center gap-2 px-6 py-3.5 rounded-xl border border-slate-300 dark:border-slate-700 hover:border-sky-500 text-slate-800 dark:text-slate-200 font-semibold text-sm transition-all">
+              <span>Inspect Projects</span>
+              <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Column: Profile Card & Terminal Teaser -->
+        <div class="lg:col-span-5 flex flex-col items-center">
+          <div class="relative w-full max-w-sm rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-[#0B0F19]/80 backdrop-blur-xl p-6 shadow-2xl">
+            <div class="flex items-center gap-4 mb-4">
+              <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-sky-500 to-amber-500 p-0.5 shadow-md flex items-center justify-center text-white text-2xl font-black font-mono">
+                SD
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white">Soumya Dubey</h3>
+                <p class="text-xs font-mono text-sky-500">Cloud & DevOps Engineer</p>
+                <p class="text-xs text-slate-500 flex items-center gap-1 mt-0.5"><i class="fa-solid fa-location-dot text-amber-500 text-[10px]"></i> Bengaluru, Karnataka</p>
+              </div>
+            </div>
+
+            <!-- Terminal Snapshot -->
+            <div class="rounded-xl bg-[#050811] p-3 text-xs font-mono border border-slate-800 text-slate-300">
+              <div class="flex items-center gap-1.5 pb-2 border-b border-slate-800 text-slate-500 text-[10px]">
+                <span class="w-2 h-2 rounded-full bg-red-500"></span>
+                <span class="w-2 h-2 rounded-full bg-yellow-500"></span>
+                <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                <span class="ml-2">soumya@aws-instance:~</span>
+              </div>
+              <div class="mt-2 space-y-1 text-[11px]">
+                <p><span class="text-emerald-400">$</span> uname -a</p>
+                <p class="text-slate-400">Linux aws-ec2 6.1.0-aws x86_64</p>
+                <p><span class="text-emerald-400">$</span> docker ps --format 'table {{.Names}}\t{{.Status}}'</p>
+                <p class="text-sky-400">careerbridge-api   Up 3 days (healthy)</p>
+                <p><span class="text-emerald-400">$</span> terraform version</p>
+                <p class="text-purple-400">Terraform v1.6.4 (AWS provider v5.0)</p>
+              </div>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs font-mono text-slate-500">
+              <span>Status: <span class="text-emerald-500 font-bold">100% Operational</span></span>
+              <span>Uptime: 99.99%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOUD ARCHITECTURE SECTION -->
+  <section id="cloud-architecture" class="py-24 border-t border-slate-200 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-10 text-center max-w-3xl mx-auto">
+        <p class="text-xs font-bold uppercase tracking-widest text-sky-500 mb-2">Systems Design & AWS Topology</p>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">Enterprise Cloud Architecture</h2>
+        <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">
+          Production AWS Virtual Private Cloud (VPC) topology with Multi-AZ redundancy, Application Load Balancers, ECS Fargate containers, and RDS PostgreSQL replication.
+        </p>
+      </div>
+
+      <!-- Architecture Topology Blueprint Card -->
+      <div class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0B0F19] p-6 sm:p-8 shadow-xl">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+          <div class="p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60">
+            <span class="text-xs font-mono text-sky-500 font-bold uppercase">1. Edge & DNS</span>
+            <h4 class="text-sm font-bold mt-1 text-slate-900 dark:text-white">Amazon Route 53 + ACM</h4>
+            <p class="text-xs text-slate-500 mt-1">Geo-routing latency-based DNS with TLS/SSL certificate termination.</p>
+          </div>
+          <div class="p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60">
+            <span class="text-xs font-mono text-sky-500 font-bold uppercase">2. Public Subnet</span>
+            <h4 class="text-sm font-bold mt-1 text-slate-900 dark:text-white">Application Load Balancer</h4>
+            <p class="text-xs text-slate-500 mt-1">Multi-AZ ALB with path-based routing, health checks, and WAF rules.</p>
+          </div>
+          <div class="p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60">
+            <span class="text-xs font-mono text-sky-500 font-bold uppercase">3. Private Subnet</span>
+            <h4 class="text-sm font-bold mt-1 text-slate-900 dark:text-white">ECS Fargate Tasks</h4>
+            <p class="text-xs text-slate-500 mt-1">Stateless microservices auto-scaling across 2 Availability Zones.</p>
+          </div>
+          <div class="p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60">
+            <span class="text-xs font-mono text-sky-500 font-bold uppercase">4. Data Tier</span>
+            <h4 class="text-sm font-bold mt-1 text-slate-900 dark:text-white">RDS PostgreSQL Multi-AZ</h4>
+            <p class="text-xs text-slate-500 mt-1">Automated failover, encrypted storage, and KMS key envelope protection.</p>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-[#050811] text-xs font-mono text-slate-400 border border-slate-800">
+          <p class="text-emerald-400 font-semibold mb-1">// Terraform Infrastructure as Code Provisioning Blueprint</p>
+          <p class="text-sky-300">module "vpc" { source = "terraform-aws-modules/vpc/aws" version = "5.1.0" }</p>
+          <p class="text-purple-300">resource "aws_ecs_cluster" "production" { name = "soumya-cluster-prod" }</p>
+          <p class="text-amber-300">resource "aws_lb" "alb" { internal = false load_balancer_type = "application" }</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEVOPS WORKBENCH TERMINAL -->
+  <section id="devops-workbench" class="py-24 border-t border-slate-200 dark:border-slate-800 bg-slate-100/50 dark:bg-[#070B14]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-10 text-center max-w-2xl mx-auto">
+        <p class="text-xs font-bold uppercase tracking-widest text-emerald-500 mb-2">Interactive Command Line</p>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">DevOps Workbench Terminal</h2>
+        <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">Click runnable commands below to inspect Linux commands, Docker containers, and AWS diagnostics.</p>
+      </div>
+
+      <div class="max-w-4xl mx-auto rounded-3xl border border-slate-800 bg-[#050811] shadow-2xl overflow-hidden">
+        <!-- Terminal Header -->
+        <div class="flex items-center justify-between px-5 py-3 border-b border-slate-800 bg-slate-950">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-red-500"></span>
+            <span class="w-3 h-3 rounded-full bg-yellow-500"></span>
+            <span class="w-3 h-3 rounded-full bg-green-500"></span>
+            <span class="ml-3 text-xs font-mono text-slate-400">soumya@devops-node: ~/infrastructure</span>
+          </div>
+          <span class="text-[11px] font-mono text-emerald-400">bash · 64-bit</span>
+        </div>
+
+        <!-- Terminal Output -->
+        <div id="terminalOutput" class="p-6 font-mono text-xs text-slate-300 h-64 overflow-y-auto space-y-2">
+          <p class="text-slate-500">// Welcome to Soumya Dubey's DevOps Terminal. Select a quick command below or inspect active instances.</p>
+          <p><span class="text-emerald-400">soumya@devops:~$</span> docker ps</p>
+          <p class="text-sky-300">CONTAINER ID   IMAGE                 STATUS         PORTS</p>
+          <p class="text-slate-400">9c1b3f8a4e21   placement-backend:1.0 Up 4 days      0.0.0.0:5000->5000/tcp</p>
+          <p class="text-slate-400">e57d19a2c840   infraforensics:latest Up 12 hours    0.0.0.0:8080->8080/tcp</p>
+        </div>
+
+        <!-- Terminal Quick Action Buttons -->
+        <div class="p-4 border-t border-slate-800 bg-slate-950 flex flex-wrap gap-2 text-xs font-mono">
+          <button onclick="runTermCommand('docker ps')" class="px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-900 text-sky-400 hover:border-sky-500 transition-colors">$ docker ps</button>
+          <button onclick="runTermCommand('aws s3 ls')" class="px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-900 text-amber-400 hover:border-amber-500 transition-colors">$ aws s3 ls</button>
+          <button onclick="runTermCommand('terraform plan')" class="px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-900 text-purple-400 hover:border-purple-500 transition-colors">$ terraform plan</button>
+          <button onclick="runTermCommand('cat /etc/os-release')" class="px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-900 text-emerald-400 hover:border-emerald-500 transition-colors">$ cat os-release</button>
+          <button onclick="clearTerm()" class="px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-900 text-slate-400 hover:text-white transition-colors">Clear</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECHNICAL SKILLS MATRIX -->
+  <section id="skills" class="py-24 border-t border-slate-200 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-12 text-center max-w-2xl mx-auto">
+        <p class="text-xs font-bold uppercase tracking-widest text-sky-500 mb-2">Technical Competency</p>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">Core Skills & Tooling</h2>
+        <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">Extensive hands-on toolchain across Cloud Infrastructure, Containerization, IaC, and Programming.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Cloud Computing -->
+        <div class="p-6 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0B0F19] shadow-lg">
+          <div class="w-10 h-10 rounded-2xl bg-amber-500/10 text-amber-500 flex items-center justify-center mb-4"><i class="fa-brands fa-aws text-xl"></i></div>
+          <h3 class="text-base font-bold text-slate-900 dark:text-white mb-2">Cloud Computing</h3>
+          <ul class="text-xs space-y-2 text-slate-600 dark:text-slate-400 font-mono">
+            <li>• Amazon EC2 & Auto Scaling</li>
+            <li>• Amazon S3 & EBS Storage</li>
+            <li>• VPC, Subnets, Route Tables</li>
+            <li>• IAM Policies & Roles (RBAC)</li>
+            <li>• Security Groups & Network ACLs</li>
+          </ul>
+        </div>
+
+        <!-- DevOps & IaC -->
+        <div class="p-6 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0B0F19] shadow-lg">
+          <div class="w-10 h-10 rounded-2xl bg-purple-500/10 text-purple-400 flex items-center justify-center mb-4"><i class="fa-solid fa-cubes text-xl"></i></div>
+          <h3 class="text-base font-bold text-slate-900 dark:text-white mb-2">DevOps & IaC</h3>
+          <ul class="text-xs space-y-2 text-slate-600 dark:text-slate-400 font-mono">
+            <li>• Terraform HCL Modules</li>
+            <li>• Docker & Docker Compose</li>
+            <li>• GitHub Actions CI/CD</li>
+            <li>• AWS ECR & Deployment</li>
+            <li>• Artifact Registry & Pipelines</li>
+          </ul>
+        </div>
+
+        <!-- Systems & OS -->
+        <div class="p-6 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0B0F19] shadow-lg">
+          <div class="w-10 h-10 rounded-2xl bg-yellow-500/10 text-yellow-500 flex items-center justify-center mb-4"><i class="fa-brands fa-linux text-xl"></i></div>
+          <h3 class="text-base font-bold text-slate-900 dark:text-white mb-2">Linux & Systems</h3>
+          <ul class="text-xs space-y-2 text-slate-600 dark:text-slate-400 font-mono">
+            <li>• Bash / Shell Automation</li>
+            <li>• systemd Service Units</li>
+            <li>• SSH Keys & Bastion Hosts</li>
+            <li>• Cron & Scheduled Tasks</li>
+            <li>• Network Troubleshooting (netstat)</li>
+          </ul>
+        </div>
+
+        <!-- Programming & Web -->
+        <div class="p-6 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0B0F19] shadow-lg">
+          <div class="w-10 h-10 rounded-2xl bg-sky-500/10 text-sky-400 flex items-center justify-center mb-4"><i class="fa-solid fa-code text-xl"></i></div>
+          <h3 class="text-base font-bold text-slate-900 dark:text-white mb-2">Full-Stack Development</h3>
+          <ul class="text-xs space-y-2 text-slate-600 dark:text-slate-400 font-mono">
+            <li>• React.js & TypeScript</li>
+            <li>• Node.js & Express.js REST APIs</li>
+            <li>• Python 3 Systems Scripting</li>
+            <li>• PostgreSQL & Prisma ORM</li>
+            <li>• Git / GitHub Version Control</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS SECTION WITH TECH STACK SEARCH BAR -->
+  <section id="project" class="py-24 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-[#080C14]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div>
+          <p class="text-xs font-bold uppercase tracking-widest text-sky-500 mb-2">Featured Work & Architectures</p>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">Cloud & DevOps Projects</h2>
+          <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">Production systems with Docker containerization, REST architectures, and automated pipelines.</p>
+        </div>
+      </div>
+
+      <!-- Prominent Technology Stack Search Bar -->
+      <div class="mb-10 p-4 sm:p-5 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/60 backdrop-blur-md shadow-lg">
+        <div class="relative flex items-center">
+          <i class="fa-solid fa-magnifying-glass absolute left-4 text-slate-400 text-sm"></i>
+          <input
+            id="projectSearchInput"
+            type="text"
+            oninput="filterProjects()"
+            placeholder="Search projects by technology stack (e.g. 'Docker', 'AWS', 'Python', 'Terraform', 'CI/CD')..."
+            class="w-full pl-11 pr-24 py-3 text-xs sm:text-sm rounded-2xl border font-medium focus:outline-none bg-slate-50 dark:bg-[#050811] border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white placeholder-slate-400 focus:border-sky-500"
+          />
+          <div class="absolute right-3 flex items-center">
+            <span id="projectCountBadge" class="text-[11px] font-mono font-semibold px-2.5 py-1 rounded-xl bg-sky-500/10 border border-sky-500/20 text-sky-400">
+              3 / 3
+            </span>
+          </div>
+        </div>
+
+        <!-- Quick Filter Tags -->
+        <div class="mt-3 pt-3 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center gap-1.5 text-xs font-medium">
+          <span class="text-slate-400 text-[11px] font-mono uppercase mr-1">Quick:</span>
+          <button onclick="setProjectSearch('All')" class="px-3 py-1 rounded-xl border border-sky-500 bg-sky-500 text-white font-semibold">All</button>
+          <button onclick="setProjectSearch('Docker')" class="px-3 py-1 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:border-sky-500">Docker</button>
+          <button onclick="setProjectSearch('AWS')" class="px-3 py-1 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:border-sky-500">AWS</button>
+          <button onclick="setProjectSearch('Python')" class="px-3 py-1 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:border-sky-500">Python</button>
+          <button onclick="setProjectSearch('Terraform')" class="px-3 py-1 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:border-sky-500">Terraform</button>
+          <button onclick="setProjectSearch('CI/CD')" class="px-3 py-1 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:border-sky-500">CI/CD</button>
+        </div>
+      </div>
+
+      <!-- Project Cards Grid -->
+      <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Project 1 -->
+        <div class="project-card p-6 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0B0F19] shadow-xl flex flex-col justify-between" data-tech="Docker TypeScript Node.js PostgreSQL JWT AWS CI/CD">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-[10px] font-mono font-bold uppercase px-2.5 py-1 rounded-lg bg-sky-500/10 text-sky-400 border border-sky-500/20">Full-Stack & Cloud</span>
+              <a href="https://github.com/soumyadubey18/careerbridge-placement-management-system" target="_blank" class="text-slate-400 hover:text-white"><i class="fa-brands fa-github text-base"></i></a>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white">CareerBridge Placement System</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">
+              Institutional placement portal featuring 4-role RBAC, JWT auth, containerized Express REST APIs, Prisma ORM, and PostgreSQL.
+            </p>
+            <div class="mt-4 flex flex-wrap gap-1.5">
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Docker</span>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">TypeScript</span>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">PostgreSQL</span>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">AWS EC2</span>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+            <span class="text-xs font-mono text-emerald-400 font-semibold">112+ Commits</span>
+            <a href="https://github.com/soumyadubey18/careerbridge-placement-management-system" target="_blank" class="text-xs font-bold text-sky-500 hover:underline">View Source →</a>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card p-6 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0B0F19] shadow-xl flex flex-col justify-between" data-tech="Python Linux Bash Docker Diagnostics Shell CI/CD">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-[10px] font-mono font-bold uppercase px-2.5 py-1 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20">Systems & Automation</span>
+              <a href="https://github.com/soumyadubey18/infraforensics-system-profiler" target="_blank" class="text-slate-400 hover:text-white"><i class="fa-brands fa-github text-base"></i></a>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white">InfraForensics System Profiler</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">
+              Linux diagnostics engine analyzing CPU saturation, zombie processes, disk I/O bottlenecks, and automated health score reporting.
+            </p>
+            <div class="mt-4 flex flex-wrap gap-1.5">
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Python 3</span>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Bash</span>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">psutil</span>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Linux CLI</span>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+            <span class="text-xs font-mono text-emerald-400 font-semibold">64+ Commits</span>
+            <a href="https://github.com/soumyadubey18/infraforensics-system-profiler" target="_blank" class="text-xs font-bold text-amber-500 hover:underline">View Source →</a>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card p-6 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0B0F19] shadow-xl flex flex-col justify-between" data-tech="React Tailwind JavaScript AWS Terraform Docker CI/CD">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-[10px] font-mono font-bold uppercase px-2.5 py-1 rounded-lg bg-purple-500/10 text-purple-400 border border-purple-500/20">Cloud Portfolio</span>
+              <a href="https://github.com/soumyadubey18/Soumya_Dubey_Portfolio" target="_blank" class="text-slate-400 hover:text-white"><i class="fa-brands fa-github text-base"></i></a>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Soumya Dubey Engineering Hub</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">
+              Interactive Cloud & DevOps engineering portfolio featuring live CI/CD pipeline simulation, terminal workbench, and ATS resume parser.
+            </p>
+            <div class="mt-4 flex flex-wrap gap-1.5">
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">React.js</span>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Tailwind CSS</span>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Terraform</span>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">CI/CD</span>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+            <span class="text-xs font-mono text-emerald-400 font-semibold">Active Repo</span>
+            <a href="https://github.com/soumyadubey18/Soumya_Dubey_Portfolio" target="_blank" class="text-xs font-bold text-purple-500 hover:underline">View Source →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GITHUB HEATMAP SECTION -->
+  <section id="github-activity" class="py-24 border-t border-slate-200 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div>
+          <p class="text-xs font-bold uppercase tracking-widest text-emerald-500 mb-2">Open Source Velocity</p>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">GitHub Contribution Heatmap</h2>
+          <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">Consistent daily engineering cadence across AWS automation, Docker pipelines, and software development.</p>
+        </div>
+        <a href="https://github.com/soumyadubey18" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-slate-900 dark:bg-white text-white dark:text-slate-900 shadow-md">
+          <i class="fa-brands fa-github"></i>
+          <span>Follow @soumyadubey18</span>
+        </a>
+      </div>
+
+      <!-- Stats Row -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+        <div class="p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 shadow-sm">
+          <span class="text-xs text-slate-500 font-medium">Past 12 Months</span>
+          <div class="text-2xl font-black text-slate-900 dark:text-white font-mono mt-1">480+ <span class="text-xs text-slate-500">commits</span></div>
+        </div>
+        <div class="p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 shadow-sm">
+          <span class="text-xs text-slate-500 font-medium">Current Streak</span>
+          <div class="text-2xl font-black text-amber-500 font-mono mt-1">14 <span class="text-xs text-slate-500">days active</span></div>
+        </div>
+        <div class="p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 shadow-sm">
+          <span class="text-xs text-slate-500 font-medium">Longest Streak</span>
+          <div class="text-2xl font-black text-sky-500 font-mono mt-1">32 <span class="text-xs text-slate-500">days</span></div>
+        </div>
+        <div class="p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 shadow-sm">
+          <span class="text-xs text-slate-500 font-medium">Active Consistency</span>
+          <div class="text-2xl font-black text-purple-400 font-mono mt-1">82% <span class="text-xs text-slate-500">of year</span></div>
+        </div>
+      </div>
+
+      <!-- Calendar Grid Canvas Representation -->
+      <div class="p-6 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0B0F19] shadow-xl overflow-x-auto">
+        <div class="min-w-[700px]">
+          <div class="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800 mb-4 text-xs font-mono text-slate-400">
+            <span>github.com/soumyadubey18</span>
+            <span>52 Weeks · Daily Commits</span>
+          </div>
+          <!-- 52 columns x 7 rows heatmap -->
+          <div id="heatmapGrid" class="flex gap-[3.5px]"></div>
+          <div class="mt-4 flex items-center justify-between text-xs text-slate-500 font-mono">
+            <span id="heatmapTooltip">Hover over any square to view daily commit activity</span>
+            <div class="flex items-center gap-1 text-[10px]">
+              <span>Less</span>
+              <span class="w-2.5 h-2.5 rounded-[2px] bg-slate-800"></span>
+              <span class="w-2.5 h-2.5 rounded-[2px] bg-[#0e4429]"></span>
+              <span class="w-2.5 h-2.5 rounded-[2px] bg-[#006d32]"></span>
+              <span class="w-2.5 h-2.5 rounded-[2px] bg-[#26a641]"></span>
+              <span class="w-2.5 h-2.5 rounded-[2px] bg-[#39d353]"></span>
+              <span>More</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAREER TIMELINE WITH EXPANDABLE MILESTONES -->
+  <section id="experience" class="py-24 border-t border-slate-200 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-12 text-center max-w-2xl mx-auto">
+        <p class="text-xs font-bold uppercase tracking-widest text-sky-500 mb-2">Track Record & Milestones</p>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">Engineering Career Timeline</h2>
+        <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">Click any milestone card to expand its technical breakdown and responsibilities.</p>
+      </div>
+
+      <!-- Timeline Items -->
+      <div class="max-w-4xl mx-auto relative pl-8 md:pl-10 space-y-8">
+        <!-- Spine -->
+        <div class="absolute top-4 bottom-4 left-3 md:left-4 w-0.5 bg-gradient-to-b from-sky-500 via-indigo-500 to-slate-700"></div>
+
+        <!-- Milestone 1 -->
+        <div class="relative group">
+          <div class="absolute -left-[30px] md:-left-[34px] top-6 w-8 h-8 rounded-xl bg-amber-500 text-white flex items-center justify-center font-bold text-xs shadow-lg"><i class="fa-brands fa-aws"></i></div>
+          <div class="rounded-3xl border border-sky-500/40 bg-white dark:bg-[#0B0F19] p-6 shadow-lg cursor-pointer" onclick="toggleTimelineDetail('timeDetail1')">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+              <div>
+                <span class="text-xs font-bold text-sky-500 uppercase">Besant Technologies · Bengaluru</span>
+                <h3 class="text-xl font-bold text-slate-900 dark:text-white">AWS & DevOps Trainee</h3>
+              </div>
+              <span class="text-xs font-mono px-2.5 py-1 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/30">Jul 2026 – Present</span>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+              Enterprise AWS cloud architecture, Linux server administration, Docker containerization, and Terraform IaC automation.
+            </p>
+            <div id="timeDetail1" class="mt-4 pt-4 border-t border-slate-200 dark:border-slate-800 text-xs space-y-2 text-slate-600 dark:text-slate-300">
+              <p>• Authored modular Terraform blueprints for automated VPC, subnet, and security group deployment.</p>
+              <p>• Orchestrated CI/CD pipelines with GitHub Actions and Amazon ECR registry.</p>
+              <p>• Configured Linux systemd services, SSH bastion security, and disk volume management.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Milestone 2 -->
+        <div class="relative group">
+          <div class="absolute -left-[30px] md:-left-[34px] top-6 w-8 h-8 rounded-xl bg-emerald-500 text-white flex items-center justify-center font-bold text-xs shadow-lg"><i class="fa-solid fa-code"></i></div>
+          <div class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0B0F19] p-6 shadow-lg cursor-pointer" onclick="toggleTimelineDetail('timeDetail2')">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+              <div>
+                <span class="text-xs font-bold text-sky-500 uppercase">Indpro AB · Bengaluru</span>
+                <h3 class="text-xl font-bold text-slate-900 dark:text-white">Software Developer / Trainee</h3>
+              </div>
+              <span class="text-xs font-mono px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-400">May 2022 – Feb 2023</span>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+              Full-stack software engineering with React.js, TypeScript, Node.js REST APIs, and Agile Scrum delivery.
+            </p>
+            <div id="timeDetail2" class="hidden mt-4 pt-4 border-t border-slate-200 dark:border-slate-800 text-xs space-y-2 text-slate-600 dark:text-slate-300">
+              <p>• Engineered responsive React components and state management flows.</p>
+              <p>• Developed Node.js RESTful APIs validated with Postman and Swagger documentation.</p>
+              <p>• Triaged defects in JIRA and collaborated with European enterprise clients.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Milestone 3 -->
+        <div class="relative group">
+          <div class="absolute -left-[30px] md:-left-[34px] top-6 w-8 h-8 rounded-xl bg-purple-600 text-white flex items-center justify-center font-bold text-xs shadow-lg"><i class="fa-solid fa-graduation-cap"></i></div>
+          <div class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0B0F19] p-6 shadow-lg cursor-pointer" onclick="toggleTimelineDetail('timeDetail3')">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+              <div>
+                <span class="text-xs font-bold text-purple-400 uppercase">Dayananda Sagar College of Engineering</span>
+                <h3 class="text-xl font-bold text-slate-900 dark:text-white">B.E. in Information Science & Engineering</h3>
+              </div>
+              <span class="text-xs font-mono px-2.5 py-1 rounded-lg bg-purple-500/10 text-purple-400 border border-purple-500/30">8.5 CGPA · 2018–2022</span>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+              Graduated with First Class Distinction. Coursework in Operating Systems (Linux/Unix), Computer Networks, and DBMS.
+            </p>
+            <div id="timeDetail3" class="hidden mt-4 pt-4 border-t border-slate-200 dark:border-slate-800 text-xs space-y-2 text-slate-600 dark:text-slate-300">
+              <p>• Strong core foundations in Operating Systems (Linux/Unix), Networks (TCP/IP), and DBMS.</p>
+              <p>• Active participant in Linux workshops and technical symposiums.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="py-24 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-[#080C14]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-xs font-bold uppercase tracking-widest text-sky-500 mb-2">Get In Touch</p>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">Let's Connect & Collaborate</h2>
+      <p class="mt-3 text-sm text-slate-600 dark:text-slate-300 max-w-xl mx-auto">
+        I am actively interviewing for Associate Cloud Engineer, Junior DevOps Engineer, and SRE opportunities. Reach out directly or grab my resume!
+      </p>
+
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+        <a href="mailto:dubeysoumya8@gmail.com" class="flex items-center gap-2 px-6 py-3.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-white font-semibold text-sm shadow-lg shadow-sky-500/25 transition-all">
+          <i class="fa-solid fa-envelope"></i>
+          <span>dubeysoumya8@gmail.com</span>
+        </a>
+        <button onclick="copyEmail()" class="flex items-center gap-2 px-5 py-3.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 text-sm font-semibold transition-all">
+          <i class="fa-regular fa-copy"></i>
+          <span id="copyContactBtn">Copy Email</span>
+        </button>
+        <a href="https://www.linkedin.com/in/soumya-dubey-752aa8185" target="_blank" class="flex items-center gap-2 px-5 py-3.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 text-sm font-semibold transition-all">
+          <i class="fa-brands fa-linkedin text-sky-500"></i>
+          <span>LinkedIn</span>
+        </a>
+        <a href="https://github.com/soumyadubey18" target="_blank" class="flex items-center gap-2 px-5 py-3.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 text-sm font-semibold transition-all">
+          <i class="fa-brands fa-github"></i>
+          <span>GitHub</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-8 border-t border-slate-200 dark:border-slate-800 text-center text-xs font-mono text-slate-500">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <span>© 2026 Soumya Dubey · Cloud & DevOps Engineer</span>
+      <div class="flex items-center gap-4">
+        <a href="#home" class="hover:text-sky-500">Back to Top ↑</a>
+        <a href="https://github.com/soumyadubey18" target="_blank" class="hover:text-sky-500">GitHub</a>
+        <a href="https://www.linkedin.com/in/soumya-dubey-752aa8185" target="_blank" class="hover:text-sky-500">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- RESUME MODAL -->
+  <div id="resumeModal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4">
+    <div class="fixed inset-0 bg-black/70 backdrop-blur-md" onclick="closeResumeModal()"></div>
+    <div class="relative w-full max-w-3xl max-h-[90vh] rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0B0F19] text-slate-900 dark:text-white shadow-2xl z-10 flex flex-col overflow-hidden">
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between p-5 border-b border-slate-200 dark:border-slate-800">
+        <div class="flex items-center gap-2">
+          <div class="w-7 h-7 rounded-lg bg-sky-500/10 text-sky-400 flex items-center justify-center font-bold text-xs">SD</div>
+          <div>
+            <h3 class="text-sm font-bold">Soumya Dubey — ATS Resume</h3>
+            <p class="text-[10px] font-mono text-slate-400">AWS Cloud · Linux · Docker · Terraform · Full-Stack</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <a href="/resume.pdf" download="Soumya_Dubey_Cloud_DevOps_Resume.pdf" class="px-3 py-1.5 rounded-xl bg-sky-500 text-white text-xs font-semibold flex items-center gap-1.5">
+            <i class="fa-solid fa-download"></i>
+            <span>Download PDF</span>
+          </a>
+          <button onclick="closeResumeModal()" class="p-2 rounded-xl text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="p-6 overflow-y-auto space-y-5 text-xs font-mono leading-relaxed">
+        <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+          <h4 class="font-bold text-sky-400 text-sm mb-1">SOUMYA DUBEY</h4>
+          <p class="text-slate-500">Bengaluru, Karnataka · dubeysoumya8@gmail.com · github.com/soumyadubey18</p>
+        </div>
+
+        <div>
+          <h5 class="font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-1 mb-2">SUMMARY</h5>
+          <p class="text-slate-600 dark:text-slate-300 font-sans text-xs">
+            Associate Cloud & DevOps Engineer with 1+ years full-stack software experience. Hands-on in AWS (EC2, S3, EBS, IAM, VPC), Linux server administration, Docker containerization, and Terraform Infrastructure as Code.
+          </p>
+        </div>
+
+        <div>
+          <h5 class="font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-1 mb-2">TECHNICAL SKILLS</h5>
+          <p class="text-slate-600 dark:text-slate-300">
+            • Cloud: AWS (EC2, S3, EBS, VPC, IAM, Route 53, CloudWatch)<br />
+            • DevOps / IaC: Terraform, Docker, Docker Compose, GitHub Actions, ECR<br />
+            • Systems: Linux (Ubuntu/Debian, CentOS), Bash, systemd, SSH, Networking<br />
+            • Full-Stack: JavaScript (ES6+), TypeScript, React.js, Node.js, Express, PostgreSQL
+          </p>
+        </div>
+
+        <div>
+          <h5 class="font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-1 mb-2">EXPERIENCE</h5>
+          <p class="font-bold text-sky-400">AWS & DevOps Trainee — Besant Technologies (Jul 2026 – Present)</p>
+          <p class="text-slate-500 mb-2">• Implemented automated VPC networking, Docker container CI/CD, and Terraform IaC blueprints.</p>
+          <p class="font-bold text-emerald-400">Software Developer — Indpro AB (May 2022 – Feb 2023)</p>
+          <p class="text-slate-500">• Engineered React.js frontends, TypeScript REST APIs with Express, and Agile Scrum delivery.</p>
+        </div>
+
+        <div>
+          <h5 class="font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-1 mb-2">EDUCATION</h5>
+          <p class="text-slate-600 dark:text-slate-300">B.E. in Information Science & Engineering · Dayananda Sagar College of Engineering (8.5 CGPA)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMMAND PALETTE (Cmd+K) MODAL -->
+  <div id="cmdPalette" class="hidden fixed inset-0 z-[100] flex items-start justify-center pt-24 px-4">
+    <div class="fixed inset-0 bg-black/70 backdrop-blur-md" onclick="toggleCommandPalette()"></div>
+    <div class="relative w-full max-w-lg rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0B0F19] text-slate-900 dark:text-white shadow-2xl z-10 overflow-hidden">
+      <div class="flex items-center gap-3 px-5 py-3.5 border-b border-slate-200 dark:border-slate-800">
+        <i class="fa-solid fa-magnifying-glass text-sky-500"></i>
+        <input id="cmdSearchInput" type="text" oninput="searchCmdPalette()" placeholder="Search sections, projects, or commands..." class="w-full bg-transparent text-sm focus:outline-none font-medium placeholder-slate-400" />
+        <kbd onclick="toggleCommandPalette()" class="px-2 py-0.5 rounded text-[10px] font-mono border bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-500 cursor-pointer">ESC</kbd>
+      </div>
+      <div id="cmdList" class="p-3 space-y-1 max-h-72 overflow-y-auto text-xs">
+        <a href="#cloud-architecture" onclick="toggleCommandPalette()" class="flex items-center justify-between p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800">
+          <div class="flex items-center gap-2.5"><i class="fa-solid fa-network-wired text-sky-400"></i><span>Cloud Architecture</span></div>
+          <span class="text-slate-500 font-mono text-[10px]">Jump ↵</span>
+        </a>
+        <a href="#pipeline-motion" onclick="toggleCommandPalette()" class="flex items-center justify-between p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800">
+          <div class="flex items-center gap-2.5"><i class="fa-solid fa-rocket text-sky-400"></i><span>Live Engine Simulator</span></div>
+          <span class="text-slate-500 font-mono text-[10px]">Jump ↵</span>
+        </a>
+        <a href="#devops-workbench" onclick="toggleCommandPalette()" class="flex items-center justify-between p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800">
+          <div class="flex items-center gap-2.5"><i class="fa-solid fa-terminal text-emerald-400"></i><span>DevOps Workbench</span></div>
+          <span class="text-slate-500 font-mono text-[10px]">Jump ↵</span>
+        </a>
+        <a href="#project" onclick="toggleCommandPalette()" class="flex items-center justify-between p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800">
+          <div class="flex items-center gap-2.5"><i class="fa-solid fa-diagram-project text-purple-400"></i><span>Projects & Demos</span></div>
+          <span class="text-slate-500 font-mono text-[10px]">Jump ↵</span>
+        </a>
+        <a href="#github-activity" onclick="toggleCommandPalette()" class="flex items-center justify-between p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800">
+          <div class="flex items-center gap-2.5"><i class="fa-solid fa-calendar-days text-amber-400"></i><span>GitHub Activity Heatmap</span></div>
+          <span class="text-slate-500 font-mono text-[10px]">Jump ↵</span>
+        </a>
+        <a href="#experience" onclick="toggleCommandPalette()" class="flex items-center justify-between p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800">
+          <div class="flex items-center gap-2.5"><i class="fa-solid fa-timeline text-sky-400"></i><span>Career Timeline</span></div>
+          <span class="text-slate-500 font-mono text-[10px]">Jump ↵</span>
+        </a>
+        <div onclick="openResumeModal(); toggleCommandPalette();" class="flex items-center justify-between p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer">
+          <div class="flex items-center gap-2.5"><i class="fa-solid fa-file-arrow-down text-emerald-400"></i><span>View ATS Resume</span></div>
+          <span class="text-slate-500 font-mono text-[10px]">Action ↵</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INTERACTIVE JAVASCRIPT CONTROLLERS -->
+  <script>
+    // 1. Reading Progress Bar
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('scrollProgressBar').style.width = scrolled + '%';
+    });
+
+    // 2. Interactive Multi-State Avatar Modes (SD · Cloud · Terminal · Velocity)
+    const avatarModes = ['SD', '☁️', '>_', '⚡'];
+    let avatarIndex = 0;
+    document.getElementById('avatarBtn').addEventListener('click', (e) => {
+      e.stopPropagation();
+      avatarIndex = (avatarIndex + 1) % avatarModes.length;
+      const textElem = document.getElementById('avatarText');
+      textElem.style.transform = 'scale(0.5) rotate(20deg)';
+      setTimeout(() => {
+        textElem.innerText = avatarModes[avatarIndex];
+        textElem.style.transform = 'scale(1) rotate(0deg)';
+      }, 120);
+    });
+
+    // 3. Interactive Role Cycling Ticker
+    const roles = [
+      'Cloud & DevOps Engineer',
+      'AWS Infrastructure Architect',
+      'Terraform & IaC Specialist',
+      'Linux Systems & SRE',
+      'Docker & CI/CD Builder'
+    ];
+    let roleIndex = 0;
+    function cycleRole() {
+      roleIndex = (roleIndex + 1) % roles.length;
+      const elem = document.getElementById('roleTickerText');
+      elem.style.opacity = '0';
+      elem.style.transform = 'translateY(-5px)';
+      setTimeout(() => {
+        elem.innerText = roles[roleIndex];
+        elem.style.opacity = '1';
+        elem.style.transform = 'translateY(0)';
+      }, 150);
+    }
+    document.getElementById('roleTickerBtn').addEventListener('click', (e) => {
+      e.stopPropagation();
+      cycleRole();
+    });
+    setInterval(cycleRole, 3800);
+
+    // 4. Availability Status Menu Toggle
+    const statusBtn = document.getElementById('statusBtn');
+    const statusMenu = document.getElementById('statusMenu');
+    statusBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      statusMenu.classList.toggle('hidden');
+    });
+    document.addEventListener('click', (e) => {
+      if (!statusMenu.contains(e.target)) {
+        statusMenu.classList.add('hidden');
+      }
+    });
+
+    // 5. Dark Mode Toggle
+    function toggleTheme() {
+      const isDark = document.documentElement.classList.toggle('dark');
+      const icon = document.getElementById('themeIcon');
+      if (isDark) {
+        icon.className = 'fa-solid fa-sun text-sm text-amber-400';
+      } else {
+        icon.className = 'fa-solid fa-moon text-sm text-slate-700';
+      }
+    }
+
+    // 6. Copy Email with feedback
+    function copyEmail() {
+      navigator.clipboard.writeText('dubeysoumya8@gmail.com');
+      const text = document.getElementById('copyEmailText');
+      const contactText = document.getElementById('copyContactBtn');
+      if (text) text.innerText = 'Copied!';
+      if (contactText) contactText.innerText = 'Copied!';
+      setTimeout(() => {
+        if (text) text.innerText = 'Copy Email';
+        if (contactText) contactText.innerText = 'Copy Email';
+      }, 2000);
+    }
+
+    // 7. Mobile Menu Toggle
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const icon = document.getElementById('mobileMenuIcon');
+      menu.classList.toggle('hidden');
+      if (menu.classList.contains('hidden')) {
+        icon.className = 'fa-solid fa-bars text-sm';
+      } else {
+        icon.className = 'fa-solid fa-xmark text-sm';
+      }
+    }
+
+    // 8. Command Palette (Cmd+K)
+    function toggleCommandPalette() {
+      const palette = document.getElementById('cmdPalette');
+      palette.classList.toggle('hidden');
+      if (!palette.classList.contains('hidden')) {
+        setTimeout(() => document.getElementById('cmdSearchInput').focus(), 50);
+      }
+    }
+    window.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        toggleCommandPalette();
+      } else if (e.key === 'Escape') {
+        document.getElementById('cmdPalette').classList.add('hidden');
+        document.getElementById('resumeModal').classList.add('hidden');
+      }
+    });
+
+    function searchCmdPalette() {
+      const q = document.getElementById('cmdSearchInput').value.toLowerCase();
+      const items = document.querySelectorAll('#cmdList > *');
+      items.forEach(item => {
+        const text = item.innerText.toLowerCase();
+        item.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+
+    // 9. Resume Modal
+    function openResumeModal() {
+      document.getElementById('resumeModal').classList.remove('hidden');
+    }
+    function closeResumeModal() {
+      document.getElementById('resumeModal').classList.add('hidden');
+    }
+
+    // 10. Technology Stack Project Search
+    function filterProjects() {
+      const q = document.getElementById('projectSearchInput').value.trim().toLowerCase();
+      const cards = document.querySelectorAll('.project-card');
+      let visible = 0;
+      cards.forEach(card => {
+        const tech = (card.getAttribute('data-tech') + ' ' + card.innerText).toLowerCase();
+        if (!q || tech.includes(q)) {
+          card.style.display = 'flex';
+          visible++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+      document.getElementById('projectCountBadge').innerText = `${visible} / ${cards.length}`;
+    }
+    function setProjectSearch(tag) {
+      document.getElementById('projectSearchInput').value = tag === 'All' ? '' : tag;
+      filterProjects();
+    }
+
+    // 11. Interactive Heatmap 52-week generator
+    const heatmapGrid = document.getElementById('heatmapGrid');
+    if (heatmapGrid) {
+      for (let w = 0; w < 52; w++) {
+        const col = document.createElement('div');
+        col.className = 'flex flex-col gap-[3.5px]';
+        for (let d = 0; d < 7; d++) {
+          const square = document.createElement('div');
+          const seed = (w * 7 + d);
+          const active = (seed % 3 !== 0);
+          const count = active ? ((seed % 5) + 1) : 0;
+          let color = 'bg-slate-200 dark:bg-slate-800';
+          if (count > 4) color = 'bg-[#39d353]';
+          else if (count > 2) color = 'bg-[#26a641]';
+          else if (count > 1) color = 'bg-[#006d32]';
+          else if (count > 0) color = 'bg-[#0e4429]';
+
+          square.className = `w-[11px] h-[11px] rounded-[2px] cursor-pointer hover:scale-125 transition-transform ${color}`;
+          square.title = `${count} commits on Day ${d + 1}, Week ${w + 1}`;
+          square.addEventListener('mouseenter', () => {
+            document.getElementById('heatmapTooltip').innerText = `${count} commits recorded on Week ${w + 1}, Day ${d + 1}`;
+          });
+          col.appendChild(square);
+        }
+        heatmapGrid.appendChild(col);
+      }
+    }
+
+    // 12. Terminal Simulator
+    function runTermCommand(cmd) {
+      const out = document.getElementById('terminalOutput');
+      let res = '';
+      if (cmd === 'docker ps') {
+        res = '<p class="text-sky-300">CONTAINER ID   IMAGE                 STATUS         PORTS</p><p class="text-slate-400">9c1b3f8a4e21   placement-backend:1.0 Up 4 days      0.0.0.0:5000->5000/tcp</p><p class="text-slate-400">e57d19a2c840   infraforensics:latest Up 12 hours    0.0.0.0:8080->8080/tcp</p>';
+      } else if (cmd === 'aws s3 ls') {
+        res = '<p class="text-amber-400">2026-08-14 10:22:15 s3://soumya-terraform-remote-state</p><p class="text-amber-400">2026-08-18 16:45:01 s3://careerbridge-assets-prod</p><p class="text-amber-400">2026-09-02 09:12:30 s3://infraforensics-reports-archive</p>';
+      } else if (cmd === 'terraform plan') {
+        res = '<p class="text-purple-400">Plan: 4 to add, 0 to change, 0 to destroy.</p><p class="text-slate-400">+ aws_vpc.main<br />+ aws_subnet.public_az1<br />+ aws_ecs_service.api<br />+ aws_route53_record.app</p>';
+      } else if (cmd === 'cat /etc/os-release') {
+        res = '<p class="text-emerald-400">NAME="Ubuntu"<br />VERSION="24.04 LTS (Noble Numbat)"<br />ID=ubuntu<br />PRETTY_NAME="Ubuntu 24.04 LTS"</p>';
+      }
+      out.innerHTML += `<p class="mt-2"><span class="text-emerald-400">soumya@devops:~$</span> ${cmd}</p>${res}`;
+      out.scrollTop = out.scrollHeight;
+    }
+    function clearTerm() {
+      document.getElementById('terminalOutput').innerHTML = '<p class="text-slate-500">// Terminal cleared. Select any command above.</p>';
+    }
+
+    // 13. Timeline Detail Toggle
+    function toggleTimelineDetail(id) {
+      const el = document.getElementById(id);
+      if (el) el.classList.toggle('hidden');
+    }
+  </script>
+</body>
+</html>

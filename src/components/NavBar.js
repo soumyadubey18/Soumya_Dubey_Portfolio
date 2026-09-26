@@ -47,9 +47,47 @@ const NavBar = ({ onOpenResume }) => {
   const [statusMenuOpen, setStatusMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
 
+  // Highly interactive Brand states
+  const brandRoles = [
+    "Cloud & DevOps Engineer",
+    "AWS Infrastructure Architect",
+    "Terraform & IaC Specialist",
+    "Linux Systems & SRE",
+    "Docker & CI/CD Builder",
+  ];
+  const avatarModes = [
+    { label: "SD", badge: "Monogram" },
+    { label: "☁️", badge: "AWS Cloud" },
+    { label: ">_", badge: "DevOps CLI" },
+    { label: "⚡", badge: "High Velocity" },
+  ];
+  const [roleIndex, setRoleIndex] = useState(0);
+  const [avatarIndex, setAvatarIndex] = useState(0);
+  const [isSparkling, setIsSparkling] = useState(false);
+
   const { isDarkMode, toggleDarkMode } = useDarkMode();
   const searchInputRef = useRef(null);
   const statusMenuRef = useRef(null);
+
+  // Automatically cycle roles every 3.6s
+  useEffect(() => {
+    const roleTimer = setInterval(() => {
+      setRoleIndex((prev) => (prev + 1) % brandRoles.length);
+    }, 3600);
+    return () => clearInterval(roleTimer);
+  }, [brandRoles.length]);
+
+  const cycleAvatar = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setAvatarIndex((prev) => (prev + 1) % avatarModes.length);
+  };
+
+  const cycleRole = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setRoleIndex((prev) => (prev + 1) % brandRoles.length);
+  };
 
   // Track window scroll and calculate progress
   useEffect(() => {
@@ -152,32 +190,86 @@ const NavBar = ({ onOpenResume }) => {
             />
           </div>
 
-          {/* Left: Brand Wordmark with Interactive Availability Popover */}
+          {/* Left: Highly Interactive Brand Wordmark with Interactive Availability Popover */}
           <div className="flex items-center gap-3">
-            <Link
-              to="home"
-              smooth={true}
-              duration={500}
-              className="cursor-pointer group flex items-center gap-2.5"
-            >
-              <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-sky-500 to-amber-500 flex items-center justify-center text-white font-black text-xs shadow-md shadow-sky-500/20 group-hover:scale-105 transition-transform duration-200">
-                SD
-              </div>
+            <div className="flex items-center gap-2.5">
+              {/* Interactive Multi-State 3D Avatar */}
+              <motion.button
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                whileTap={{ scale: 0.9, rotate: -15 }}
+                onClick={cycleAvatar}
+                className="relative w-9 h-9 rounded-xl bg-gradient-to-tr from-sky-500 via-indigo-500 to-amber-500 p-[1.5px] shadow-lg shadow-sky-500/25 group cursor-pointer focus:outline-none"
+                title={`Current: ${avatarModes[avatarIndex].badge} · Click to cycle mode!`}
+              >
+                {/* Glowing border halo */}
+                <div className="absolute -inset-0.5 rounded-xl bg-gradient-to-r from-sky-400 via-amber-400 to-sky-400 opacity-60 blur-[2px] group-hover:opacity-100 transition-opacity animate-pulse" />
+                <div className="relative w-full h-full rounded-[10px] bg-[#090D16] flex items-center justify-center text-white font-black text-xs font-mono select-none">
+                  <AnimatePresence mode="wait">
+                    <motion.span
+                      key={avatarIndex}
+                      initial={{ scale: 0.3, rotate: -40, opacity: 0 }}
+                      animate={{ scale: 1, rotate: 0, opacity: 1 }}
+                      exit={{ scale: 0.3, rotate: 40, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="bg-gradient-to-r from-sky-400 to-amber-300 bg-clip-text text-transparent"
+                    >
+                      {avatarModes[avatarIndex].label}
+                    </motion.span>
+                  </AnimatePresence>
+                </div>
+              </motion.button>
+
+              {/* Name & Interactive Cycling Role */}
               <div className="flex flex-col">
-                <span
-                  className={`text-sm sm:text-base font-extrabold tracking-tight transition-colors ${
-                    isDarkMode
-                      ? "text-white group-hover:text-sky-400"
-                      : "text-slate-900 group-hover:text-sky-600"
-                  }`}
+                <Link
+                  to="home"
+                  smooth={true}
+                  duration={500}
+                  onMouseEnter={() => setIsSparkling(true)}
+                  onMouseLeave={() => setIsSparkling(false)}
+                  className="cursor-pointer group flex items-center gap-1.5"
                 >
-                  Soumya Dubey
-                </span>
-                <span className="text-[10px] text-slate-400 font-mono -mt-1 hidden sm:block">
-                  Cloud & DevOps Engineer
-                </span>
+                  <span
+                    className={`text-sm sm:text-base font-black tracking-tight transition-all duration-200 ${
+                      isSparkling
+                        ? "bg-gradient-to-r from-sky-400 via-emerald-400 to-amber-400 bg-clip-text text-transparent scale-[1.02]"
+                        : isDarkMode
+                        ? "text-white group-hover:text-sky-400"
+                        : "text-slate-900 group-hover:text-sky-600"
+                    }`}
+                  >
+                    Soumya Dubey
+                  </span>
+                  <span className="text-[11px] opacity-0 group-hover:opacity-100 transition-opacity">
+                    ✨
+                  </span>
+                </Link>
+
+                {/* Interactive Role Ticker with terminal cursor & click-to-cycle */}
+                <button
+                  onClick={cycleRole}
+                  className="flex items-center gap-1 text-[10px] text-slate-400 font-mono -mt-0.5 text-left group/role hover:text-sky-400 transition-colors focus:outline-none"
+                  title="Click to cycle engineering specialty"
+                >
+                  <span className="text-sky-500 font-bold">&gt;</span>
+                  <div className="h-4 overflow-hidden relative min-w-[130px] sm:min-w-[170px]">
+                    <AnimatePresence mode="wait">
+                      <motion.span
+                        key={roleIndex}
+                        initial={{ opacity: 0, y: 7 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -7 }}
+                        transition={{ duration: 0.22 }}
+                        className="block whitespace-nowrap font-medium text-slate-400 group-hover/role:text-sky-400"
+                      >
+                        {brandRoles[roleIndex]}
+                      </motion.span>
+                    </AnimatePresence>
+                  </div>
+                  <span className="w-1.5 h-3 bg-sky-400 inline-block animate-pulse -ml-0.5" />
+                </button>
               </div>
-            </Link>
+            </div>
 
             {/* Interactive Availability Pill with Status Popover */}
             <div className="relative" ref={statusMenuRef}>
