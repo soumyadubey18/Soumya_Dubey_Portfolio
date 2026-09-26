@@ -7,6 +7,7 @@ import {
   FaExternalLinkAlt,
   FaCodeBranch,
   FaSearch,
+  FaTimes,
   FaArrowRight,
   FaCheckCircle,
 } from "react-icons/fa";
@@ -254,17 +255,41 @@ export const CloudDevOpsProjectGrid = ({ onSelectProject }) => {
   const [searchQuery, setSearchQuery] = useState("");
 
   const filteredProjects = useMemo(() => {
+    const q = searchQuery.trim().toLowerCase();
     return CLOUD_DEVOPS_PROJECTS.filter((project) => {
       const matchesTag =
         selectedTag === "all" || project.techTags.includes(selectedTag);
-      const matchesSearch =
-        searchQuery === "" ||
-        project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        project.tagline.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        project.techTags.some((t) =>
-          t.toLowerCase().includes(searchQuery.toLowerCase())
-        );
-      return matchesTag && matchesSearch;
+
+      if (!matchesTag) return false;
+
+      if (!q) return true;
+
+      // Check tech stack tags
+      const hasMatchingTag = project.techTags.some((tag) =>
+        tag.toLowerCase().includes(q)
+      );
+      // Check display tech tools (e.g., "Python 3", "psutil", "AWS EC2")
+      const hasMatchingTechDisplay = project.techDisplay.some((t) =>
+        t.toLowerCase().includes(q)
+      );
+      // Check titles & descriptions
+      const hasMatchingTitle = project.title.toLowerCase().includes(q);
+      const hasMatchingSubtitle = project.subtitle.toLowerCase().includes(q);
+      const hasMatchingTagline = project.tagline.toLowerCase().includes(q);
+      const hasMatchingCategory = project.category.toLowerCase().includes(q);
+      const hasMatchingPoints = project.points.some((p) =>
+        p.toLowerCase().includes(q)
+      );
+
+      return (
+        hasMatchingTag ||
+        hasMatchingTechDisplay ||
+        hasMatchingTitle ||
+        hasMatchingSubtitle ||
+        hasMatchingTagline ||
+        hasMatchingCategory ||
+        hasMatchingPoints
+      );
     });
   }, [selectedTag, searchQuery]);
 
@@ -444,45 +469,80 @@ export const CloudDevOpsProjectGrid = ({ onSelectProject }) => {
 
   return (
     <div className="w-full">
-      {/* Sleek Segmented Tag Filter Toolbar */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-10 pb-5 border-b border-slate-200 dark:border-slate-800">
-        <div className="flex flex-wrap items-center gap-2">
-          {AVAILABLE_TAGS.map((tag) => {
-            const Icon = tag.icon;
-            const isSelected = selectedTag === tag.id;
-            return (
-              <button
-                key={tag.id}
-                onClick={() => setSelectedTag(tag.id)}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold border transition-all ${
-                  isSelected
-                    ? "bg-sky-500 text-white border-sky-400 shadow-md shadow-sky-500/25"
-                    : isDarkMode
-                    ? "bg-slate-900/60 border-slate-800 text-slate-400 hover:text-white hover:border-slate-700"
-                    : "bg-slate-100 border-slate-200 text-slate-600 hover:text-slate-900 hover:border-slate-300"
-                }`}
-              >
-                {Icon && <Icon className={isSelected ? "text-white" : tag.color} size={11} />}
-                <span>{tag.label}</span>
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Search */}
-        <div className="relative w-full sm:w-60">
-          <FaSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs" />
+      {/* Prominent Tech Stack Search Bar at top of section */}
+      <div className="mb-10 p-4 sm:p-5 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60 backdrop-blur-md shadow-lg">
+        {/* Main Search Input */}
+        <div className="relative flex items-center">
+          <FaSearch className="absolute left-4 text-slate-400 text-sm pointer-events-none" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search projects or tech..."
-            className={`w-full pl-8 pr-4 py-1.5 text-xs rounded-xl border focus:outline-none transition-colors ${
+            placeholder="Search projects by technology stack (e.g. 'Docker', 'AWS', 'Python', 'Terraform', 'CI/CD')..."
+            className={`w-full pl-11 pr-24 py-3 text-xs sm:text-sm rounded-2xl border font-medium focus:outline-none transition-all shadow-inner ${
               isDarkMode
-                ? "bg-slate-900 border-slate-800 text-white placeholder-slate-500 focus:border-sky-500"
-                : "bg-white border-slate-200 text-slate-900 placeholder-slate-400 focus:border-sky-500"
+                ? "bg-[#050811] border-slate-800 text-white placeholder-slate-500 focus:border-sky-500 focus:ring-2 focus:ring-sky-500/20"
+                : "bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-400 focus:border-sky-500 focus:ring-2 focus:ring-sky-500/20"
             }`}
           />
+          {searchQuery && (
+            <button
+              onClick={() => setSearchQuery("")}
+              className="absolute right-14 p-1.5 text-slate-400 hover:text-slate-200 rounded-lg transition-colors"
+              title="Clear search"
+            >
+              <FaTimes size={13} />
+            </button>
+          )}
+          <div className="absolute right-3 hidden sm:flex items-center">
+            <span className="text-[11px] font-mono font-semibold px-2.5 py-1 rounded-xl bg-sky-500/10 border border-sky-500/20 text-sky-400">
+              {filteredProjects.length} / {CLOUD_DEVOPS_PROJECTS.length}
+            </span>
+          </div>
+        </div>
+
+        {/* Quick Tech Stack Filter Chips */}
+        <div className="mt-3.5 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex flex-wrap items-center justify-between gap-3">
+          <div className="flex flex-wrap items-center gap-1.5">
+            <span className="text-[11px] font-mono uppercase tracking-wider font-semibold text-slate-400 mr-1 hidden sm:inline">
+              Quick Filter:
+            </span>
+            {AVAILABLE_TAGS.map((tag) => {
+              const Icon = tag.icon;
+              const isSelected = selectedTag === tag.id;
+              return (
+                <button
+                  key={tag.id}
+                  onClick={() => {
+                    setSelectedTag(tag.id);
+                  }}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold border transition-all ${
+                    isSelected
+                      ? "bg-sky-500 text-white border-sky-400 shadow-sm shadow-sky-500/25 scale-105"
+                      : isDarkMode
+                      ? "bg-slate-900/60 border-slate-800 text-slate-400 hover:text-white hover:border-slate-700"
+                      : "bg-slate-100 border-slate-200 text-slate-600 hover:text-slate-900 hover:border-slate-300"
+                  }`}
+                >
+                  {Icon && <Icon className={isSelected ? "text-white" : tag.color} size={11} />}
+                  <span>{tag.label}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          {(searchQuery || selectedTag !== "all") && (
+            <button
+              onClick={() => {
+                setSearchQuery("");
+                setSelectedTag("all");
+              }}
+              className="text-xs font-semibold text-sky-400 hover:text-sky-300 flex items-center gap-1 transition-colors"
+            >
+              <span>Reset filter</span>
+              <FaTimes size={10} />
+            </button>
+          )}
         </div>
       </div>
 
@@ -754,19 +814,53 @@ export const CloudDevOpsProjectGrid = ({ onSelectProject }) => {
       </div>
 
       {filteredProjects.length === 0 && (
-        <div className="text-center py-16 text-slate-500">
-          No projects matched the technology tag "<strong>{selectedTag}</strong>".
-          <div className="mt-3">
-            <button
-              onClick={() => {
-                setSelectedTag("all");
-                setSearchQuery("");
-              }}
-              className="text-xs font-semibold text-sky-500 hover:underline"
-            >
-              Reset filters
-            </button>
+        <div className="text-center py-16 px-4 rounded-3xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40">
+          <div className="w-12 h-12 mx-auto mb-3 rounded-2xl bg-sky-500/10 text-sky-400 border border-sky-500/20 flex items-center justify-center">
+            <FaSearch size={18} />
           </div>
+          <h3 className="text-base font-bold text-slate-900 dark:text-white mb-1">
+            No projects found matching {searchQuery ? `"${searchQuery}"` : `tag "${selectedTag}"`}
+          </h3>
+          <p className="text-xs text-slate-500 dark:text-slate-400 max-w-md mx-auto mb-4">
+            Try searching for core engineering stacks like{" "}
+            <button
+              onClick={() => { setSearchQuery("Docker"); setSelectedTag("all"); }}
+              className="text-sky-400 hover:underline font-semibold"
+            >
+              Docker
+            </button>
+            ,{" "}
+            <button
+              onClick={() => { setSearchQuery("AWS"); setSelectedTag("all"); }}
+              className="text-amber-400 hover:underline font-semibold"
+            >
+              AWS
+            </button>
+            ,{" "}
+            <button
+              onClick={() => { setSearchQuery("Python"); setSelectedTag("all"); }}
+              className="text-blue-400 hover:underline font-semibold"
+            >
+              Python
+            </button>
+            , or{" "}
+            <button
+              onClick={() => { setSearchQuery("Terraform"); setSelectedTag("all"); }}
+              className="text-purple-400 hover:underline font-semibold"
+            >
+              Terraform
+            </button>
+            .
+          </p>
+          <button
+            onClick={() => {
+              setSelectedTag("all");
+              setSearchQuery("");
+            }}
+            className="px-4 py-2 rounded-xl text-xs font-semibold bg-sky-500 text-white hover:bg-sky-400 transition-colors shadow-sm"
+          >
+            Clear Search & Reset Filters
+          </button>
         </div>
       )}
     </div>
