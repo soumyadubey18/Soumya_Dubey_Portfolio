@@ -30,6 +30,7 @@ const NavBar = ({ onOpenResume }) => {
     { name: "Workbench", to: "devops-workbench" },
     { name: "Skills", to: "skills" },
     { name: "Projects", to: "project" },
+    { name: "Activity", to: "github-activity" },
     { name: "Timeline", to: "experience" },
     { name: "Contact", to: "contact" },
   ];

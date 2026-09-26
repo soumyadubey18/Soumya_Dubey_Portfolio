@@ -11,6 +11,7 @@ const Footer = ({ onOpenResume }) => {
     { name: "About", to: "about" },
     { name: "Skills", to: "skills" },
     { name: "Projects", to: "project" },
+    { name: "Activity", to: "github-activity" },
     { name: "Experience", to: "experience" },
     { name: "Education", to: "education" },
     { name: "Contact", to: "contact" },

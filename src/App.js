@@ -9,6 +9,7 @@ import MotionPipelineGraphic from "./components/MotionPipelineGraphic";
 import DevOpsWorkbench from "./components/DevOpsWorkbench";
 import NavBar from "./components/NavBar";
 import Project from "./components/Project";
+import GitHubActivity from "./components/GitHubActivity";
 import TechnicalSkills from "./components/TechnicalSkills";
 import Footer from "./components/Footer";
 import BackToTop from "./components/BackToTop";
@@ -31,6 +32,7 @@ function App() {
           <DevOpsWorkbench />
           <TechnicalSkills />
           <Project />
+          <GitHubActivity />
           <Experience />
           <About />
           <Education />
