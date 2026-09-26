@@ -11,21 +11,13 @@ import {
   FaMapMarkerAlt,
   FaCheckCircle,
 } from "react-icons/fa";
-import { SiTerraform, SiLinux, SiPython } from "react-icons/si";
+import { SiTerraform, SiLinux } from "react-icons/si";
 import Myimage from "../assets/myimage.jpg";
 import { useDarkMode } from "../context/DarkModeContext";
 import MotionBackgroundCanvas from "./MotionBackgroundCanvas";
 
 const Home = ({ onOpenResume }) => {
   const { isDarkMode } = useDarkMode();
-
-  const coreSkills = [
-    { label: "AWS Cloud", icon: <FaAws className="text-amber-500" size={14} />, color: "border-amber-500/30 text-amber-500 bg-amber-500/10" },
-    { label: "Terraform IaC", icon: <SiTerraform className="text-purple-400" size={13} />, color: "border-purple-500/30 text-purple-400 bg-purple-500/10" },
-    { label: "Docker CI/CD", icon: <FaDocker className="text-sky-400" size={14} />, color: "border-sky-500/30 text-sky-400 bg-sky-500/10" },
-    { label: "Linux Administration", icon: <SiLinux className="text-yellow-400" size={13} />, color: "border-yellow-500/30 text-yellow-400 bg-yellow-500/10" },
-    { label: "Python Automation", icon: <SiPython className="text-blue-400" size={13} />, color: "border-blue-500/30 text-blue-400 bg-blue-500/10" },
-  ];
 
   return (
     <section
@@ -48,44 +40,89 @@ const Home = ({ onOpenResume }) => {
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           {/* Left Column: Headline, Bio & Primary Calls to Action */}
           <div className="lg:col-span-7 flex flex-col text-left">
-            {/* Status indicator badge */}
-            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-500 text-xs font-semibold max-w-fit mb-6">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-              </span>
-              <span>Open to Cloud & DevOps Roles · Bengaluru & Remote</span>
+            {/* Status & Region Badges */}
+            <div className="flex flex-wrap items-center gap-2.5 mb-5">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-xs font-mono font-semibold max-w-fit">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                <span>Available for Cloud & DevOps Roles</span>
+              </div>
+              <div className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-slate-700/60 bg-slate-900/40 text-slate-300 text-xs font-mono">
+                <span className="text-amber-400 font-bold">AWS:</span>
+                <span>ap-south-1 · Bengaluru</span>
+              </div>
             </div>
 
-            {/* Engineer Name & Title */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.12]">
-              Hi, I'm{" "}
-              <span className="text-slate-900 dark:text-white">Soumya Dubey</span>
-              <br />
-              <span className="bg-gradient-to-r from-sky-500 via-sky-400 to-amber-500 bg-clip-text text-transparent">
-                Associate Cloud & DevOps Engineer
-              </span>
-            </h1>
+            {/* High-Impact Hero Headline */}
+            <div className="space-y-3">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 dark:text-white leading-[1.08]">
+                Architecting Scalable Cloud,{" "}
+                <span className="bg-gradient-to-r from-sky-400 via-indigo-400 to-amber-400 bg-clip-text text-transparent">
+                  Automating Modern DevOps.
+                </span>
+              </h1>
+              <div className="flex flex-wrap items-center gap-2 sm:gap-3 pt-1">
+                <span className="text-base sm:text-lg font-extrabold text-slate-900 dark:text-white">
+                  Soumya Dubey
+                </span>
+                <span className="text-slate-500 font-mono text-sm hidden sm:inline">•</span>
+                <span className="text-sm sm:text-base font-mono text-sky-500 font-semibold">
+                  Associate Cloud & DevOps Engineer
+                </span>
+              </div>
+            </div>
 
-            {/* Narrative Value Proposition */}
-            <p className="mt-6 text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-normal max-w-2xl">
-              Software Developer with 1+ years of professional full-stack experience in React.js, Node.js, Express.js and REST APIs, specializing in AWS Cloud infrastructure and DevOps automation. Hands-on with{" "}
-              <strong className="text-slate-900 dark:text-white font-semibold">
-                AWS (EC2, S3, EBS, IAM, VPC), Linux Server Administration, Docker containerization, and Terraform Infrastructure as Code (IaC)
-              </strong>.
+            {/* Crisp Engineering Value Proposition */}
+            <p className="mt-5 text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-normal max-w-2xl">
+              Full-stack developer turned cloud infrastructure engineer with 1+ years of enterprise software experience. I build immutable{" "}
+              <strong className="text-slate-900 dark:text-white font-semibold">AWS cloud environments</strong>, author declarative{" "}
+              <strong className="text-slate-900 dark:text-white font-semibold">Terraform IaC blueprints</strong>, and orchestrate zero-downtime{" "}
+              <strong className="text-slate-900 dark:text-white font-semibold">Docker & CI/CD release pipelines</strong>.
             </p>
 
-            {/* Core Tech Stack Badges */}
-            <div className="mt-6 flex flex-wrap items-center gap-2">
-              {coreSkills.map((skill, index) => (
-                <div
-                  key={index}
-                  className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-mono font-medium border ${skill.color}`}
-                >
-                  {skill.icon}
-                  <span>{skill.label}</span>
+            {/* Interactive Engineering Capability Cards */}
+            <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-2.5 max-w-2xl">
+              <div className="p-3 rounded-2xl border border-amber-500/25 bg-amber-500/5 hover:bg-amber-500/10 transition-colors">
+                <div className="flex items-center gap-1.5 text-amber-500 text-xs font-bold font-mono mb-1">
+                  <FaAws size={15} />
+                  <span>AWS Cloud</span>
                 </div>
-              ))}
+                <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-tight">
+                  VPC, EC2, S3, IAM, Multi-AZ
+                </p>
+              </div>
+
+              <div className="p-3 rounded-2xl border border-purple-500/25 bg-purple-500/5 hover:bg-purple-500/10 transition-colors">
+                <div className="flex items-center gap-1.5 text-purple-400 text-xs font-bold font-mono mb-1">
+                  <SiTerraform size={13} />
+                  <span>Terraform IaC</span>
+                </div>
+                <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-tight">
+                  Declarative State & Modules
+                </p>
+              </div>
+
+              <div className="p-3 rounded-2xl border border-sky-500/25 bg-sky-500/5 hover:bg-sky-500/10 transition-colors">
+                <div className="flex items-center gap-1.5 text-sky-400 text-xs font-bold font-mono mb-1">
+                  <FaDocker size={15} />
+                  <span>Docker CI/CD</span>
+                </div>
+                <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-tight">
+                  Multi-stage Containers & ECR
+                </p>
+              </div>
+
+              <div className="p-3 rounded-2xl border border-emerald-500/25 bg-emerald-500/5 hover:bg-emerald-500/10 transition-colors">
+                <div className="flex items-center gap-1.5 text-emerald-400 text-xs font-bold font-mono mb-1">
+                  <SiLinux size={13} />
+                  <span>Linux Systems</span>
+                </div>
+                <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-tight">
+                  Bash, systemd, Diagnostics
+                </p>
+              </div>
             </div>
 
             {/* Primary Action Buttons */}
@@ -147,11 +184,11 @@ const Home = ({ onOpenResume }) => {
               </a>
               <span className="text-slate-700">·</span>
               <a
-                href="mailto:dubeysoumya18@gmail.com"
+                href="mailto:dubeysoumya8@gmail.com"
                 className="flex items-center gap-1.5 hover:text-amber-400 transition-colors"
               >
                 <FaEnvelope size={15} />
-                <span>dubeysoumya18@gmail.com</span>
+                <span>dubeysoumya8@gmail.com</span>
               </a>
             </div>
           </div>
