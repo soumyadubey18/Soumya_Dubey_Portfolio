@@ -97,6 +97,15 @@
    npm run build
    ```
 
+## 📈 Real-Time Visitor Analytics
+
+This portfolio sends real page views to [Umami Cloud](https://cloud.umami.is/) using its configured website ID:
+
+1. Deploy the portfolio; its configured Umami website ID is already included.
+2. View visitor activity in the website's **Realtime** dashboard in Umami Cloud.
+
+The website ID is a public tracking identifier, not a secret. To use another Umami website, override it with `REACT_APP_UMAMI_WEBSITE_ID` in `.env.local` or your production build environment. Local development visits are counted too and may appear in the dashboard.
+
 ---
 
 ## 📬 Contact & Connect

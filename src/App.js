@@ -15,6 +15,7 @@ import Footer from "./components/Footer";
 import BackToTop from "./components/BackToTop";
 import ScrollProgressBar from "./components/ScrollProgressBar";
 import ResumeModal from "./components/ResumeModal";
+import UmamiAnalytics from "./components/UmamiAnalytics";
 import { DarkModeProvider } from "./context/DarkModeContext";
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
 
   return (
     <DarkModeProvider>
+      <UmamiAnalytics />
       <div className="min-h-screen font-sans antialiased selection:bg-sky-500 selection:text-white bg-dot-pattern">
         <ScrollProgressBar />
         <NavBar onOpenResume={() => setResumeOpen(true)} />
