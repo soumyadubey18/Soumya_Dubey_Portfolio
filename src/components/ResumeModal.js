@@ -18,7 +18,7 @@ const ResumeModal = ({ isOpen, onClose }) => {
 
   const plainResumeText = `SOUMYA DUBEY
 Associate Cloud Engineer | Junior DevOps Engineer | Cloud Support
-Bengaluru, Karnataka | +91 9304596852 | dubeysoumya18@gmail.com | LinkedIn: linkedin.com/in/soumya-dubey-752aa8185 | GitHub: github.com/soumyadubey18 | Portfolio: soumya-portfolio-18.s3-website.ap-south-1.amazonaws.com
+Bengaluru, Karnataka | +91 9304596852 | dubeysoumya8@gmail.com | LinkedIn: linkedin.com/in/soumya-dubey-752aa8185 | GitHub: github.com/soumyadubey18 | Portfolio: soumya-portfolio-18.s3-website.ap-south-1.amazonaws.com
 
 PROFESSIONAL SUMMARY
 Software Developer with professional experience in React.js, Node.js, Express.js and REST APIs, transitioning into AWS Cloud and DevOps through hands-on training and infrastructure projects. Hands-on with AWS EC2, S3, EBS, IAM fundamentals, VPC and Security Groups, Linux administration, Python, Git/GitHub, Docker, Terraform and CI/CD fundamentals. Experienced in application troubleshooting, API testing, defect investigation and technical problem solving.
@@ -26,7 +26,7 @@ Software Developer with professional experience in React.js, Node.js, Express.js
 TECHNICAL SKILLS
 Cloud: AWS EC2, S3, EBS, IAM, VPC, Subnets, Route Tables, Internet Gateway, Security Groups
 Linux: Linux administration, SSH, file management, permissions, processes, storage, mounting, networking, Bash/shell scripting
-DevOps: Git, GitHub, Docker, Terraform, GitHub Actions, CI/CD fundamentals
+DevOps: Git, GitHub, Docker, Terraform, GitHub Actions, Jenkins, Ansible, Maven, CI/CD pipelines
 Programming: Python, JavaScript, TypeScript, Node.js, Express.js
 Web & APIs: React.js, HTML5, CSS3, REST APIs, Postman, Swagger
 Databases & Tools: SQLite, PostgreSQL, JIRA, VS Code, Git Bash, WSL Ubuntu
@@ -45,7 +45,7 @@ Freelance Web Developer — Paathshala Ascension | Mar 2023 – May 2023
 
 AWS & DEVOPS TRAINING
 Besant Technologies — AWS & DevOps Trainee | Jul 2026 – Present | Bengaluru
-• AWS completed; Linux and Python ongoing; DevOps training includes Git, Docker, Terraform, CI/CD and shell scripting.
+• AWS completed; Linux and Python ongoing; DevOps training includes Git, Docker, Terraform, Maven, Jenkins, Ansible, CI/CD pipelines and shell scripting.
 • Practiced AWS EC2, S3, EBS, IAM fundamentals, VPC, Security Groups, SSH and Linux server administration.
 • Built hands-on infrastructure labs using Terraform and practiced Git/GitHub workflows and CI/CD automation.
 
@@ -202,8 +202,8 @@ Diploma — Electronics & Communication Engineering | BITT Polytechnic, Ranchi`;
                 +91 9304596852
               </a>
               <span aria-hidden="true">|</span>
-              <a href="mailto:dubeysoumya18@gmail.com" className="hover:text-sky-500 text-inherit">
-                dubeysoumya18@gmail.com
+              <a href="mailto:dubeysoumya8@gmail.com" className="hover:text-sky-500 text-inherit">
+                dubeysoumya8@gmail.com
               </a>
               <span aria-hidden="true">|</span>
               <a
@@ -264,7 +264,7 @@ Diploma — Electronics & Communication Engineering | BITT Polytechnic, Ranchi`;
               </p>
               <p>
                 <strong className="text-slate-900 dark:text-white">DevOps:</strong>{" "}
-                Git, GitHub, Docker, Terraform, GitHub Actions, CI/CD fundamentals
+                Git, GitHub, Docker, Terraform, GitHub Actions, Jenkins, Ansible, Maven, CI/CD pipelines
               </p>
               <p>
                 <strong className="text-slate-900 dark:text-white">Programming:</strong>{" "}
@@ -339,7 +339,7 @@ Diploma — Electronics & Communication Engineering | BITT Polytechnic, Ranchi`;
                 </span>
               </div>
               <ul className="mt-1.5 space-y-1 text-xs sm:text-[13px] text-slate-700 dark:text-slate-300 list-disc list-outside pl-4">
-                <li>AWS completed; Linux and Python ongoing; DevOps training includes Git, Docker, Terraform, CI/CD and shell scripting.</li>
+                <li>AWS completed; Linux and Python ongoing; DevOps training includes Git, Docker, Terraform, Maven, Jenkins, Ansible, CI/CD pipelines and shell scripting.</li>
                 <li>Practiced AWS EC2, S3, EBS, IAM fundamentals, VPC, Security Groups, SSH and Linux server administration.</li>
                 <li>Built hands-on infrastructure labs using Terraform and practiced Git/GitHub workflows and CI/CD automation.</li>
               </ul>

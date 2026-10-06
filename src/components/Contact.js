@@ -25,7 +25,7 @@ const Contact = () => {
   const [errors, setErrors] = useState({});
 
   const handleCopyEmail = () => {
-    navigator.clipboard.writeText("dubeysoumya18@gmail.com");
+    navigator.clipboard.writeText("dubeysoumya8@gmail.com");
     setCopiedEmail(true);
     setTimeout(() => setCopiedEmail(false), 2000);
   };
@@ -127,10 +127,10 @@ const Contact = () => {
                     <div>
                       <span className="text-xs text-slate-400 block font-medium">Email</span>
                       <a
-                        href="mailto:dubeysoumya18@gmail.com"
+                        href="mailto:dubeysoumya8@gmail.com"
                         className="text-slate-900 dark:text-slate-100 font-semibold hover:text-sky-500 transition-colors"
                       >
-                        dubeysoumya18@gmail.com
+                        dubeysoumya8@gmail.com
                       </a>
                     </div>
                   </div>

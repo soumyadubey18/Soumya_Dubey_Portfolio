@@ -35,12 +35,12 @@ const TIMELINE_EXPERIENCES = [
     keyHighlights: [
       "AWS Cloud Architecture: Deep hands-on provisioning of EC2, S3 bucket storage, EBS volume lifecycle, IAM least-privilege policies, and custom VPC networking.",
       "Infrastructure as Code (IaC): Authored modular Terraform blueprints automating resource deployment with deterministic state management.",
-      "Containerization & CI/CD: Built multi-stage Docker images, orchestrated automated testing with GitHub Actions, and established deployment pipelines to AWS ECR and EC2.",
+      "Containerization & CI/CD: Built multi-stage Docker images, orchestrated automated testing with GitHub Actions, and established deployment pipelines to AWS ECR and EC2; training also covers Jenkins, Ansible, and Maven.",
       "Linux Systems Administration: Shell scripting (Bash), systemd daemon management, permissions, and network troubleshooting.",
     ],
     categories: {
       cloud: ["AWS EC2", "AWS S3", "AWS EBS", "AWS VPC", "AWS IAM", "Security Groups"],
-      devops: ["Terraform", "Docker", "GitHub Actions CI/CD", "AWS ECR", "Bash Scripting"],
+      devops: ["Terraform", "Docker", "GitHub Actions CI/CD", "Jenkins", "Ansible", "Maven", "CI/CD Pipelines", "AWS ECR", "Bash Scripting"],
       os: ["Linux CLI", "systemd", "SSH Key Management", "Disk Partitioning (ext4)"],
     },
     metrics: [

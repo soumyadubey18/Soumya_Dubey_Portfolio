@@ -80,7 +80,7 @@ const Footer = ({ onOpenResume }) => {
               <FaGithub size={15} />
             </a>
             <a
-              href="mailto:dubeysoumya18@gmail.com"
+              href="mailto:dubeysoumya8@gmail.com"
               aria-label="Email"
               className="p-2 rounded-lg border border-slate-800 hover:border-slate-700 hover:text-white transition-colors text-slate-300"
             >
