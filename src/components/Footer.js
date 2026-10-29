@@ -35,7 +35,7 @@ const Footer = ({ onOpenResume }) => {
               <span className="w-1.5 h-1.5 rounded-full bg-sky-500"></span>
             </div>
             <p className="text-xs text-slate-400 mt-1">
-              Associate Cloud Engineer & Junior DevOps Engineer · Bengaluru, India
+              Cloud Support · AWS · Junior DevOps Engineer · Bengaluru, India
             </p>
           </div>
 
@@ -97,7 +97,7 @@ const Footer = ({ onOpenResume }) => {
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <p>© {new Date().getFullYear()} Soumya Dubey. All rights reserved.</p>
           <p className="flex items-center gap-2">
-            <span>AWS Cloud · Linux · Docker · Terraform · React · Node.js</span>
+            <span>AWS · Linux · Jenkins · Docker · Terraform · React · Node.js</span>
           </p>
         </div>
       </div>

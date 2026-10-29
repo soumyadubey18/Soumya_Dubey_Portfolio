@@ -47,7 +47,7 @@ const Home = ({ onOpenResume }) => {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                 </span>
-                <span>Available for Cloud & DevOps Roles</span>
+                <span>Available for Cloud Support & DevOps Roles</span>
               </div>
               <div className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-slate-700/60 bg-slate-900/40 text-slate-300 text-xs font-mono">
                 <span className="text-amber-400 font-bold">AWS:</span>
@@ -58,9 +58,9 @@ const Home = ({ onOpenResume }) => {
             {/* High-Impact Hero Headline */}
             <div className="space-y-3">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 dark:text-white leading-[1.08]">
-                Architecting Scalable Cloud,{" "}
+                Supporting Cloud Operations,{" "}
                 <span className="bg-gradient-to-r from-sky-400 via-indigo-400 to-amber-400 bg-clip-text text-transparent">
-                  Automating Modern DevOps.
+                  Automating DevOps Delivery.
                 </span>
               </h1>
               <div className="flex flex-wrap items-center gap-2 sm:gap-3 pt-1">
@@ -69,17 +69,16 @@ const Home = ({ onOpenResume }) => {
                 </span>
                 <span className="text-slate-500 font-mono text-sm hidden sm:inline">•</span>
                 <span className="text-sm sm:text-base font-mono text-sky-500 font-semibold">
-                  Associate Cloud & DevOps Engineer
+                  Cloud Support | AWS | Junior DevOps Engineer
                 </span>
               </div>
             </div>
 
             {/* Crisp Engineering Value Proposition */}
             <p className="mt-5 text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-normal max-w-2xl">
-              Full-stack developer turned cloud infrastructure engineer with 1+ years of enterprise software experience. I build immutable{" "}
-              <strong className="text-slate-900 dark:text-white font-semibold">AWS cloud environments</strong>, author declarative{" "}
-              <strong className="text-slate-900 dark:text-white font-semibold">Terraform IaC blueprints</strong>, and orchestrate zero-downtime{" "}
-              <strong className="text-slate-900 dark:text-white font-semibold">Docker & CI/CD release pipelines</strong>.
+              Cloud and DevOps engineer with a software development background in React.js, Node.js, and REST APIs. I have hands-on AWS practice across{" "}
+              <strong className="text-slate-900 dark:text-white font-semibold">EC2, S3, EBS, VPC, and IAM</strong>, with project experience in{" "}
+              <strong className="text-slate-900 dark:text-white font-semibold">Jenkins CI/CD, Docker, and Terraform</strong>.
             </p>
 
             {/* Interactive Engineering Capability Cards */}
@@ -90,7 +89,7 @@ const Home = ({ onOpenResume }) => {
                   <span>AWS Cloud</span>
                 </div>
                 <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-tight">
-                  VPC, EC2, S3, IAM, Multi-AZ
+                  EC2, S3, EBS, VPC, IAM
                 </p>
               </div>
 
@@ -100,7 +99,7 @@ const Home = ({ onOpenResume }) => {
                   <span>Terraform IaC</span>
                 </div>
                 <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-tight">
-                  Declarative State & Modules
+                  AWS Infrastructure Labs
                 </p>
               </div>
 
@@ -110,7 +109,7 @@ const Home = ({ onOpenResume }) => {
                   <span>Docker CI/CD</span>
                 </div>
                 <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-tight">
-                  Multi-stage Containers & ECR
+                  CI/CD, ECR & EC2
                 </p>
               </div>
 
@@ -120,7 +119,7 @@ const Home = ({ onOpenResume }) => {
                   <span>Linux Systems</span>
                 </div>
                 <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-tight">
-                  Bash, systemd, Diagnostics
+                  SSH, Linux & Shell Scripting
                 </p>
               </div>
             </div>
@@ -221,7 +220,7 @@ const Home = ({ onOpenResume }) => {
                   Soumya Dubey
                 </h3>
                 <p className="text-sm font-semibold text-sky-500 mt-0.5">
-                  Associate Cloud & DevOps Engineer
+                  Cloud Support | AWS | Junior DevOps Engineer
                 </p>
                 <p className="text-xs text-slate-500 dark:text-slate-400 flex items-center justify-center gap-1 mt-1">
                   <FaMapMarkerAlt size={11} className="text-amber-500" />
@@ -243,7 +242,7 @@ const Home = ({ onOpenResume }) => {
                 </div>
                 <div className="flex items-start gap-2">
                   <FaCheckCircle className="text-emerald-500 mt-0.5 shrink-0" size={13} />
-                  <span>AWS Completed (EC2, S3, EBS, IAM, VPC, Route Tables)</span>
+                  <span>AWS training completed · Linux and Python training ongoing</span>
                 </div>
                 <div className="flex items-start gap-2">
                   <FaCheckCircle className="text-sky-500 mt-0.5 shrink-0" size={13} />

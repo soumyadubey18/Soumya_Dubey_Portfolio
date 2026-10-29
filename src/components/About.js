@@ -17,13 +17,13 @@ const About = () => {
       icon: <SiLinux className="text-amber-400" size={24} />,
       title: "Linux Server Administration",
       description:
-        "Linux CLI mastery: SSH secure connections, process management, file permissions, storage formatting & mount management, and Bash/shell automation scripting.",
+        "Linux and shell scripting practice covering SSH, file management, permissions, processes, storage, and networking.",
     },
     {
       icon: <SiTerraform className="text-purple-400" size={24} />,
       title: "IaC & CI/CD Pipelines",
       description:
-        "Codifying infrastructure via Terraform (init, plan, apply, state tracking) and building automated build-push-deploy workflows with Docker, GitHub Actions, and AWS ECR.",
+        "Terraform AWS infrastructure labs and CI/CD project work with Jenkins, GitHub Actions, Docker, and AWS ECR.",
     },
     {
       icon: <FaCode className="text-sky-400" size={24} />,
@@ -53,7 +53,7 @@ const About = () => {
             Bridging Software Development with Cloud & DevOps Operations
           </h2>
           <p className="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-            I am an Associate Cloud Engineer and Junior DevOps Engineer based in Bengaluru, Karnataka, with a proven background in full-stack web software development. Having developed production features in React, Node.js, Express, and REST APIs, I bring deep empathy for application lifecycles directly into cloud infrastructure and automation.
+            I am a Cloud Support and Junior DevOps candidate based in Bengaluru, Karnataka, with a software development background. My experience includes React, Node.js, Express, and REST APIs, complemented by AWS training and hands-on cloud and CI/CD projects.
           </p>
         </div>
 
@@ -64,7 +64,7 @@ const About = () => {
               My engineering journey began with an Electronics & Communication Engineering degree, leading to full-stack engineering roles where I developed web features, resolved complex integration issues, and collaborated in Agile/Scrum teams.
             </p>
             <p>
-              To expand beyond application boundaries into scalable infrastructure, I underwent intensive AWS Cloud and DevOps training at Besant Technologies, Bengaluru. I’ve since built infrastructure systems using Terraform, provisioned multi-tier AWS environments, configured Linux web servers, and containerized deployment workflows using Docker, GitHub Actions, and AWS ECR.
+              I completed AWS training at Besant Technologies and am continuing Linux and Python training. My project work includes Terraform-based AWS provisioning, Linux web servers, a Jenkins/Maven/Tomcat deployment pipeline, and a Docker/GitHub Actions workflow using AWS ECR.
             </p>
             <p>
               My flagship project, <strong className="text-slate-900 dark:text-white font-semibold">INFRAFORENSICS</strong>, reflects this unique intersection: combining Python, system telemetry (<code className="font-mono text-xs px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-sky-500">psutil</code>), and SQLite persistence to capture infrastructure state snapshots and classify drift severity during troubleshooting.

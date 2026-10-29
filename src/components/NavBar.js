@@ -49,11 +49,11 @@ const NavBar = ({ onOpenResume }) => {
 
   // Highly interactive Brand states
   const brandRoles = [
-    "Cloud & DevOps Engineer",
-    "AWS Infrastructure Architect",
-    "Terraform & IaC Specialist",
-    "Linux Systems & SRE",
-    "Docker & CI/CD Builder",
+    "Cloud Support Engineer",
+    "Junior DevOps Engineer",
+    "AWS Cloud",
+    "Linux & CI/CD",
+    "Software Developer",
   ];
   const avatarModes = [
     { label: "SD", badge: "Monogram" },

@@ -99,7 +99,7 @@ const Contact = () => {
             Let's Discuss Cloud Architecture, DevOps & Web Roles
           </h2>
           <p className="mt-4 text-base text-slate-600 dark:text-slate-300">
-            I am actively exploring Associate Cloud Engineer, Junior DevOps Engineer, and Full Stack positions in Bengaluru or remote. Feel free to reach out directly.
+            I am exploring Cloud Support, AWS, Junior DevOps, and software development opportunities in Bengaluru or remotely. Feel free to reach out directly.
           </p>
         </div>
 

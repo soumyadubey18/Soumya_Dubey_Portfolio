@@ -24,29 +24,29 @@ const TIMELINE_EXPERIENCES = [
     location: "Bengaluru, Karnataka",
     period: "Jul 2026 – Present",
     isCurrent: true,
-    statusText: "Active Immersion",
+    statusText: "AWS Complete · Linux & Python Ongoing",
     statusColor: "text-amber-400 bg-amber-500/10 border-amber-500/30",
     nodeColor: "bg-amber-500 text-white border-amber-400 ring-4 ring-amber-500/20",
     icon: <FaAws size={20} />,
     headline:
-      "Enterprise AWS cloud architecture, Linux server administration, Docker containerization, Terraform IaC, and automated CI/CD pipelines.",
+      "AWS cloud fundamentals, Linux and Python training, Terraform infrastructure labs, and CI/CD project work.",
     overview:
-      "Intensive practical program designing production-grade cloud environments on Amazon Web Services. Hands-on configuration of virtual networks, compute instances, block storage, and reproducible infrastructure code.",
+      "AWS training completed, with Linux and Python training ongoing. Practical work covers core AWS services, Linux server administration, Terraform provisioning labs, and build-and-deploy automation projects.",
     keyHighlights: [
-      "AWS Cloud Architecture: Deep hands-on provisioning of EC2, S3 bucket storage, EBS volume lifecycle, IAM least-privilege policies, and custom VPC networking.",
-      "Infrastructure as Code (IaC): Authored modular Terraform blueprints automating resource deployment with deterministic state management.",
-      "Containerization & CI/CD: Built multi-stage Docker images, orchestrated automated testing with GitHub Actions, and established deployment pipelines to AWS ECR and EC2; training also covers Jenkins, Ansible, and Maven.",
-      "Linux Systems Administration: Shell scripting (Bash), systemd daemon management, permissions, and network troubleshooting.",
+      "AWS: Practiced EC2, S3, EBS, IAM, VPC, Security Groups, and SSH.",
+      "Infrastructure as Code: Built Terraform labs to provision AWS infrastructure.",
+      "CI/CD: Worked with Git and GitHub, Docker, Jenkins, Maven, Ansible, GitHub Actions, and CI/CD pipeline fundamentals.",
+      "Linux & Python: Training ongoing, with hands-on Linux server administration and shell scripting practice.",
     ],
     categories: {
       cloud: ["AWS EC2", "AWS S3", "AWS EBS", "AWS VPC", "AWS IAM", "Security Groups"],
-      devops: ["Terraform", "Docker", "GitHub Actions CI/CD", "Jenkins", "Ansible", "Maven", "CI/CD Pipelines", "AWS ECR", "Bash Scripting"],
-      os: ["Linux CLI", "systemd", "SSH Key Management", "Disk Partitioning (ext4)"],
+      devops: ["Terraform", "Docker", "GitHub Actions", "Jenkins", "Ansible", "Maven", "CI/CD", "AWS ECR"],
+      os: ["Linux CLI", "SSH", "Storage", "Bash / Shell Scripting"],
     },
     metrics: [
-      { label: "Cloud Platform", val: "AWS ap-south-1" },
-      { label: "IaC Tool", val: "Terraform 1.x" },
-      { label: "Workload Runtime", val: "Docker Containers" },
+      { label: "Cloud Platform", val: "AWS" },
+      { label: "IaC Practice", val: "Terraform Labs" },
+      { label: "Pipeline Tools", val: "Jenkins · GitHub Actions" },
     ],
   },
   {
@@ -201,7 +201,7 @@ const Experience = () => {
               Engineering Career Timeline
             </h2>
             <p className="mt-3 text-sm sm:text-base text-slate-600 dark:text-slate-300">
-              Interactive vertical timeline illustrating hands-on AWS & DevOps engineering immersion, production enterprise software development at Indpro AB, and undergraduate computer science foundation.
+              Interactive timeline spanning AWS and DevOps training, software development at Indpro AB, freelance web development, and ECE education.
             </p>
           </div>
 
