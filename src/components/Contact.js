@@ -55,7 +55,6 @@ const Contact = () => {
     setStatus("");
 
     try {
-      // Use Getform with fallback simulation
       const res = await fetch("https://getform.io/f/feae616e-97d2-4aee-ab63-ab89ef5bac3b", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -66,16 +65,13 @@ const Contact = () => {
         setStatus("success");
         setForm({ name: "", email: "", subject: "", message: "" });
       } else {
-        // Fallback friendly success so client is never stuck
-        setStatus("success");
-        setForm({ name: "", email: "", subject: "", message: "" });
+        setStatus("error");
       }
-    } catch (err) {
-      setStatus("success");
-      setForm({ name: "", email: "", subject: "", message: "" });
+    } catch {
+      setStatus("error");
     } finally {
       setLoading(false);
-      setTimeout(() => setStatus(""), 4000);
+      setTimeout(() => setStatus(""), 8000);
     }
   };
 
@@ -222,19 +218,28 @@ const Contact = () => {
                 Send a Message
               </h3>
               <p className="text-xs text-slate-500 dark:text-slate-400 mb-6">
-                Fill out the form below and I'll respond within 24 hours.
+                Send a message using the form, or email me directly at{" "}
+                <a className="text-sky-500 hover:underline" href="mailto:dubeysoumya8@gmail.com">
+                  dubeysoumya8@gmail.com
+                </a>
+                .
               </p>
 
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+                    <label htmlFor="contact-name" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
                       Your Name *
                     </label>
                     <input
+                      id="contact-name"
                       name="name"
                       value={form.name}
                       onChange={handleChange}
+                      autoComplete="name"
+                      required
+                      aria-invalid={Boolean(errors.name)}
+                      aria-describedby={errors.name ? "contact-name-error" : undefined}
                       placeholder="e.g. Alex Morgan"
                       className={`w-full p-3 rounded-xl border text-xs focus:outline-none transition-colors ${
                         isDarkMode
@@ -243,19 +248,24 @@ const Contact = () => {
                       } ${errors.name ? "border-red-500" : ""}`}
                     />
                     {errors.name && (
-                      <span className="text-xs text-red-500 mt-1 block">{errors.name}</span>
+                      <span id="contact-name-error" className="text-xs text-red-500 mt-1 block">{errors.name}</span>
                     )}
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+                    <label htmlFor="contact-email" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
                       Email Address *
                     </label>
                     <input
+                      id="contact-email"
                       name="email"
                       type="email"
                       value={form.email}
                       onChange={handleChange}
+                      autoComplete="email"
+                      required
+                      aria-invalid={Boolean(errors.email)}
+                      aria-describedby={errors.email ? "contact-email-error" : undefined}
                       placeholder="alex@company.com"
                       className={`w-full p-3 rounded-xl border text-xs focus:outline-none transition-colors ${
                         isDarkMode
@@ -264,16 +274,17 @@ const Contact = () => {
                       } ${errors.email ? "border-red-500" : ""}`}
                     />
                     {errors.email && (
-                      <span className="text-xs text-red-500 mt-1 block">{errors.email}</span>
+                      <span id="contact-email-error" className="text-xs text-red-500 mt-1 block">{errors.email}</span>
                     )}
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+                  <label htmlFor="contact-subject" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
                     Subject (Optional)
                   </label>
                   <input
+                    id="contact-subject"
                     name="subject"
                     value={form.subject}
                     onChange={handleChange}
@@ -287,14 +298,18 @@ const Contact = () => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+                  <label htmlFor="contact-message" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
                     Message *
                   </label>
                   <textarea
+                    id="contact-message"
                     name="message"
                     rows="5"
                     value={form.message}
                     onChange={handleChange}
+                    required
+                    aria-invalid={Boolean(errors.message)}
+                    aria-describedby={errors.message ? "contact-message-error" : undefined}
                     placeholder="Hello Soumya, I'd like to discuss an opportunity regarding..."
                     className={`w-full p-3 rounded-xl border text-xs focus:outline-none transition-colors resize-none ${
                       isDarkMode
@@ -303,7 +318,7 @@ const Contact = () => {
                     } ${errors.message ? "border-red-500" : ""}`}
                   />
                   {errors.message && (
-                    <span className="text-xs text-red-500 mt-1 block">{errors.message}</span>
+                    <span id="contact-message-error" className="text-xs text-red-500 mt-1 block">{errors.message}</span>
                   )}
                 </div>
 
@@ -323,8 +338,20 @@ const Contact = () => {
                 </button>
 
                 {status === "success" && (
-                  <div className="p-3.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs text-center font-medium">
+                  <div role="status" aria-live="polite" className="p-3.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs text-center font-medium">
                     ✓ Message received successfully! I will get back to you shortly.
+                  </div>
+                )}
+                {status === "error" && (
+                  <div role="alert" className="p-3.5 rounded-xl bg-red-500/10 border border-red-500/30 text-red-600 dark:text-red-400 text-xs text-center font-medium">
+                    Your message could not be sent. Your entries are still here; please{" "}
+                    <a
+                      className="underline font-bold"
+                      href={`mailto:dubeysoumya8@gmail.com?subject=${encodeURIComponent(form.subject || "Portfolio inquiry")}&body=${encodeURIComponent(`Name: ${form.name}\nReply email: ${form.email}\n\n${form.message}`)}`}
+                    >
+                      email me directly
+                    </a>
+                    .
                   </div>
                 )}
               </form>

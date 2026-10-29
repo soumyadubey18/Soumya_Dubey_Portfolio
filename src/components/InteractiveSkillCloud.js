@@ -31,8 +31,8 @@ const SKILL_NODES = [
     speed: 36,
     initialAngle: 0,
     size: 58,
-    level: "Hands-on",
-    proficiency: "AWS training completed",
+    level: "Training",
+    proficiency: "Training completed · AWS lab practice",
     description: "Practiced EC2, S3, EBS, IAM, VPC, subnets, route tables, Internet Gateway, and Security Groups.",
   },
   {
@@ -61,7 +61,7 @@ const SKILL_NODES = [
     speed: 42,
     initialAngle: 144,
     size: 56,
-    level: "Hands-on",
+    level: "Lab practice",
     proficiency: "AWS infrastructure labs",
     description: "Used Terraform to provision AWS infrastructure and practiced the init, plan, and apply workflow.",
   },
@@ -108,7 +108,7 @@ const SKILL_NODES = [
     size: 50,
     level: "Hands-on",
     proficiency: "Container project",
-    description: "Containerized a website and used GitHub Actions, Amazon ECR, and EC2 in the build-and-deploy workflow.",
+    description: "Hands-on project work building a Docker image and publishing it to Amazon ECR with GitHub Actions and OIDC.",
   },
   {
     id: "orchestration",
@@ -136,8 +136,8 @@ const SKILL_NODES = [
     speed: 50,
     initialAngle: 180,
     size: 48,
-    level: "CloudWatch",
-    proficiency: "Grafana / Prometheus · Basic",
+    level: "Basic",
+    proficiency: "CloudWatch fundamentals · Grafana / Prometheus basic",
     description: "AWS CloudWatch, with basic Prometheus metrics and Grafana dashboards knowledge.",
   },
   {
@@ -241,11 +241,12 @@ export const InteractiveSkillCloud = () => {
     <div className="w-full my-8">
       {/* Skill Cloud Toolbar Controls */}
       <div className="flex flex-wrap items-center justify-between gap-3 mb-6 px-2">
-        <div className="flex items-center gap-1.5 bg-slate-100 dark:bg-slate-900/80 p-1 rounded-2xl border border-slate-200 dark:border-slate-800">
+        <div className="flex flex-wrap items-center gap-1.5 bg-slate-100 dark:bg-slate-900/80 p-1 rounded-2xl border border-slate-200 dark:border-slate-800">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
+              aria-pressed={selectedCategory === cat}
               className={`px-3 py-1 text-xs font-semibold rounded-xl transition-all ${
                 selectedCategory === cat
                   ? "bg-sky-500 text-white shadow-sm"

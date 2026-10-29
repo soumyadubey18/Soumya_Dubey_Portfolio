@@ -69,13 +69,13 @@ const SKILL_DOMAINS = [
     icon: <FaDocker className="text-sky-400" size={24} />,
     borderColor: "hover:border-sky-500/50",
     glowColor: "from-sky-500/10 via-sky-500/5 to-transparent",
-    badge: "Hands-on Projects",
+    badge: "Projects & Labs",
     badgeColor: "text-sky-400 bg-sky-500/10 border-sky-500/20",
     skills: [
       { name: "Jenkins", detail: "Jenkinsfile-based build and deployment pipeline project", icon: <FaTools className="text-red-400" /> },
       { name: "Java, Maven & Tomcat", detail: "Java web application builds and Tomcat deployment workflow", icon: <FaTools className="text-orange-400" /> },
       { name: "Git & GitHub", detail: "Version control and storing pipeline definitions in GitHub", icon: <FaGitAlt className="text-orange-500" /> },
-      { name: "GitHub Actions", detail: "Automated Docker image build and deployment workflows", icon: <FaTools className="text-sky-400" /> },
+      { name: "GitHub Actions", detail: "Automated Docker image build and Amazon ECR publishing workflow", icon: <FaTools className="text-sky-400" /> },
       { name: "Terraform", detail: "Infrastructure provisioning labs for AWS resources", icon: <SiTerraform className="text-purple-400" /> },
       { name: "Ansible & CI/CD", detail: "Configuration management and continuous integration/delivery fundamentals", icon: <FaTools className="text-rose-400" /> },
     ],
@@ -90,7 +90,7 @@ const SKILL_DOMAINS = [
     badge: "Kubernetes · Basic",
     badgeColor: "text-sky-400 bg-sky-500/10 border-sky-500/20",
     skills: [
-      { name: "Docker", detail: "Containerized website and CI/CD project using AWS ECR and EC2", icon: <FaDocker className="text-sky-400" /> },
+      { name: "Docker", detail: "Used in a container-image build and Amazon ECR publishing project", icon: <FaDocker className="text-sky-400" /> },
       { name: "Kubernetes", detail: "Basic container orchestration knowledge", icon: <FaTools className="text-blue-400" /> },
       { name: "Helm", detail: "Basic Helm knowledge for Kubernetes deployments", icon: <FaTools className="text-indigo-400" /> },
       { name: "Amazon ECR", detail: "Container registry used in the Dockerized website project", icon: <FaAws className="text-amber-500" /> },
@@ -193,12 +193,16 @@ const TechnicalSkills = () => {
             <p className="mt-3 text-sm sm:text-base text-slate-600 dark:text-slate-300">
               Resume-aligned technical capabilities across AWS, Linux, DevOps, containers, monitoring, software development, and AI-assisted tooling.
             </p>
+            <p className="mt-2 text-xs text-slate-500 dark:text-slate-400">
+              Experience labels distinguish professional development experience, project or lab practice, completed or ongoing training, and basic familiarity. They are context labels, not proficiency scores.
+            </p>
           </div>
 
           {/* View Mode Switcher */}
           <div className="flex items-center gap-1.5 p-1 rounded-2xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shrink-0">
             <button
               onClick={() => setViewMode("cloud")}
+              aria-pressed={viewMode === "cloud"}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
                 viewMode === "cloud"
                   ? "bg-sky-500 text-white shadow-md shadow-sky-500/25"
@@ -211,6 +215,7 @@ const TechnicalSkills = () => {
 
             <button
               onClick={() => setViewMode("matrix")}
+              aria-pressed={viewMode === "matrix"}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
                 viewMode === "matrix"
                   ? "bg-sky-500 text-white shadow-md shadow-sky-500/25"
@@ -223,6 +228,7 @@ const TechnicalSkills = () => {
 
             <button
               onClick={() => setViewMode("both")}
+              aria-pressed={viewMode === "both"}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
                 viewMode === "both"
                   ? "bg-sky-500 text-white shadow-md shadow-sky-500/25"
@@ -239,7 +245,7 @@ const TechnicalSkills = () => {
           <div className="mb-14">
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
-                Interactive Orbital Skill Cloud (Hover icons to inspect proficiency)
+                Interactive Skill Cloud (Hover icons to inspect experience context)
               </span>
             </div>
             <InteractiveSkillCloud />
@@ -258,6 +264,7 @@ const TechnicalSkills = () => {
               <div className="flex flex-wrap items-center gap-2">
                 <button
                   onClick={() => setActiveDomainId("all")}
+                  aria-pressed={activeDomainId === "all"}
                   className={`px-3 py-1 rounded-lg text-xs font-semibold border transition-all ${
                     activeDomainId === "all"
                       ? "bg-sky-500 text-white border-sky-400 shadow-sm"
@@ -272,6 +279,7 @@ const TechnicalSkills = () => {
                   <button
                     key={domain.id}
                     onClick={() => setActiveDomainId(domain.id)}
+                    aria-pressed={activeDomainId === domain.id}
                     className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold border transition-all ${
                       activeDomainId === domain.id
                         ? "bg-sky-500 text-white border-sky-400 shadow-sm"

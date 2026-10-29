@@ -26,14 +26,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useDarkMode } from "../context/DarkModeContext";
 
 const navLinks = [
-  { name: "Architecture", to: "cloud-architecture", icon: FaServer, desc: "Interactive AWS VPC & ECS Blueprint" },
-  { name: "Live Engine", to: "pipeline-motion", icon: FaLaptopCode, desc: "Zero-Downtime CI/CD Simulation" },
-  { name: "Workbench", to: "devops-workbench", icon: FaTools, desc: "Interactive Linux & Docker Terminal" },
-  { name: "Skills", to: "skills", icon: FaTools, desc: "Cloud, IaC, CI/CD, Containerization" },
-  { name: "Projects", to: "project", icon: FaProjectDiagram, desc: "Placement Portal, Profiler, Portfolio" },
-  { name: "Activity", to: "github-activity", icon: FaHistory, desc: "GitHub Contributions & Commits" },
-  { name: "Timeline", to: "experience", icon: FaHistory, desc: "Work Experience & Education Milestones" },
-  { name: "Contact", to: "contact", icon: FaPaperPlane, desc: "Direct Inquiries & Connect" },
+  { name: "Projects", to: "project", icon: FaProjectDiagram, desc: "Selected work and source repositories" },
+  { name: "Experience", to: "experience", icon: FaHistory, desc: "Work experience and training" },
+  { name: "Skills", to: "skills", icon: FaTools, desc: "Skills with experience context" },
+  { name: "Contact", to: "contact", icon: FaPaperPlane, desc: "Direct inquiries and contact details" },
+  { name: "Architecture", to: "cloud-architecture", icon: FaServer, desc: "Interactive AWS architecture walkthrough" },
+  { name: "Live Engine", to: "pipeline-motion", icon: FaLaptopCode, desc: "Interactive CI/CD simulation" },
+  { name: "Workbench", to: "devops-workbench", icon: FaTools, desc: "Interactive Linux and Docker terminal" },
+  { name: "Activity", to: "github-activity", icon: FaHistory, desc: "GitHub contributions and commits" },
 ];
 
 const NavBar = ({ onOpenResume }) => {
@@ -357,6 +357,7 @@ const NavBar = ({ onOpenResume }) => {
                 <Link
                   key={item.to}
                   to={item.to}
+                  href={`#${item.to}`}
                   smooth={true}
                   duration={500}
                   spy={true}
@@ -469,6 +470,7 @@ const NavBar = ({ onOpenResume }) => {
             {/* Resume Button */}
             <button
               onClick={onOpenResume}
+              aria-label="Open resume"
               className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-xl bg-sky-500 hover:bg-sky-400 text-white transition-all shadow-md shadow-sky-500/25 hover:scale-[1.03] active:scale-[0.98] whitespace-nowrap"
             >
               <FaFileDownload size={11} />
@@ -479,6 +481,8 @@ const NavBar = ({ onOpenResume }) => {
             <button
               onClick={() => setNav((prev) => !prev)}
               aria-label="Toggle navigation menu"
+              aria-expanded={nav}
+              aria-controls="mobile-navigation-menu"
               className={`xl:hidden p-2 rounded-xl border transition-colors ${
                 isDarkMode
                   ? "border-slate-800 text-slate-200 bg-slate-900/80 hover:bg-slate-800"
@@ -494,6 +498,7 @@ const NavBar = ({ onOpenResume }) => {
         <AnimatePresence>
           {nav && (
             <motion.div
+              id="mobile-navigation-menu"
               initial={{ opacity: 0, y: -10, scale: 0.98 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -10, scale: 0.98 }}
@@ -529,6 +534,7 @@ const NavBar = ({ onOpenResume }) => {
                     <Link
                       key={item.to}
                       to={item.to}
+                      href={`#${item.to}`}
                       smooth={true}
                       duration={500}
                       offset={-70}

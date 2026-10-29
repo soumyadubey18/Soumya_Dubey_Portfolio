@@ -36,6 +36,8 @@ const ResumeModal = ({ isOpen, onClose }) => {
             <a
               href={RESUME_URL}
               download="Soumya_Dubey_Resume.pdf"
+              aria-label="Download resume PDF"
+              title="Download resume PDF"
               className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-sky-500 hover:bg-sky-400 text-white text-xs font-semibold transition-colors"
             >
               <FaDownload size={11} />

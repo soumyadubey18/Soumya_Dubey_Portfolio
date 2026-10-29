@@ -1,5 +1,5 @@
 import React from "react";
-import { FaTimes, FaGithub, FaExternalLinkAlt, FaCheckCircle, FaTerminal } from "react-icons/fa";
+import { FaTimes, FaGithub, FaExternalLinkAlt, FaCheckCircle } from "react-icons/fa";
 import { useDarkMode } from "../context/DarkModeContext";
 
 const ProjectDeepDiveModal = ({ project, onClose }) => {
@@ -11,6 +11,7 @@ const ProjectDeepDiveModal = ({ project, onClose }) => {
     <div
       role="dialog"
       aria-modal="true"
+      aria-labelledby="project-details-title"
       className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-sm overflow-y-auto"
       onClick={onClose}
     >
@@ -28,9 +29,9 @@ const ProjectDeepDiveModal = ({ project, onClose }) => {
             <div className="flex items-center gap-2 text-xs font-semibold text-sky-500 mb-1">
               <span>{project.category}</span>
               <span aria-hidden="true">·</span>
-              <span>Architecture Deep Dive</span>
+              <span>Project details</span>
             </div>
-            <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight">
+            <h3 id="project-details-title" className="text-xl sm:text-2xl font-extrabold tracking-tight">
               {project.title}
             </h3>
           </div>
@@ -72,7 +73,7 @@ const ProjectDeepDiveModal = ({ project, onClose }) => {
         <div className="py-5 space-y-4 border-b border-slate-200 dark:border-slate-800 text-sm">
           <div>
             <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
-              System Architecture & Core Mechanics
+              Project highlights
             </h4>
             <ul className="space-y-2.5">
               {project.points.map((point, index) => (
@@ -84,23 +85,6 @@ const ProjectDeepDiveModal = ({ project, onClose }) => {
             </ul>
           </div>
 
-          {(project.codeSnippet || project.snippet) && (
-            <div className="mt-4">
-              <div className="flex items-center gap-2 text-xs font-mono text-slate-400 mb-1.5">
-                <FaTerminal size={12} className="text-sky-400" />
-                <span>{project.codeSnippetTitle || project.snippetTitle || "Implementation Flow"}</span>
-              </div>
-              <pre
-                className={`p-4 rounded-xl text-xs font-mono overflow-x-auto leading-relaxed border ${
-                  isDarkMode
-                    ? "bg-slate-950/80 border-slate-800/80 text-sky-300"
-                    : "bg-slate-900 border-slate-700 text-sky-200"
-                }`}
-              >
-                {project.codeSnippet || project.snippet}
-              </pre>
-            </div>
-          )}
         </div>
 
         {/* Actions Footer */}
@@ -114,7 +98,7 @@ const ProjectDeepDiveModal = ({ project, onClose }) => {
                 className="flex items-center gap-2 px-4 py-2 text-xs font-semibold rounded-lg bg-sky-500 hover:bg-sky-400 text-white transition-colors"
               >
                 <FaGithub size={14} />
-                <span>View GitHub Repository</span>
+                <span>View source and README</span>
               </a>
             )}
             {project.demo && (

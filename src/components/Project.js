@@ -27,7 +27,7 @@ const Project = () => {
             Cloud & DevOps Engineering Projects
           </h2>
           <p className="mt-4 text-base text-slate-600 dark:text-slate-300">
-            Featured infrastructure systems, containerized CI/CD pipelines, declarative Terraform provisioning, and systems forensics with direct technology filters for AWS, Terraform, Docker, and Linux.
+            Each project links directly to its public source repository and README. Review the implementation and filter projects by their technologies.
           </p>
         </div>
 

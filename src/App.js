@@ -29,16 +29,16 @@ function App() {
         <NavBar onOpenResume={() => setResumeOpen(true)} />
         <main>
           <Home onOpenResume={() => setResumeOpen(true)} />
-          <InteractiveArchitecture />
-          <MotionPipelineGraphic />
-          <DevOpsWorkbench />
-          <TechnicalSkills />
           <Project />
-          <GitHubActivity />
           <Experience />
+          <TechnicalSkills />
           <About />
           <Education />
           <Contact />
+          <InteractiveArchitecture />
+          <MotionPipelineGraphic />
+          <DevOpsWorkbench />
+          <GitHubActivity />
         </main>
         <Footer onOpenResume={() => setResumeOpen(true)} />
         <BackToTop />
