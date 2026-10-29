@@ -11,7 +11,39 @@ import { useDarkMode } from "../context/DarkModeContext";
 
 export const CLOUD_DEVOPS_PROJECTS = [
   {
+    id: "cafe-app-cicd-lab",
+    screenshot: "/project-screenshots/cafe-app.png",
+    screenshotAlt:
+      "Bean & Brew cafe website showing its navigation, hero section, and menu filters.",
+    screenshotCaption: "Cafe website · local app capture",
+    title: "Cafe App CI/CD Lab",
+    subtitle: "Jenkins, Docker, Nginx, Docker Hub, Kubernetes",
+    category: "CI/CD Learning Lab",
+    techTags: [
+      "CI/CD",
+      "Jenkins",
+      "Docker",
+      "Nginx",
+      "Docker Hub",
+      "Kubernetes",
+      "HTML",
+      "CSS",
+      "JavaScript",
+    ],
+    tagline:
+      "A static cafe website and learning lab for containerization and CI/CD. The repository identifies its pipeline as a starter, not production-ready.",
+    points: [
+      "The Jenkinsfile validates the site files, builds and verifies an Nginx Docker image, pushes versioned and latest tags to Docker Hub, then triggers a separate CD job.",
+      "Includes starter Kubernetes Deployment and Service manifests; the Ansible directory is reserved for future practice.",
+    ],
+    github: "https://github.com/soumyadubey18/cafe-app-cicd-lab",
+  },
+  {
     id: "student-result-pipeline",
+    screenshot: "/project-screenshots/student-result.png",
+    screenshotAlt:
+      "GitHub source view of the Student Result JSP page with a result lookup form and sample student table.",
+    screenshotCaption: "JSP application source · GitHub capture",
     title: "Student Result Application CI/CD Pipeline",
     subtitle: "Jenkins, Maven, Tomcat, Java",
     category: "CI/CD",
@@ -26,6 +58,10 @@ export const CLOUD_DEVOPS_PROJECTS = [
   },
   {
     id: "docker-cicd",
+    screenshot: "/project-screenshots/aws-devops.png",
+    screenshotAlt:
+      "GitHub source view of the GitHub Actions workflow for building and publishing a Docker image to Amazon ECR.",
+    screenshotCaption: "GitHub Actions workflow · source capture",
     title: "Docker Image Build and ECR Publishing",
     subtitle: "Docker, GitHub Actions, Amazon ECR",
     category: "CI/CD",
@@ -40,6 +76,10 @@ export const CLOUD_DEVOPS_PROJECTS = [
   },
   {
     id: "infraforensics",
+    screenshot: "/project-screenshots/infraforensics.png",
+    screenshotAlt:
+      "InfraForensics README overview describing infrastructure history, change detection, Infrastructure DNA, and incident forensics.",
+    screenshotCaption: "Project overview · README capture",
     title: "InfraForensics",
     subtitle: "Python, psutil, SQLite",
     category: "Python",
@@ -54,6 +94,10 @@ export const CLOUD_DEVOPS_PROJECTS = [
   },
   {
     id: "smart-attendance",
+    screenshot: "/project-screenshots/smart-attendance.png",
+    screenshotAlt:
+      "Smart Institute Attendance web form with a phone number field and network-check status.",
+    screenshotCaption: "Attendance form · local app capture",
     title: "Smart Institute Attendance",
     subtitle: "Python, Flask, SQLite",
     category: "Python",
@@ -68,6 +112,10 @@ export const CLOUD_DEVOPS_PROJECTS = [
   },
   {
     id: "careerbridge",
+    screenshot: "/project-screenshots/careerbridge.png",
+    screenshotAlt:
+      "CareerBridge training and placement management sign-in screen.",
+    screenshotCaption: "CareerBridge · live application capture",
     title: "CareerBridge Placement Management",
     subtitle: "React, TypeScript, Node.js, Express, Prisma",
     category: "Full-Stack",
@@ -83,6 +131,10 @@ export const CLOUD_DEVOPS_PROJECTS = [
   },
   {
     id: "linux-admin-lab",
+    screenshot: "/project-screenshots/linux-admin-lab.png",
+    screenshotAlt:
+      "Linux administration lab repository showing its organized command, permissions, process, storage, SSH, troubleshooting, and shell scripting topics.",
+    screenshotCaption: "Lab topics · GitHub repository capture",
     title: "Linux System Administration Lab",
     subtitle: "Linux, shell, system administration",
     category: "Systems",
@@ -211,6 +263,26 @@ const CloudDevOpsProjectGrid = ({ onSelectProject }) => {
                   : "border-slate-200 bg-white shadow-sm hover:border-sky-400"
               }`}
             >
+              <figure
+                className={`-mx-5 -mt-5 mb-5 overflow-hidden rounded-t-2xl border-b ${
+                  isDarkMode
+                    ? "border-slate-800 bg-slate-950"
+                    : "border-slate-200 bg-slate-50"
+                }`}
+              >
+                <img
+                  src={project.screenshot}
+                  alt={project.screenshotAlt}
+                  width="1200"
+                  height="900"
+                  loading="lazy"
+                  decoding="async"
+                  className="aspect-[4/3] w-full object-cover"
+                />
+                <figcaption className="border-t border-inherit px-3 py-2 text-[10px] font-medium text-slate-500 dark:text-slate-400">
+                  {project.screenshotCaption}
+                </figcaption>
+              </figure>
               <p className="text-xs font-bold uppercase tracking-wider text-sky-500">
                 {project.category}
               </p>

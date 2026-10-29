@@ -27,7 +27,7 @@ const Project = () => {
             Cloud & DevOps Engineering Projects
           </h2>
           <p className="mt-4 text-base text-slate-600 dark:text-slate-300">
-            Each project links directly to its public source repository and README. Review the implementation and filter projects by their technologies.
+            Preview real application screens where available and project source or documentation for infrastructure and CLI work, then review the repositories for implementation details. Filter projects by technology.
           </p>
         </div>
 
