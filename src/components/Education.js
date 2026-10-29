@@ -11,6 +11,7 @@ const Education = () => {
       field: "Electronics & Communication Engineering",
       institution: "Sarala Birla University",
       location: "Ranchi, Jharkhand",
+      completionYear: "2022",
       highlights: [
         "Core foundational studies in computer architecture, digital electronics, network protocols, and embedded systems.",
         "Graduated with hands-on technical project execution and practical laboratory coursework.",
@@ -21,6 +22,7 @@ const Education = () => {
       field: "Electronics & Communication Engineering",
       institution: "BITT Polytechnic",
       location: "Ranchi, Jharkhand",
+      completionYear: "2019",
       highlights: [
         "Comprehensive technical foundation in circuit theory, microprocessor systems, signal processing, and laboratory testing.",
         "Practical engineering training and problem-solving methodology.",
@@ -83,7 +85,7 @@ const Education = () => {
                   {item.institution}
                 </p>
                 <p className="text-slate-500 dark:text-slate-400 mt-1">
-                  {item.location}
+                  {item.location} · Graduated {item.completionYear}
                 </p>
               </div>
 

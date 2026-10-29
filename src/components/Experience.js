@@ -119,7 +119,7 @@ const TIMELINE_EXPERIENCES = [
     role: "Bachelor of Technology (B.Tech) — ECE",
     organization: "Sarala Birla University",
     location: "Ranchi, Jharkhand",
-    period: "Graduated",
+    period: "Graduated 2022",
     isCurrent: false,
     statusText: "Degree Conferred · ECE",
     statusColor: "text-purple-400 bg-purple-500/10 border-purple-500/30",
@@ -131,7 +131,7 @@ const TIMELINE_EXPERIENCES = [
       "Graduated with Bachelor of Technology in Electronics & Communication Engineering from Sarala Birla University, with foundational Diploma in Engineering from BITT Polytechnic. Grounded in operating principles, networking protocols, and systems problem-solving.",
     keyHighlights: [
       "Comprehensive coursework in Computer Networks, Microprocessor Architecture, Digital Electronics, and Embedded Systems.",
-      "Prior Diploma in Electronics & Communication Engineering from BITT Polytechnic, Ranchi.",
+      "Completed Diploma in Electronics & Communication Engineering at BITT Polytechnic, Ranchi, in 2019.",
       "Hands-on project development, lab telemetry, and analytical engineering research.",
     ],
     categories: {
