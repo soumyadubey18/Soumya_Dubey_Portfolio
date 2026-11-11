@@ -174,20 +174,16 @@ const TechnicalSkills = () => {
     <section
       id="skills"
       name="skills"
-      className={`py-24 border-t transition-colors duration-300 ${
-        isDarkMode
-          ? "bg-[#090D16] border-slate-800/80 text-slate-100"
-          : "bg-white border-slate-200 text-slate-900"
-      }`}
+      className="portfolio-section portfolio-section-muted"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="portfolio-container">
         {/* Section Header with View Mode Switcher */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div className="max-w-3xl">
-            <p className="text-xs font-bold uppercase tracking-widest text-sky-500 mb-2">
+            <p className="portfolio-section-kicker">
               Technical Capabilities · Resume Verified
             </p>
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+            <h2 className="portfolio-section-title">
               Cloud, DevOps & Engineering Competencies
             </h2>
             <p className="mt-3 text-sm sm:text-base text-slate-600 dark:text-slate-300">

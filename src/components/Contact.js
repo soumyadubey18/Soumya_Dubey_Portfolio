@@ -82,22 +82,18 @@ const Contact = () => {
     <section
       id="contact"
       name="contact"
-      className={`py-24 border-t transition-colors duration-300 ${
-        isDarkMode
-          ? "bg-[#080C14] border-slate-800/80 text-slate-100"
-          : "bg-slate-50/60 border-slate-200 text-slate-900"
-      }`}
+      className="portfolio-section"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="portfolio-container">
         {/* Section Header */}
-        <div className="max-w-3xl mb-16">
-          <p className="text-xs font-bold uppercase tracking-widest text-sky-500 mb-2">
+        <div className="max-w-3xl mb-12">
+          <p className="portfolio-section-kicker">
             Get in Touch · Open Opportunities
           </p>
-          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+          <h2 className="portfolio-section-title">
             Let's Discuss Cloud Architecture, DevOps & Web Roles
           </h2>
-          <p className="mt-4 text-base text-slate-600 dark:text-slate-300">
+          <p className="portfolio-section-description">
             I am exploring Cloud Support, AWS, Junior DevOps, and software development opportunities in Bengaluru or remotely. Feel free to reach out directly.
           </p>
         </div>

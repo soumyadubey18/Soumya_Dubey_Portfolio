@@ -1,303 +1,360 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { Link } from "react-scroll";
 import {
-  FaFileDownload,
   FaArrowRight,
   FaAws,
+  FaCheckCircle,
   FaDocker,
+  FaFileDownload,
   FaGithub,
   FaLinkedin,
-  FaEnvelope,
   FaMapMarkerAlt,
-  FaCheckCircle,
+  FaPaperPlane,
 } from "react-icons/fa";
-import { SiTerraform, SiLinux } from "react-icons/si";
+import { SiLinux, SiTerraform } from "react-icons/si";
 import Myimage from "../assets/myimage.jpg";
 import { useDarkMode } from "../context/DarkModeContext";
 import MotionBackgroundCanvas from "./MotionBackgroundCanvas";
 
+const ROTATING_ROLES = [
+  "Cloud Support",
+  "AWS & Linux",
+  "Junior DevOps",
+  "Software Development",
+];
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
+
 const Home = ({ onOpenResume }) => {
   const { isDarkMode } = useDarkMode();
+  const [typedRole, setTypedRole] = useState(ROTATING_ROLES[0]);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return undefined;
+
+    let roleIndex = 0;
+    let textLength = ROTATING_ROLES[roleIndex].length;
+    let timerId;
+
+    const typeNextRole = () => {
+      const nextRole = ROTATING_ROLES[(roleIndex + 1) % ROTATING_ROLES.length];
+      if (textLength < nextRole.length) {
+        textLength += 1;
+        setTypedRole(nextRole.slice(0, textLength));
+        timerId = window.setTimeout(typeNextRole, 38);
+      } else {
+        roleIndex = (roleIndex + 1) % ROTATING_ROLES.length;
+        timerId = window.setTimeout(startErasing, 2200);
+      }
+    };
+
+    const eraseCurrentRole = () => {
+      if (textLength > 0) {
+        textLength -= 1;
+        setTypedRole(ROTATING_ROLES[roleIndex].slice(0, textLength));
+        timerId = window.setTimeout(eraseCurrentRole, 24);
+      } else {
+        timerId = window.setTimeout(typeNextRole, 180);
+      }
+    };
+
+    const startErasing = () => {
+      textLength = ROTATING_ROLES[roleIndex].length;
+      eraseCurrentRole();
+    };
+
+    timerId = window.setTimeout(startErasing, 2400);
+
+    return () => window.clearTimeout(timerId);
+  }, []);
+
+  const panelStyle = isDarkMode
+    ? "border-slate-700/70 bg-slate-950/75 text-slate-100 shadow-black/30"
+    : "border-slate-200 bg-white/90 text-slate-900 shadow-slate-900/10";
 
   return (
     <section
       id="home"
       name="home"
-      className={`relative pt-32 pb-20 transition-colors duration-300 overflow-hidden ${
-        isDarkMode ? "bg-[#090D16] text-slate-100" : "bg-[#F8FAFC] text-slate-900"
-      }`}
+      className="portfolio-section relative isolate overflow-hidden"
     >
-      {/* Decorative motion background */}
       <MotionBackgroundCanvas />
 
-      {/* Ambient gradient backdrops */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[480px] pointer-events-none opacity-60">
-        <div className="absolute top-20 left-1/4 w-96 h-96 bg-sky-500/15 rounded-full blur-[140px]" />
-        <div className="absolute top-28 right-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-[140px]" />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute -left-40 top-12 h-96 w-96 rounded-full bg-sky-400/15 blur-[120px]" />
+        <div className="absolute right-0 top-0 h-[30rem] w-[30rem] rounded-full bg-violet-400/10 blur-[140px]" />
+        <div className="absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-amber-400/10 blur-[120px]" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          {/* Left Column: Headline, Bio & Primary Calls to Action */}
-          <div className="lg:col-span-7 flex flex-col text-left">
-            {/* Status & Region Badges */}
-            <div className="flex flex-wrap items-center gap-2.5 mb-5">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-xs font-mono font-semibold max-w-fit">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+      <div className="portfolio-container relative z-10">
+        <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-8">
+          <motion.div
+            className="lg:col-span-7"
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: {},
+              visible: { transition: { staggerChildren: 0.12, delayChildren: 0.08 } },
+            }}
+          >
+            <motion.div variants={fadeUp} className="mb-6 flex flex-wrap items-center gap-3">
+              <span className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-2 text-xs font-semibold text-emerald-600 dark:text-emerald-300">
+                <span className="relative flex h-2 w-2" aria-hidden="true">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-70" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
                 </span>
-                <span>Available for Cloud Support & DevOps Roles</span>
-              </div>
-              <div className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-slate-700/60 bg-slate-900/40 text-slate-300 text-xs font-mono">
-                <span className="text-amber-400 font-bold">AWS:</span>
-                <span>ap-south-1 · Bengaluru</span>
-              </div>
-            </div>
+                Open to Cloud & DevOps opportunities
+              </span>
+              <span className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-500 dark:text-slate-400">
+                <FaMapMarkerAlt aria-hidden="true" className="text-amber-500" />
+                Bengaluru, India
+              </span>
+            </motion.div>
 
-            {/* High-Impact Hero Headline */}
-            <div className="space-y-3">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 dark:text-white leading-[1.08]">
-                Supporting Cloud Operations,{" "}
-                <span className="bg-gradient-to-r from-sky-400 via-indigo-400 to-amber-400 bg-clip-text text-transparent">
-                  Automating DevOps Delivery.
+            <motion.p
+              variants={fadeUp}
+              className="mb-3 text-xs font-bold uppercase tracking-[0.24em] text-sky-600 dark:text-sky-400"
+            >
+              Cloud · Automation · Software
+            </motion.p>
+
+            <motion.h1
+              variants={fadeUp}
+              className="max-w-4xl text-4xl font-black leading-[1.08] tracking-tight text-slate-950 dark:text-white sm:text-5xl lg:text-6xl"
+            >
+              Building reliable cloud foundations.
+              <span className="mt-2 block bg-gradient-to-r from-sky-500 via-indigo-500 to-violet-500 bg-clip-text text-transparent dark:from-sky-300 dark:via-indigo-300 dark:to-violet-300">
+                Automating delivery with DevOps.
+              </span>
+            </motion.h1>
+
+            <motion.div variants={fadeUp} className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-2">
+              <span className="text-base font-bold text-slate-900 dark:text-white sm:text-lg">
+                Soumya Dubey
+              </span>
+              <span aria-hidden="true" className="hidden text-slate-400 sm:inline">/</span>
+              <span className="inline-flex min-h-7 items-center overflow-hidden text-sm font-semibold text-sky-700 dark:text-sky-300 sm:text-base">
+                <span className="sr-only">
+                  Cloud Support, AWS and Linux, Junior DevOps, Software Development
                 </span>
-              </h1>
-              <div className="flex flex-wrap items-center gap-2 sm:gap-3 pt-1">
-                <span className="text-base sm:text-lg font-extrabold text-slate-900 dark:text-white">
-                  Soumya Dubey
+                <span aria-hidden="true" className="inline-block min-w-[1ch]">
+                  {typedRole}
+                  <motion.span
+                    aria-hidden="true"
+                    animate={{ opacity: [1, 0] }}
+                    transition={{ duration: 0.7, repeat: Infinity, repeatType: "reverse" }}
+                    className="ml-0.5 inline-block h-4 w-0.5 translate-y-0.5 bg-sky-500 motion-reduce:hidden"
+                  />
                 </span>
-                <span className="text-slate-500 font-mono text-sm hidden sm:inline">•</span>
-                <span className="text-sm sm:text-base font-mono text-sky-500 font-semibold">
-                  Cloud Support | AWS | Junior DevOps Engineer
-                </span>
-              </div>
-            </div>
+              </span>
+            </motion.div>
 
-            {/* Crisp Engineering Value Proposition */}
-            <p className="mt-5 text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-normal max-w-2xl">
-              Cloud and DevOps engineer with a software development background in React.js, Node.js, and REST APIs. I have hands-on AWS practice across{" "}
-              <strong className="text-slate-900 dark:text-white font-semibold">EC2, S3, EBS, VPC, and IAM</strong>, with project experience in{" "}
-              <strong className="text-slate-900 dark:text-white font-semibold">Jenkins CI/CD, Docker, and Terraform</strong>.
-            </p>
+            <motion.p
+              variants={fadeUp}
+              className="mt-6 max-w-2xl text-base leading-relaxed text-slate-600 dark:text-slate-300 sm:text-lg"
+            >
+              I bring a software development background in React.js, Node.js, and REST APIs to hands-on cloud and DevOps work. I have practiced AWS{" "}
+              <strong className="font-semibold text-slate-900 dark:text-white">EC2, S3, EBS, VPC, and IAM</strong>, with project experience in{" "}
+              <strong className="font-semibold text-slate-900 dark:text-white">Terraform, Docker, Jenkins, and GitHub Actions</strong>.
+            </motion.p>
 
-            {/* Interactive Engineering Capability Cards */}
-            <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-2.5 max-w-2xl">
-              <div className="p-3 rounded-2xl border border-amber-500/25 bg-amber-500/5 hover:bg-amber-500/10 transition-colors">
-                <div className="flex items-center gap-1.5 text-amber-500 text-xs font-bold font-mono mb-1">
-                  <FaAws size={15} />
-                  <span>AWS Cloud</span>
+            <motion.div variants={fadeUp} className="mt-7 flex flex-wrap gap-2.5">
+              {[
+                { label: "AWS Cloud", detail: "EC2 · S3 · VPC", icon: <FaAws aria-hidden="true" />, iconColor: "text-amber-500" },
+                { label: "Infrastructure as Code", detail: "Terraform labs", icon: <SiTerraform aria-hidden="true" />, iconColor: "text-violet-500" },
+                { label: "Containers & CI/CD", detail: "Docker · GitHub Actions", icon: <FaDocker aria-hidden="true" />, iconColor: "text-sky-500" },
+                { label: "Linux Systems", detail: "SSH · shell scripting", icon: <SiLinux aria-hidden="true" />, iconColor: "text-emerald-500" },
+              ].map((item) => (
+                <div
+                  key={item.label}
+                  className={`flex min-w-[calc(50%-0.5rem)] items-center gap-3 rounded-xl border px-3 py-2.5 sm:min-w-0 ${
+                    isDarkMode
+                      ? "border-slate-800 bg-slate-900/70"
+                      : "border-slate-200 bg-white/80"
+                  }`}
+                >
+                  <span className={`text-lg ${item.iconColor}`}>{item.icon}</span>
+                  <span className="min-w-0">
+                    <span className="block text-xs font-bold text-slate-800 dark:text-slate-100">{item.label}</span>
+                    <span className="block text-[10px] text-slate-500 dark:text-slate-400">{item.detail}</span>
+                  </span>
                 </div>
-                <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-tight">
-                  EC2, S3, EBS, VPC, IAM
-                </p>
-              </div>
+              ))}
+            </motion.div>
 
-              <div className="p-3 rounded-2xl border border-purple-500/25 bg-purple-500/5 hover:bg-purple-500/10 transition-colors">
-                <div className="flex items-center gap-1.5 text-purple-400 text-xs font-bold font-mono mb-1">
-                  <SiTerraform size={13} />
-                  <span>Terraform IaC</span>
-                </div>
-                <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-tight">
-                  AWS Infrastructure Labs
-                </p>
-              </div>
-
-              <div className="p-3 rounded-2xl border border-sky-500/25 bg-sky-500/5 hover:bg-sky-500/10 transition-colors">
-                <div className="flex items-center gap-1.5 text-sky-400 text-xs font-bold font-mono mb-1">
-                  <FaDocker size={15} />
-                  <span>Docker CI/CD</span>
-                </div>
-                <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-tight">
-                  CI/CD, ECR & EC2
-                </p>
-              </div>
-
-              <div className="p-3 rounded-2xl border border-emerald-500/25 bg-emerald-500/5 hover:bg-emerald-500/10 transition-colors">
-                <div className="flex items-center gap-1.5 text-emerald-400 text-xs font-bold font-mono mb-1">
-                  <SiLinux size={13} />
-                  <span>Linux Systems</span>
-                </div>
-                <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-tight">
-                  SSH, Linux & Shell Scripting
-                </p>
-              </div>
-            </div>
-
-            {/* Primary Action Buttons */}
-            <div className="mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
+            <motion.div variants={fadeUp} className="mt-8 flex flex-wrap items-center gap-3">
               <button
+                type="button"
                 onClick={onOpenResume}
-                className="flex items-center gap-2 px-6 py-3.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-white font-semibold text-sm transition-all shadow-lg shadow-sky-500/25 hover:scale-[1.02] active:scale-[0.98]"
+                className="inline-flex items-center gap-2 rounded-xl bg-sky-600 px-5 py-3.5 text-sm font-bold text-white shadow-lg shadow-sky-600/20 transition hover:-translate-y-0.5 hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
               >
-                <FaFileDownload size={14} />
-                <span>View & Download Resume</span>
+                <FaFileDownload aria-hidden="true" size={14} />
+                View & Download Resume
               </button>
-
               <Link
                 to="project"
-                smooth={true}
+                smooth
                 duration={500}
-                className={`cursor-pointer flex items-center gap-2 px-5 py-3.5 rounded-xl border text-sm font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] ${
+                className={`inline-flex cursor-pointer items-center gap-2 rounded-xl border px-5 py-3.5 text-sm font-semibold transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500 ${
                   isDarkMode
-                    ? "border-slate-800 bg-slate-900/60 hover:bg-slate-800 text-slate-200"
-                    : "border-slate-200 bg-white hover:bg-slate-100 text-slate-800 shadow-sm"
+                    ? "border-slate-700 bg-slate-900/80 text-slate-200 hover:border-sky-500/60 hover:bg-slate-800"
+                    : "border-slate-200 bg-white text-slate-800 shadow-sm hover:border-sky-400 hover:bg-sky-50"
                 }`}
               >
-                <span>Explore Featured Projects</span>
-                <FaArrowRight size={12} className="text-sky-500" />
+                Explore projects
+                <FaArrowRight aria-hidden="true" size={12} className="text-sky-500" />
               </Link>
-
               <Link
                 to="contact"
-                smooth={true}
+                smooth
                 duration={500}
-                className={`cursor-pointer px-4 py-3.5 text-sm font-medium transition-colors hover:text-sky-500 ${
-                  isDarkMode ? "text-slate-400" : "text-slate-600"
-                }`}
+                className="inline-flex cursor-pointer items-center gap-2 rounded-lg px-3 py-3 text-sm font-semibold text-slate-600 transition hover:text-sky-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500 dark:text-slate-300 dark:hover:text-sky-300"
               >
-                Contact Me →
+                <FaPaperPlane aria-hidden="true" size={12} />
+                Contact me
               </Link>
-            </div>
+            </motion.div>
 
-            {/* Social Links Row */}
-            <div className="mt-8 flex items-center gap-4 text-slate-400 text-sm">
+            <motion.div variants={fadeUp} className="mt-7 flex items-center gap-3">
               <a
                 href="https://github.com/soumyadubey18"
                 target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-1.5 hover:text-white transition-colors"
+                rel="noopener noreferrer"
+                aria-label="GitHub profile (opens in a new tab)"
+                className="rounded-full border border-slate-200 bg-white/70 p-2.5 text-slate-500 transition hover:border-sky-400 hover:text-sky-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500 dark:border-slate-700 dark:bg-slate-900/70 dark:text-slate-300 dark:hover:text-sky-300"
               >
-                <FaGithub size={16} />
-                <span>GitHub</span>
+                <FaGithub aria-hidden="true" size={16} />
               </a>
-              <span className="text-slate-700">·</span>
               <a
                 href="https://www.linkedin.com/in/soumya-dubey-752aa8185"
                 target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-1.5 hover:text-sky-400 transition-colors"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn profile (opens in a new tab)"
+                className="rounded-full border border-slate-200 bg-white/70 p-2.5 text-slate-500 transition hover:border-sky-400 hover:text-sky-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500 dark:border-slate-700 dark:bg-slate-900/70 dark:text-slate-300 dark:hover:text-sky-300"
               >
-                <FaLinkedin size={16} />
-                <span>LinkedIn</span>
+                <FaLinkedin aria-hidden="true" size={16} />
               </a>
-              <span className="text-slate-700">·</span>
               <a
                 href="mailto:dubeysoumya8@gmail.com"
-                className="flex items-center gap-1.5 hover:text-amber-400 transition-colors"
+                aria-label="Email Soumya Dubey"
+                className="rounded-full border border-slate-200 bg-white/70 p-2.5 text-slate-500 transition hover:border-sky-400 hover:text-sky-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500 dark:border-slate-700 dark:bg-slate-900/70 dark:text-slate-300 dark:hover:text-sky-300"
               >
-                <FaEnvelope size={15} />
-                <span>dubeysoumya8@gmail.com</span>
+                <FaPaperPlane aria-hidden="true" size={15} />
               </a>
+              <span className="ml-1 text-xs text-slate-500 dark:text-slate-400">
+                Let’s build something dependable.
+              </span>
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.94, y: 16 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.25, ease: "easeOut" }}
+            className="relative mx-auto w-full max-w-[31rem] lg:col-span-5"
+          >
+            <div className={`relative overflow-hidden rounded-[2rem] border p-5 shadow-2xl backdrop-blur-xl sm:p-7 ${panelStyle}`}>
+              <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-br from-sky-500/10 via-transparent to-violet-500/10" />
+              <div className="relative">
+                <div className="flex items-center justify-between gap-3">
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">
+                      Cloud delivery flow
+                    </p>
+                    <p className="mt-1 text-sm font-bold text-slate-900 dark:text-white">
+                      From commit to cloud
+                    </p>
+                  </div>
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/25 bg-emerald-500/10 px-2.5 py-1 text-[10px] font-semibold text-emerald-700 dark:text-emerald-300">
+                    <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                    Learning by building
+                  </span>
+                </div>
+
+                <div className="relative my-7 grid grid-cols-2 gap-3 sm:gap-4">
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 360 190"
+                    preserveAspectRatio="none"
+                    className="pointer-events-none absolute inset-0 h-full w-full overflow-visible"
+                  >
+                    <motion.path
+                      d="M75 48 C140 48 215 48 285 48 M75 142 C140 142 215 142 285 142 M75 48 C75 95 75 95 75 142 M285 48 C285 95 285 95 285 142"
+                      fill="none"
+                      stroke="url(#home-network-gradient)"
+                      strokeWidth="2"
+                      strokeDasharray="5 7"
+                      initial={{ pathLength: 0, opacity: 0.2 }}
+                      animate={{ pathLength: 1, opacity: 0.7 }}
+                      transition={{ duration: 1.4, ease: "easeInOut" }}
+                    />
+                    <defs>
+                      <linearGradient id="home-network-gradient" x1="0" x2="1">
+                        <stop offset="0%" stopColor="#38bdf8" />
+                        <stop offset="50%" stopColor="#818cf8" />
+                        <stop offset="100%" stopColor="#34d399" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+
+                  {[
+                    { label: "SOURCE", title: "GitHub", icon: <FaGithub aria-hidden="true" />, accent: "text-slate-700 dark:text-white" },
+                    { label: "AUTOMATE", title: "CI / CD", icon: <FaDocker aria-hidden="true" />, accent: "text-sky-600 dark:text-sky-300" },
+                    { label: "PROVISION", title: "Terraform", icon: <SiTerraform aria-hidden="true" />, accent: "text-violet-600 dark:text-violet-300" },
+                    { label: "RUN", title: "AWS + Linux", icon: <FaAws aria-hidden="true" />, accent: "text-amber-600 dark:text-amber-300" },
+                  ].map((node, index) => (
+                    <motion.div
+                      key={node.title}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.55 + index * 0.12, duration: 0.4 }}
+                      className={`relative z-10 flex min-h-20 flex-col justify-center rounded-2xl border px-3 py-3 shadow-lg backdrop-blur ${
+                        isDarkMode
+                          ? "border-slate-700 bg-[#0B1220]/95"
+                          : "border-slate-200 bg-white/95"
+                      }`}
+                    >
+                      <span className="text-[9px] font-bold tracking-[0.16em] text-slate-400">{node.label}</span>
+                      <span className={`mt-1 flex items-center gap-2 text-xs font-bold ${node.accent}`}>
+                        <span className="text-base">{node.icon}</span>
+                        {node.title}
+                      </span>
+                    </motion.div>
+                  ))}
+                </div>
+
+                <div className={`flex items-center gap-4 rounded-2xl border p-3.5 ${
+                  isDarkMode ? "border-slate-800 bg-slate-900/80" : "border-slate-200 bg-white/85"
+                }`}>
+                  <div className="relative h-16 w-16 shrink-0">
+                    <div aria-hidden="true" className="absolute -inset-1 rounded-full bg-gradient-to-br from-sky-400 via-indigo-500 to-amber-400 opacity-80 blur-sm" />
+                    <img
+                      src={Myimage}
+                      alt="Portrait of Soumya Dubey"
+                      width="64"
+                      height="64"
+                      loading="eager"
+                      decoding="async"
+                      className="relative h-16 w-16 rounded-full border-2 border-white object-cover shadow-md dark:border-slate-800"
+                    />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-base font-extrabold text-slate-900 dark:text-white">Soumya Dubey</p>
+                    <p className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">Cloud Support · AWS · Junior DevOps</p>
+                    <p className="mt-2 inline-flex items-center gap-1.5 text-[10px] font-medium text-emerald-700 dark:text-emerald-300">
+                      <FaCheckCircle aria-hidden="true" />
+                      AWS training completed · Linux & Python ongoing
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-
-          {/* Right Column: Visual Profile Showcase */}
-          <div className="lg:col-span-5 flex flex-col items-center justify-center">
-            <div
-              className={`w-full max-w-md p-6 sm:p-8 rounded-3xl border transition-all relative ${
-                isDarkMode
-                  ? "bg-slate-900/50 border-slate-800 shadow-2xl shadow-black/40"
-                  : "bg-white border-slate-200 shadow-xl"
-              }`}
-            >
-              {/* Profile Image with subtle ambient ring */}
-              <div className="relative mx-auto w-36 h-36 sm:w-44 sm:h-44 mb-6">
-                <div className="absolute -inset-1.5 bg-gradient-to-tr from-sky-500 via-amber-500 to-purple-500 rounded-full blur-sm opacity-60 animate-pulse-subtle"></div>
-                <img
-                  src={Myimage}
-                  alt="Portrait of Soumya Dubey"
-                  width="176"
-                  height="176"
-                  loading="eager"
-                  decoding="async"
-                  className="relative w-full h-full object-cover rounded-full border-4 border-slate-900 shadow-xl"
-                />
-                <span className="absolute bottom-1 right-2 w-5 h-5 rounded-full bg-emerald-500 border-2 border-slate-900 flex items-center justify-center text-white text-[10px]" title="Online & Available">
-                  ✓
-                </span>
-              </div>
-
-              {/* Identity & Current Training Status */}
-              <div className="text-center">
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-white">
-                  Soumya Dubey
-                </h3>
-                <p className="text-sm font-semibold text-sky-500 mt-0.5">
-                  Cloud Support | AWS | Junior DevOps Engineer
-                </p>
-                <p className="text-xs text-slate-500 dark:text-slate-400 flex items-center justify-center gap-1 mt-1">
-                  <FaMapMarkerAlt size={11} className="text-amber-500" />
-                  <span>Bengaluru, Karnataka, India</span>
-                </p>
-              </div>
-
-              {/* Status Highlights Card */}
-              <div
-                className={`mt-6 p-4 rounded-2xl border text-xs space-y-2.5 ${
-                  isDarkMode
-                    ? "bg-[#05080E] border-slate-800 text-slate-300"
-                    : "bg-slate-50 border-slate-200 text-slate-700"
-                }`}
-              >
-                <div className="flex items-center justify-between pb-2 border-b border-slate-800/50">
-                  <span className="font-semibold text-slate-400">Current Track:</span>
-                  <span className="font-mono text-sky-400 font-medium">Besant Technologies</span>
-                </div>
-                <div className="flex items-start gap-2">
-                  <FaCheckCircle className="text-emerald-500 mt-0.5 shrink-0" size={13} />
-                  <span>AWS training completed · Linux and Python training ongoing</span>
-                </div>
-                <div className="flex items-start gap-2">
-                  <FaCheckCircle className="text-sky-500 mt-0.5 shrink-0" size={13} />
-                  <span>Linux Administration & Python Automation (Ongoing)</span>
-                </div>
-                <div className="flex items-start gap-2">
-                  <FaCheckCircle className="text-purple-400 mt-0.5 shrink-0" size={13} />
-                  <span>Terraform IaC, Docker, GitHub Actions CI/CD</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* High-Impact Proof Metrics Strip */}
-        <div className="mt-16 pt-10 border-t border-slate-200 dark:border-slate-800/80 grid grid-cols-2 md:grid-cols-4 gap-6">
-          <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800">
-            <p className="text-3xl font-extrabold text-slate-900 dark:text-white tabular-nums">
-              1+ <span className="text-sky-500 text-xl font-bold">Years</span>
-            </p>
-            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 font-medium">
-              Software & Web Development
-            </p>
-          </div>
-
-          <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800">
-            <p className="text-3xl font-extrabold text-slate-900 dark:text-white tabular-nums">
-              6 <span className="text-amber-500 text-xl font-bold">Services</span>
-            </p>
-            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 font-medium">
-              AWS services practiced
-            </p>
-          </div>
-
-          <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800">
-            <p className="text-3xl font-extrabold text-slate-900 dark:text-white tabular-nums">
-              2 <span className="text-purple-400 text-xl font-bold">Credentials</span>
-            </p>
-            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 font-medium">
-              B.Tech ECE and ECE diploma
-            </p>
-          </div>
-
-          <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800">
-            <p className="text-3xl font-extrabold text-slate-900 dark:text-white tabular-nums">
-              7 <span className="text-emerald-500 text-xl font-bold">Projects</span>
-            </p>
-            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 font-medium">
-              Forensics, CI/CD, IaC & Full-Stack
-            </p>
-          </div>
+            <div aria-hidden="true" className="absolute -bottom-5 -right-4 -z-10 h-24 w-24 rounded-full bg-violet-500/20 blur-2xl" />
+          </motion.div>
         </div>
       </div>
     </section>

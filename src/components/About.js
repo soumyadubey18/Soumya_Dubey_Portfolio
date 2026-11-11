@@ -37,22 +37,18 @@ const About = () => {
     <section
       id="about"
       name="about"
-      className={`py-24 border-t transition-colors duration-300 ${
-        isDarkMode
-          ? "bg-[#0B0F17] border-slate-800/80 text-slate-100"
-          : "bg-white border-slate-200 text-slate-900"
-      }`}
+      className="portfolio-section"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="portfolio-container">
         {/* Section Header */}
-        <div className="max-w-3xl mb-16">
-          <p className="text-xs font-bold uppercase tracking-widest text-sky-500 mb-2">
-            Professional Profile · Background
+        <div className="max-w-3xl mb-12">
+          <p className="portfolio-section-kicker">
+            About Me · My Journey
           </p>
-          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+          <h2 className="portfolio-section-title">
             Bridging Software Development with Cloud & DevOps Operations
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+          <p className="portfolio-section-description sm:text-lg">
             I am a Cloud Support and Junior DevOps candidate based in Bengaluru, Karnataka, with a software development background. My experience includes React, Node.js, Express, and REST APIs, complemented by AWS training and hands-on cloud and CI/CD projects.
           </p>
         </div>

@@ -27,8 +27,8 @@ import { useDarkMode } from "../context/DarkModeContext";
 const navLinks = [
   { name: "About", to: "about", icon: FaUser, desc: "Professional background and profile" },
   { name: "Skills", to: "skills", icon: FaTools, desc: "Technical skills and tools" },
-  { name: "Experience", to: "experience", icon: FaHistory, desc: "Work history, training, and education" },
   { name: "Projects", to: "project", icon: FaProjectDiagram, desc: "Selected work and source repositories" },
+  { name: "Experience", to: "experience", icon: FaHistory, desc: "Work history, training, and education" },
   { name: "Contact", to: "contact", icon: FaPaperPlane, desc: "Direct inquiries and contact details" },
 ];
 

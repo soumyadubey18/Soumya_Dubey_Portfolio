@@ -50,6 +50,32 @@
   }
 }
 
+@layer components {
+  .portfolio-section {
+    @apply border-t border-slate-200 bg-white py-20 text-slate-900 transition-colors duration-300 sm:py-24 dark:border-slate-800/80 dark:bg-[#0B0F17] dark:text-slate-100;
+  }
+
+  .portfolio-section-muted {
+    @apply bg-slate-50 dark:bg-[#090D16];
+  }
+
+  .portfolio-container {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .portfolio-section-kicker {
+    @apply mb-2 text-xs font-bold uppercase tracking-widest text-sky-600 dark:text-sky-400;
+  }
+
+  .portfolio-section-title {
+    @apply text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl;
+  }
+
+  .portfolio-section-description {
+    @apply mt-4 text-base leading-relaxed text-slate-600 dark:text-slate-300;
+  }
+}
+
 /* Custom modern subtle patterns and utilities */
 .bg-grid-pattern {
   background-size: 32px 32px;

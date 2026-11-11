@@ -28,8 +28,8 @@ function App() {
             <Home onOpenResume={() => setResumeOpen(true)} />
             <About />
             <TechnicalSkills />
-            <Experience />
             <Project />
+            <Experience />
             <Contact />
           </main>
           <Footer onOpenResume={() => setResumeOpen(true)} />
