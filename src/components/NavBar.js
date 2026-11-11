@@ -12,8 +12,7 @@ import {
   FaCopy,
   FaCheck,
   FaExternalLinkAlt,
-  FaLaptopCode,
-  FaServer,
+  FaUser,
   FaTools,
   FaProjectDiagram,
   FaHistory,
@@ -26,14 +25,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useDarkMode } from "../context/DarkModeContext";
 
 const navLinks = [
+  { name: "About", to: "about", icon: FaUser, desc: "Professional background and profile" },
+  { name: "Skills", to: "skills", icon: FaTools, desc: "Technical skills and tools" },
+  { name: "Experience", to: "experience", icon: FaHistory, desc: "Work history, training, and education" },
   { name: "Projects", to: "project", icon: FaProjectDiagram, desc: "Selected work and source repositories" },
-  { name: "Experience", to: "experience", icon: FaHistory, desc: "Work experience and training" },
-  { name: "Skills", to: "skills", icon: FaTools, desc: "Skills with experience context" },
   { name: "Contact", to: "contact", icon: FaPaperPlane, desc: "Direct inquiries and contact details" },
-  { name: "Architecture", to: "cloud-architecture", icon: FaServer, desc: "Interactive AWS architecture walkthrough" },
-  { name: "Live Engine", to: "pipeline-motion", icon: FaLaptopCode, desc: "Interactive CI/CD simulation" },
-  { name: "Workbench", to: "devops-workbench", icon: FaTools, desc: "Interactive Linux and Docker terminal" },
-  { name: "Activity", to: "github-activity", icon: FaHistory, desc: "GitHub contributions and commits" },
 ];
 
 const NavBar = ({ onOpenResume }) => {
