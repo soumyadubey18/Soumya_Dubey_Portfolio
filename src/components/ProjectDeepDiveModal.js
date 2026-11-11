@@ -1,14 +1,17 @@
 import React from "react";
 import { FaTimes, FaGithub, FaExternalLinkAlt, FaCheckCircle } from "react-icons/fa";
 import { useDarkMode } from "../context/DarkModeContext";
+import useModalAccessibility from "../hooks/useModalAccessibility";
 
 const ProjectDeepDiveModal = ({ project, onClose }) => {
   const { isDarkMode } = useDarkMode();
+  const { dialogRef, closeButtonRef } = useModalAccessibility(Boolean(project), onClose);
 
   if (!project) return null;
 
   return (
     <div
+      ref={dialogRef}
       role="dialog"
       aria-modal="true"
       aria-labelledby="project-details-title"
@@ -36,6 +39,8 @@ const ProjectDeepDiveModal = ({ project, onClose }) => {
             </h3>
           </div>
           <button
+            ref={closeButtonRef}
+            type="button"
             onClick={onClose}
             aria-label="Close project modal"
             className={`p-2 rounded-lg border transition-colors ${
@@ -69,6 +74,63 @@ const ProjectDeepDiveModal = ({ project, onClose }) => {
           </div>
         </div>
 
+        {project.caseStudy && (
+          <div className="py-5 space-y-5 border-b border-slate-200 dark:border-slate-800 text-sm">
+            <section aria-labelledby="project-problem-title">
+              <h4
+                id="project-problem-title"
+                className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2"
+              >
+                Problem & objective
+              </h4>
+              <p className="text-slate-600 dark:text-slate-300">
+                {project.caseStudy.problem}
+              </p>
+            </section>
+
+            <section aria-labelledby="project-architecture-title">
+              <h4
+                id="project-architecture-title"
+                className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2"
+              >
+                Architecture
+              </h4>
+              <p className="text-slate-600 dark:text-slate-300">
+                {project.caseStudy.architecture}
+              </p>
+            </section>
+
+            <section aria-labelledby="project-decisions-title">
+              <h4
+                id="project-decisions-title"
+                className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2"
+              >
+                Key decisions
+              </h4>
+              <ul className="space-y-2">
+                {project.caseStudy.decisions.map((decision) => (
+                  <li key={decision} className="flex items-start gap-2.5 text-slate-600 dark:text-slate-300">
+                    <FaCheckCircle aria-hidden="true" className="text-sky-500 mt-0.5 shrink-0" size={14} />
+                    <span>{decision}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+
+            <section aria-labelledby="project-learning-title">
+              <h4
+                id="project-learning-title"
+                className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2"
+              >
+                What I learned
+              </h4>
+              <p className="text-slate-600 dark:text-slate-300">
+                {project.caseStudy.learning}
+              </p>
+            </section>
+          </div>
+        )}
+
         {/* Architecture Highlights & Problem Solved */}
         <div className="py-5 space-y-4 border-b border-slate-200 dark:border-slate-800 text-sm">
           <div>
@@ -94,7 +156,7 @@ const ProjectDeepDiveModal = ({ project, onClose }) => {
               <a
                 href={project.github}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="flex items-center gap-2 px-4 py-2 text-xs font-semibold rounded-lg bg-sky-500 hover:bg-sky-400 text-white transition-colors"
               >
                 <FaGithub size={14} />
@@ -105,7 +167,7 @@ const ProjectDeepDiveModal = ({ project, onClose }) => {
               <a
                 href={project.demo}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className={`flex items-center gap-2 px-4 py-2 text-xs font-semibold rounded-lg border transition-colors ${
                   isDarkMode
                     ? "border-slate-800 hover:bg-slate-800 text-slate-200"
@@ -113,11 +175,12 @@ const ProjectDeepDiveModal = ({ project, onClose }) => {
                 }`}
               >
                 <FaExternalLinkAlt size={12} />
-                <span>Live Environment Demo</span>
+                <span>Live demo</span>
               </a>
             )}
           </div>
           <button
+            type="button"
             onClick={onClose}
             className={`px-4 py-2 text-xs font-medium rounded-lg border transition-colors ${
               isDarkMode

@@ -1,16 +1,19 @@
 import React from "react";
 import { FaDownload, FaExternalLinkAlt, FaFileAlt, FaTimes } from "react-icons/fa";
 import { useDarkMode } from "../context/DarkModeContext";
+import useModalAccessibility from "../hooks/useModalAccessibility";
 
 const RESUME_URL = `${process.env.PUBLIC_URL}/Soumya_Dubey_Resume.pdf`;
 
 const ResumeModal = ({ isOpen, onClose }) => {
   const { isDarkMode } = useDarkMode();
+  const { dialogRef, closeButtonRef } = useModalAccessibility(isOpen, onClose);
 
   if (!isOpen) return null;
 
   return (
     <div
+      ref={dialogRef}
       role="dialog"
       aria-modal="true"
       aria-labelledby="resume-modal-title"
@@ -46,7 +49,7 @@ const ResumeModal = ({ isOpen, onClose }) => {
             <a
               href={RESUME_URL}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               aria-label="Open resume in a new tab"
               title="Open in a new tab"
               className={`p-2 rounded-lg border transition-colors ${
@@ -58,6 +61,8 @@ const ResumeModal = ({ isOpen, onClose }) => {
               <FaExternalLinkAlt size={12} />
             </a>
             <button
+              ref={closeButtonRef}
+              type="button"
               onClick={onClose}
               aria-label="Close resume modal"
               className={`p-2 rounded-lg border transition-colors ${

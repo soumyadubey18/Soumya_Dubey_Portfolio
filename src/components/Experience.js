@@ -44,9 +44,9 @@ const TIMELINE_EXPERIENCES = [
       os: ["Linux CLI", "SSH", "Storage", "Bash / Shell Scripting"],
     },
     metrics: [
-      { label: "Cloud Platform", val: "AWS" },
-      { label: "IaC Practice", val: "Terraform Labs" },
-      { label: "Pipeline Tools", val: "Jenkins · GitHub Actions" },
+      { label: "AWS scope", val: "6 services practiced" },
+      { label: "IaC", val: "Terraform labs" },
+      { label: "CI/CD", val: "Jenkins · GitHub Actions" },
     ],
   },
   {
@@ -62,7 +62,7 @@ const TIMELINE_EXPERIENCES = [
     nodeColor: "bg-sky-500 text-white border-sky-400 ring-4 ring-sky-500/20",
     icon: <FaLaptopCode size={18} />,
     headline:
-      "Developed responsive client-facing web application features, resolved UI layout defects, and enhanced cross-browser performance.",
+      "Developed responsive client-facing web features, corrected layout defects, and tested across three browsers.",
     overview:
       "Partnered with project stakeholders to deliver high-priority responsive UI modules, conduct cross-browser compatibility assessments, and implement rapid bug fixes across diverse device viewports.",
     keyHighlights: [
@@ -75,8 +75,8 @@ const TIMELINE_EXPERIENCES = [
       quality: ["Cross-Browser QA", "Defect Triage", "Performance Tuning"],
     },
     metrics: [
-      { label: "Delivery Model", val: "Agile Deliverables" },
-      { label: "Testing Scope", val: "Multi-device QA" },
+      { label: "Browsers tested", val: "Chrome · Firefox · Safari" },
+      { label: "Viewport scope", val: "Mobile · Tablet · Desktop" },
     ],
   },
   {
@@ -92,12 +92,12 @@ const TIMELINE_EXPERIENCES = [
     nodeColor: "bg-emerald-500 text-white border-emerald-400 ring-4 ring-emerald-500/20",
     icon: <FaCode size={18} />,
     headline:
-      "Full-stack software engineering delivering React.js frontends, TypeScript modules, Node.js REST APIs, and Agile team delivery.",
+      "Built React and TypeScript application features, Node.js/Express REST endpoints, and API validation workflows.",
     overview:
-      "Contributed to production enterprise applications within an international software consulting firm. Designed modular React user interfaces, engineered REST endpoints with Express.js, and validated backend services using Postman and Swagger.",
+      "Contributed to enterprise applications at an international software consulting firm. Built React user-interface features, developed Express.js REST endpoints, and validated APIs with Postman and Swagger.",
     keyHighlights: [
       "Built and maintained reactive single-page application features utilizing React.js, TypeScript, and state management hooks.",
-      "Developed secure RESTful backend endpoints in Node.js/Express and integrated relational database queries.",
+      "Developed RESTful backend endpoints in Node.js/Express and integrated relational database queries.",
       "Automated API contract validation using Postman collections and OpenAPI/Swagger documentation.",
       "Tracked and triaged software defects in JIRA, participating in two-week Agile/Scrum sprint cycles and peer code reviews.",
       "Collaborated closely with cross-functional European clients and senior architects to ensure rigorous quality standards.",
@@ -108,9 +108,9 @@ const TIMELINE_EXPERIENCES = [
       tooling: ["Postman", "Swagger / OpenAPI", "JIRA", "Git / GitHub", "Scrum / Agile"],
     },
     metrics: [
-      { label: "Methodology", val: "Agile / Scrum" },
-      { label: "API Testing", val: "Postman & Swagger" },
-      { label: "Team Scope", val: "Enterprise Consulting" },
+      { label: "Sprint cadence", val: "2-week Scrum sprints" },
+      { label: "API validation", val: "Postman · OpenAPI/Swagger" },
+      { label: "Application stack", val: "React · TypeScript · Node.js" },
     ],
   },
   {
@@ -139,9 +139,9 @@ const TIMELINE_EXPERIENCES = [
       academic: ["B.Tech (ECE)", "Sarala Birla University", "BITT Polytechnic Diploma"],
     },
     metrics: [
-      { label: "Degree", val: "B.Tech (ECE)" },
-      { label: "University", val: "Sarala Birla Univ" },
-      { label: "Diploma", val: "BITT Polytechnic" },
+      { label: "Degree", val: "B.Tech (ECE), 2022" },
+      { label: "University", val: "Sarala Birla University" },
+      { label: "Diploma", val: "BITT Polytechnic, 2019" },
     ],
   },
 ];
@@ -201,13 +201,14 @@ const Experience = () => {
               Engineering Career Timeline
             </h2>
             <p className="mt-3 text-sm sm:text-base text-slate-600 dark:text-slate-300">
-              Interactive timeline spanning AWS and DevOps training, software development at Indpro AB, freelance web development, and ECE education.
+              Career and training history with project scope, tools, delivery practices, and education details.
             </p>
           </div>
 
           {/* Global Expand / Collapse Control */}
           <div className="flex items-center gap-3">
             <button
+              type="button"
               onClick={areAllExpanded ? collapseAll : expandAll}
               className={`px-4 py-2 rounded-xl text-xs font-semibold border flex items-center gap-2 transition-all shadow-sm ${
                 isDarkMode
@@ -232,6 +233,8 @@ const Experience = () => {
           ].map((tab) => (
             <button
               key={tab.id}
+              type="button"
+              aria-pressed={filterType === tab.id}
               onClick={() => setFilterType(tab.id)}
               className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold border transition-all ${
                 filterType === tab.id
@@ -277,10 +280,9 @@ const Experience = () => {
                         : "bg-white border-slate-200 hover:border-slate-300"
                     }`}
                   >
-                    {/* Clickable Header Bar (Expands / Collapses Entry) */}
+                    {/* Timeline Entry Header */}
                     <div
-                      onClick={() => toggleExpand(item.id)}
-                      className="p-6 sm:p-7 cursor-pointer select-none"
+                      className="p-6 sm:p-7"
                     >
                       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 mb-3 border-b border-slate-100 dark:border-slate-800/80">
                         <div>
@@ -319,9 +321,13 @@ const Experience = () => {
                         {item.headline}
                       </p>
 
-                      {/* Key Metric Chips Row */}
+                      {/* Verified scope summary */}
                       {item.metrics && (
-                        <div className="mt-4 flex flex-wrap items-center gap-2">
+                        <div
+                          role="group"
+                          aria-label="Verified scope summary"
+                          className="mt-4 flex flex-wrap items-center gap-2"
+                        >
                           {item.metrics.map((m, mIdx) => (
                             <div
                               key={mIdx}
@@ -337,20 +343,27 @@ const Experience = () => {
                       )}
 
                       {/* Expand / Collapse Action Trigger Bar */}
-                      <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/60 flex items-center justify-between text-xs font-semibold text-sky-500 hover:text-sky-400 transition-colors">
+                      <button
+                        type="button"
+                        aria-expanded={isExpanded}
+                        aria-controls={isExpanded ? `experience-${item.id}-details` : undefined}
+                        onClick={() => toggleExpand(item.id)}
+                        className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/60 flex w-full items-center justify-between text-left text-xs font-semibold text-sky-500 hover:text-sky-400 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
+                      >
                         <span className="flex items-center gap-1.5">
                           <span>{isExpanded ? "Collapse full breakdown" : "Expand full responsibilities & tech stack"}</span>
                         </span>
                         <div className="p-1 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-500">
                           {isExpanded ? <FaChevronUp size={11} /> : <FaChevronDown size={11} />}
                         </div>
-                      </div>
+                      </button>
                     </div>
 
                     {/* Expandable Detailed Drawer */}
                     <AnimatePresence>
                       {isExpanded && (
                         <motion.div
+                          id={`experience-${item.id}-details`}
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: "auto" }}
                           exit={{ opacity: 0, height: 0 }}

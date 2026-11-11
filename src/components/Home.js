@@ -27,7 +27,7 @@ const Home = ({ onOpenResume }) => {
         isDarkMode ? "bg-[#090D16] text-slate-100" : "bg-[#F8FAFC] text-slate-900"
       }`}
     >
-      {/* Interactive 60fps Motion Background Canvas */}
+      {/* Decorative motion background */}
       <MotionBackgroundCanvas />
 
       {/* Ambient gradient backdrops */}
@@ -206,7 +206,11 @@ const Home = ({ onOpenResume }) => {
                 <div className="absolute -inset-1.5 bg-gradient-to-tr from-sky-500 via-amber-500 to-purple-500 rounded-full blur-sm opacity-60 animate-pulse-subtle"></div>
                 <img
                   src={Myimage}
-                  alt="Soumya Dubey"
+                  alt="Portrait of Soumya Dubey"
+                  width="176"
+                  height="176"
+                  loading="eager"
+                  decoding="async"
                   className="relative w-full h-full object-cover rounded-full border-4 border-slate-900 shadow-xl"
                 />
                 <span className="absolute bottom-1 right-2 w-5 h-5 rounded-full bg-emerald-500 border-2 border-slate-900 flex items-center justify-center text-white text-[10px]" title="Online & Available">
@@ -264,31 +268,31 @@ const Home = ({ onOpenResume }) => {
               1+ <span className="text-sky-500 text-xl font-bold">Years</span>
             </p>
             <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 font-medium">
-              Software & REST API Experience
+              Software & Web Development
             </p>
           </div>
 
           <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800">
             <p className="text-3xl font-extrabold text-slate-900 dark:text-white tabular-nums">
-              8+ <span className="text-amber-500 text-xl font-bold">Services</span>
+              6 <span className="text-amber-500 text-xl font-bold">Services</span>
             </p>
             <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 font-medium">
-              AWS EC2, S3, IAM, VPC, EBS Labs
+              AWS services practiced
             </p>
           </div>
 
           <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800">
             <p className="text-3xl font-extrabold text-slate-900 dark:text-white tabular-nums">
-              100% <span className="text-purple-400 text-xl font-bold">IaC</span>
+              2 <span className="text-purple-400 text-xl font-bold">Credentials</span>
             </p>
             <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 font-medium">
-              Terraform Declarative Blueprints
+              B.Tech ECE and ECE diploma
             </p>
           </div>
 
           <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800">
             <p className="text-3xl font-extrabold text-slate-900 dark:text-white tabular-nums">
-              6 <span className="text-emerald-500 text-xl font-bold">Projects</span>
+              7 <span className="text-emerald-500 text-xl font-bold">Projects</span>
             </p>
             <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 font-medium">
               Forensics, CI/CD, IaC & Full-Stack

@@ -16,9 +16,9 @@
 
 - **About** — professional background and career summary.
 - **Skills** — cloud, DevOps, Linux, and software development skills.
-- **Experience** — work history, training, and education in one timeline.
-- **Projects** — selected software, cloud, and DevOps work.
-- **Contact** — contact form and direct contact details at the end of the page.
+- **Experience** — work history, training, and education with specific project and delivery scope.
+- **Projects** — seven selected projects with case studies covering objectives, architecture, decisions, and learning; live demos appear only when configured.
+- **Contact** — contact form with a direct email fallback and contact details.
 - **Resume** — in-app preview and download of `public/Soumya_Dubey_Resume.pdf`.
 
 ---
@@ -34,7 +34,7 @@
 | **Languages & Web** | Python, JavaScript, TypeScript, React, Node.js, Express.js, HTML5, CSS3, REST APIs |
 | **Databases & Tools** | PostgreSQL, SQLite, Git / GitHub, Postman, Swagger, JIRA, VS Code, WSL Ubuntu |
 | **AI Tools** | ChatGPT, GitHub Copilot, AI-assisted coding and troubleshooting |
-| **Styling & Motion** | Tailwind CSS, Framer Motion, HTML5 Canvas 60fps Particle Physics |
+| **Styling & Motion** | Tailwind CSS, Framer Motion, decorative HTML5 Canvas motion |
 
 ---
 

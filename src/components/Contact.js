@@ -53,12 +53,15 @@ const Contact = () => {
 
     setLoading(true);
     setStatus("");
+    const controller = new AbortController();
+    const timeoutId = window.setTimeout(() => controller.abort(), 15000);
 
     try {
       const res = await fetch("https://getform.io/f/feae616e-97d2-4aee-ab63-ab89ef5bac3b", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
+        signal: controller.signal,
       });
 
       if (res.ok) {
@@ -70,8 +73,8 @@ const Contact = () => {
     } catch {
       setStatus("error");
     } finally {
+      window.clearTimeout(timeoutId);
       setLoading(false);
-      setTimeout(() => setStatus(""), 8000);
     }
   };
 
@@ -218,14 +221,14 @@ const Contact = () => {
                 Send a Message
               </h3>
               <p className="text-xs text-slate-500 dark:text-slate-400 mb-6">
-                Send a message using the form, or email me directly at{" "}
+                Send a message using the form. If the form is unavailable, you can{" "}
                 <a className="text-sky-500 hover:underline" href="mailto:dubeysoumya8@gmail.com">
-                  dubeysoumya8@gmail.com
+                  email me directly at dubeysoumya8@gmail.com
                 </a>
                 .
               </p>
 
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4" aria-busy={loading}>
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="contact-name" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
@@ -328,7 +331,10 @@ const Contact = () => {
                   className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-xl bg-sky-500 hover:bg-sky-400 text-white text-xs font-bold transition-all shadow-md shadow-sky-500/20 disabled:opacity-60"
                 >
                   {loading ? (
-                    <div className="spinner"></div>
+                    <>
+                      <div aria-hidden="true" className="spinner"></div>
+                      <span className="sr-only">Sending message</span>
+                    </>
                   ) : (
                     <>
                       <FaPaperPlane size={12} />
@@ -338,13 +344,13 @@ const Contact = () => {
                 </button>
 
                 {status === "success" && (
-                  <div role="status" aria-live="polite" className="p-3.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs text-center font-medium">
+                  <div role="status" className="p-3.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs text-center font-medium">
                     ✓ Message received successfully! I will get back to you shortly.
                   </div>
                 )}
                 {status === "error" && (
                   <div role="alert" className="p-3.5 rounded-xl bg-red-500/10 border border-red-500/30 text-red-600 dark:text-red-400 text-xs text-center font-medium">
-                    Your message could not be sent. Your entries are still here; please{" "}
+                    The contact form could not send your message. Your entries are still here. Use{" "}
                     <a
                       className="underline font-bold"
                       href={`mailto:dubeysoumya8@gmail.com?subject=${encodeURIComponent(form.subject || "Portfolio inquiry")}&body=${encodeURIComponent(`Name: ${form.name}\nReply email: ${form.email}\n\n${form.message}`)}`}

@@ -36,6 +36,18 @@ export const CLOUD_DEVOPS_PROJECTS = [
       "The Jenkinsfile validates the site files, builds and verifies an Nginx Docker image, pushes versioned and latest tags to Docker Hub, then triggers a separate CD job.",
       "Includes starter Kubernetes Deployment and Service manifests; the Ansible directory is reserved for future practice.",
     ],
+    caseStudy: {
+      problem:
+        "Practice a repeatable path from static website files to a container image and a separate deployment handoff.",
+      architecture:
+        "Jenkins validates the site, builds an Nginx image, publishes versioned and latest tags to Docker Hub, and triggers a separate CD job. Starter Kubernetes Deployment and Service manifests are included.",
+      decisions: [
+        "Keep the build and deployment jobs separate.",
+        "Publish both versioned and latest image tags for the learning workflow.",
+      ],
+      learning:
+        "How a static site can be packaged as a container and passed through distinct CI and CD stages. The repository describes this as a starter lab, not a production-ready pipeline.",
+    },
     github: "https://github.com/soumyadubey18/cafe-app-cicd-lab",
   },
   {
@@ -54,6 +66,18 @@ export const CLOUD_DEVOPS_PROJECTS = [
       "Keeps the Jenkinsfile in GitHub and uses Maven to build the Java web application.",
       "Archives the build artifact in Jenkins and deploys the application to Tomcat on an EC2 instance.",
     ],
+    caseStudy: {
+      problem:
+        "Automate building a Java web application and delivering its deployable artifact to a Tomcat server.",
+      architecture:
+        "A Jenkins pipeline retrieves the project and Jenkinsfile from GitHub, builds with Maven, archives the WAR artifact, and deploys it to Tomcat on EC2.",
+      decisions: [
+        "Use Maven to produce a WAR artifact for Tomcat.",
+        "Archive the build output in Jenkins before deployment.",
+      ],
+      learning:
+        "How build artifacts move from source control through CI to an application server, and how Jenkins, Maven, Tomcat, and EC2 fit together.",
+    },
     github: "https://github.com/soumyadubey18/student-result-app",
   },
   {
@@ -72,6 +96,18 @@ export const CLOUD_DEVOPS_PROJECTS = [
       "Uses GitHub Actions to automate the container image build.",
       "Uses OpenID Connect (OIDC) for AWS authentication and pushes the image to Amazon ECR.",
     ],
+    caseStudy: {
+      problem:
+        "Automate Docker image builds and publication to Amazon ECR from a GitHub Actions workflow.",
+      architecture:
+        "GitHub Actions builds the Docker image, authenticates to AWS through OpenID Connect (OIDC), and publishes the image to Amazon ECR.",
+      decisions: [
+        "Use OIDC for the GitHub Actions-to-AWS authentication flow.",
+        "Publish the built image to Amazon ECR.",
+      ],
+      learning:
+        "How a CI workflow can use federated identity to authenticate to AWS and publish container images to a private registry.",
+    },
     github: "https://github.com/soumyadubey18/aws-devops-cicd-project",
   },
   {
@@ -90,6 +126,18 @@ export const CLOUD_DEVOPS_PROJECTS = [
       "Collects host and system-state information with Python and psutil.",
       "Stores snapshots in SQLite and compares them to identify and classify changes.",
     ],
+    caseStudy: {
+      problem:
+        "Keep a history of host state so observations from different points in time can be compared during investigation.",
+      architecture:
+        "Python and psutil collect system observations, SQLite stores snapshots, and comparison logic identifies and classifies changes.",
+      decisions: [
+        "Persist snapshots in SQLite so they remain available for later comparisons.",
+        "Separate collection from comparison to make change review explicit.",
+      ],
+      learning:
+        "How system telemetry, local persistence, and snapshot comparison can support infrastructure troubleshooting and drift review.",
+    },
     github: "https://github.com/soumyadubey18/infraforensics",
   },
   {
@@ -108,6 +156,18 @@ export const CLOUD_DEVOPS_PROJECTS = [
       "Records and retrieves attendance data using SQLite.",
       "Prevents duplicate attendance records and supports configurable IP/network allow-list restrictions.",
     ],
+    caseStudy: {
+      problem:
+        "Provide an attendance workflow that stores records, avoids duplicate submissions, and can restrict access by network.",
+      architecture:
+        "A Flask application handles attendance requests, SQLite stores and retrieves records, and configurable IP/network allow-list rules gate access.",
+      decisions: [
+        "Use SQLite for persistent attendance records.",
+        "Apply duplicate prevention and configurable network restrictions in the workflow.",
+      ],
+      learning:
+        "How a small web application can combine request handling, persistent data, duplicate checks, and network-based access rules.",
+    },
     github: "https://github.com/soumyadubey18/smart-institute-attendance",
   },
   {
@@ -126,6 +186,18 @@ export const CLOUD_DEVOPS_PROJECTS = [
       "Combines a React and TypeScript interface with Express REST APIs.",
       "Uses Prisma with SQLite persistence and includes authentication and role-based access control.",
     ],
+    caseStudy: {
+      problem:
+        "Bring student, batch, attendance, interview, company, and application workflows into one training and placement portal.",
+      architecture:
+        "A React and TypeScript client communicates with Express REST APIs; Prisma and SQLite provide persistence, with authentication and role-based access control.",
+      decisions: [
+        "Separate the client interface from the REST API.",
+        "Use role-based access control to distinguish authenticated user permissions.",
+      ],
+      learning:
+        "How frontend, API, database, authentication, and authorization concerns connect in a full-stack application.",
+    },
     github:
       "https://github.com/soumyadubey18/careerbridge-placement-management-system",
   },
@@ -145,6 +217,18 @@ export const CLOUD_DEVOPS_PROJECTS = [
       "Organizes Linux administration exercises and command-line practice.",
       "Provides a public repository and README for reviewing the lab contents.",
     ],
+    caseStudy: {
+      problem:
+        "Create a navigable place to practice and review recurring Linux system-administration tasks.",
+      architecture:
+        "A topic-organized repository and README group practice material across command-line use, permissions, processes, storage, SSH, troubleshooting, and shell scripting.",
+      decisions: [
+        "Organize practice by administration topic rather than as one unstructured command list.",
+        "Keep the material in a public repository for review.",
+      ],
+      learning:
+        "How to structure hands-on Linux practice and document operational tasks so they can be revisited consistently.",
+    },
     github: "https://github.com/soumyadubey18/linux-system-administration-lab",
   },
 ];
@@ -179,6 +263,10 @@ const CloudDevOpsProjectGrid = ({ onSelectProject }) => {
         project.tagline,
         ...project.techTags,
         ...project.points,
+        project.caseStudy?.problem,
+        project.caseStudy?.architecture,
+        project.caseStudy?.learning,
+        ...(project.caseStudy?.decisions || []),
       ]
         .join(" ")
         .toLowerCase();
@@ -320,14 +408,25 @@ const CloudDevOpsProjectGrid = ({ onSelectProject }) => {
                 <button
                   type="button"
                   onClick={() => onSelectProject?.(project)}
-                  className="inline-flex items-center gap-2 text-xs font-bold text-sky-600 hover:text-sky-500 dark:text-sky-400"
+                  className="inline-flex items-center gap-2 rounded text-xs font-bold text-sky-600 hover:text-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500 dark:text-sky-400"
                 >
                   Project details <FaArrowRight aria-hidden="true" size={10} />
                 </button>
+                {project.demo && (
+                  <a
+                    href={project.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Open ${project.title} live demo in a new tab`}
+                    className="inline-flex items-center gap-2 rounded-lg border border-sky-500/40 px-3 py-2 text-xs font-semibold text-sky-700 hover:bg-sky-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500 dark:text-sky-300 dark:hover:bg-slate-800"
+                  >
+                    Live demo <FaExternalLinkAlt aria-hidden="true" size={10} />
+                  </a>
+                )}
                 <a
                   href={project.github}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   aria-label={`Open ${project.title} source repository and README on GitHub`}
                   className="inline-flex items-center gap-2 rounded-lg border border-slate-200 px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
                 >

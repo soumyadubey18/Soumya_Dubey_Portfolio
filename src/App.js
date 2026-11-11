@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { MotionConfig } from "framer-motion";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Experience from "./components/Experience";
@@ -18,25 +19,27 @@ function App() {
 
   return (
     <DarkModeProvider>
-      <UmamiAnalytics />
-      <div className="min-h-screen font-sans antialiased selection:bg-sky-500 selection:text-white bg-dot-pattern">
-        <ScrollProgressBar />
-        <NavBar onOpenResume={() => setResumeOpen(true)} />
-        <main>
-          <Home onOpenResume={() => setResumeOpen(true)} />
-          <About />
-          <TechnicalSkills />
-          <Experience />
-          <Project />
-          <Contact />
-        </main>
-        <Footer onOpenResume={() => setResumeOpen(true)} />
-        <BackToTop />
-        <ResumeModal
-          isOpen={resumeOpen}
-          onClose={() => setResumeOpen(false)}
-        />
-      </div>
+      <MotionConfig reducedMotion="user">
+        <UmamiAnalytics />
+        <div className="min-h-screen font-sans antialiased selection:bg-sky-500 selection:text-white bg-dot-pattern">
+          <ScrollProgressBar />
+          <NavBar onOpenResume={() => setResumeOpen(true)} />
+          <main>
+            <Home onOpenResume={() => setResumeOpen(true)} />
+            <About />
+            <TechnicalSkills />
+            <Experience />
+            <Project />
+            <Contact />
+          </main>
+          <Footer onOpenResume={() => setResumeOpen(true)} />
+          <BackToTop />
+          <ResumeModal
+            isOpen={resumeOpen}
+            onClose={() => setResumeOpen(false)}
+          />
+        </div>
+      </MotionConfig>
     </DarkModeProvider>
   );
 }

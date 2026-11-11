@@ -7,21 +7,29 @@ const MotionBackgroundCanvas = () => {
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    if (!canvas || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const parent = canvas.parentElement;
+    if (!parent) return;
+
     const ctx = canvas.getContext("2d");
-    let animationFrameId;
-    let width = (canvas.width = canvas.parentElement.offsetWidth);
-    let height = (canvas.height = canvas.parentElement.offsetHeight);
+    if (!ctx) return;
+
+    let animationFrameId = null;
+    let width = (canvas.width = parent.offsetWidth);
+    let height = (canvas.height = parent.offsetHeight);
+    const isSmallScreen = window.matchMedia("(max-width: 640px)").matches;
 
     const handleResize = () => {
-      if (!canvas || !canvas.parentElement) return;
-      width = canvas.width = canvas.parentElement.offsetWidth;
-      height = canvas.height = canvas.parentElement.offsetHeight;
+      width = canvas.width = parent.offsetWidth;
+      height = canvas.height = parent.offsetHeight;
     };
     window.addEventListener("resize", handleResize);
 
     // Particle nodes
-    const particleCount = Math.min(Math.floor((width * height) / 18000), 45);
+    const particleCount = Math.min(
+      Math.floor((width * height) / (isSmallScreen ? 36000 : 18000)),
+      isSmallScreen ? 16 : 45
+    );
     const particles = [];
     const colors = isDarkMode
       ? ["rgba(56, 189, 248, 0.45)", "rgba(245, 158, 11, 0.4)", "rgba(168, 85, 247, 0.35)"]
@@ -50,8 +58,8 @@ const MotionBackgroundCanvas = () => {
       mouse.active = false;
     };
 
-    canvas.parentElement.addEventListener("mousemove", handleMouseMove);
-    canvas.parentElement.addEventListener("mouseleave", handleMouseLeave);
+    parent.addEventListener("mousemove", handleMouseMove);
+    parent.addEventListener("mouseleave", handleMouseLeave);
 
     const render = () => {
       ctx.clearRect(0, 0, width, height);
@@ -73,7 +81,7 @@ const MotionBackgroundCanvas = () => {
           const dx = mouse.x - p1.x;
           const dy = mouse.y - p1.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 120) {
+          if (dist > 0 && dist < 120) {
             p1.x += (dx / dist) * 0.6;
             p1.y += (dy / dist) * 0.6;
           }
@@ -106,17 +114,28 @@ const MotionBackgroundCanvas = () => {
         }
       }
 
-      animationFrameId = requestAnimationFrame(render);
+      if (!document.hidden) {
+        animationFrameId = requestAnimationFrame(render);
+      }
     };
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = null;
+      } else if (animationFrameId === null) {
+        animationFrameId = requestAnimationFrame(render);
+      }
+    };
+    document.addEventListener("visibilitychange", handleVisibilityChange);
 
     render();
 
     return () => {
       window.removeEventListener("resize", handleResize);
-      if (canvas.parentElement) {
-        canvas.parentElement.removeEventListener("mousemove", handleMouseMove);
-        canvas.parentElement.removeEventListener("mouseleave", handleMouseLeave);
-      }
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      parent.removeEventListener("mousemove", handleMouseMove);
+      parent.removeEventListener("mouseleave", handleMouseLeave);
       cancelAnimationFrame(animationFrameId);
     };
   }, [isDarkMode]);
@@ -124,6 +143,7 @@ const MotionBackgroundCanvas = () => {
   return (
     <canvas
       ref={canvasRef}
+      aria-hidden="true"
       className="absolute inset-0 pointer-events-none z-0 opacity-70"
     />
   );
