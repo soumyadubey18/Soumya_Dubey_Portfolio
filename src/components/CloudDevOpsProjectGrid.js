@@ -12,6 +12,7 @@ import { useDarkMode } from "../context/DarkModeContext";
 export const CLOUD_DEVOPS_PROJECTS = [
   {
     id: "cafe-app-cicd-lab",
+    accent: "amber",
     screenshot: "/project-screenshots/cafe-app.png",
     screenshotAlt:
       "Bean & Brew cafe website showing its navigation, hero section, and menu filters.",
@@ -52,6 +53,7 @@ export const CLOUD_DEVOPS_PROJECTS = [
   },
   {
     id: "student-result-pipeline",
+    accent: "indigo",
     screenshot: "/project-screenshots/student-result.png",
     screenshotAlt:
       "GitHub source view of the Student Result JSP page with a result lookup form and sample student table.",
@@ -82,6 +84,7 @@ export const CLOUD_DEVOPS_PROJECTS = [
   },
   {
     id: "docker-cicd",
+    accent: "sky",
     screenshot: "/project-screenshots/aws-devops.png",
     screenshotAlt:
       "GitHub source view of the GitHub Actions workflow for building and publishing a Docker image to Amazon ECR.",
@@ -112,6 +115,7 @@ export const CLOUD_DEVOPS_PROJECTS = [
   },
   {
     id: "infraforensics",
+    accent: "emerald",
     screenshot: "/project-screenshots/infraforensics.png",
     screenshotAlt:
       "InfraForensics README overview describing infrastructure history, change detection, Infrastructure DNA, and incident forensics.",
@@ -142,6 +146,7 @@ export const CLOUD_DEVOPS_PROJECTS = [
   },
   {
     id: "smart-attendance",
+    accent: "violet",
     screenshot: "/project-screenshots/smart-attendance.png",
     screenshotAlt:
       "Smart Institute Attendance web form with a phone number field and network-check status.",
@@ -172,6 +177,7 @@ export const CLOUD_DEVOPS_PROJECTS = [
   },
   {
     id: "careerbridge",
+    accent: "rose",
     screenshot: "/project-screenshots/careerbridge.png",
     screenshotAlt:
       "CareerBridge training and placement management sign-in screen.",
@@ -203,6 +209,7 @@ export const CLOUD_DEVOPS_PROJECTS = [
   },
   {
     id: "linux-admin-lab",
+    accent: "cyan",
     screenshot: "/project-screenshots/linux-admin-lab.png",
     screenshotAlt:
       "Linux administration lab repository showing its organized command, permissions, process, storage, SSH, troubleshooting, and shell scripting topics.",
@@ -242,6 +249,58 @@ const AVAILABLE_TAGS = [
   "Linux",
   "Python",
 ];
+
+const PROJECT_ACCENTS = {
+  amber: {
+    stripe: "from-amber-400 to-orange-500",
+    badge: "border-amber-500/25 bg-amber-500/10 text-amber-700 dark:text-amber-300",
+    border: "hover:border-amber-500/60",
+    link: "text-amber-700 hover:text-amber-600 dark:text-amber-300 dark:hover:text-amber-200",
+    glow: "bg-amber-400/10",
+  },
+  indigo: {
+    stripe: "from-indigo-400 to-violet-500",
+    badge: "border-indigo-500/25 bg-indigo-500/10 text-indigo-700 dark:text-indigo-300",
+    border: "hover:border-indigo-500/60",
+    link: "text-indigo-700 hover:text-indigo-600 dark:text-indigo-300 dark:hover:text-indigo-200",
+    glow: "bg-indigo-400/10",
+  },
+  sky: {
+    stripe: "from-sky-400 to-cyan-500",
+    badge: "border-sky-500/25 bg-sky-500/10 text-sky-700 dark:text-sky-300",
+    border: "hover:border-sky-500/60",
+    link: "text-sky-700 hover:text-sky-600 dark:text-sky-300 dark:hover:text-sky-200",
+    glow: "bg-sky-400/10",
+  },
+  emerald: {
+    stripe: "from-emerald-400 to-teal-500",
+    badge: "border-emerald-500/25 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300",
+    border: "hover:border-emerald-500/60",
+    link: "text-emerald-700 hover:text-emerald-600 dark:text-emerald-300 dark:hover:text-emerald-200",
+    glow: "bg-emerald-400/10",
+  },
+  violet: {
+    stripe: "from-violet-400 to-purple-500",
+    badge: "border-violet-500/25 bg-violet-500/10 text-violet-700 dark:text-violet-300",
+    border: "hover:border-violet-500/60",
+    link: "text-violet-700 hover:text-violet-600 dark:text-violet-300 dark:hover:text-violet-200",
+    glow: "bg-violet-400/10",
+  },
+  rose: {
+    stripe: "from-rose-400 to-pink-500",
+    badge: "border-rose-500/25 bg-rose-500/10 text-rose-700 dark:text-rose-300",
+    border: "hover:border-rose-500/60",
+    link: "text-rose-700 hover:text-rose-600 dark:text-rose-300 dark:hover:text-rose-200",
+    glow: "bg-rose-400/10",
+  },
+  cyan: {
+    stripe: "from-cyan-400 to-blue-500",
+    badge: "border-cyan-500/25 bg-cyan-500/10 text-cyan-700 dark:text-cyan-300",
+    border: "hover:border-cyan-500/60",
+    link: "text-cyan-700 hover:text-cyan-600 dark:text-cyan-300 dark:hover:text-cyan-200",
+    glow: "bg-cyan-400/10",
+  },
+};
 
 const CloudDevOpsProjectGrid = ({ onSelectProject }) => {
   const { isDarkMode } = useDarkMode();
@@ -345,12 +404,20 @@ const CloudDevOpsProjectGrid = ({ onSelectProject }) => {
               layout
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              className={`flex h-full flex-col rounded-2xl border p-5 transition-colors ${
+              className={`relative flex h-full flex-col overflow-hidden rounded-2xl border p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
                 isDarkMode
-                  ? "border-slate-800 bg-slate-900/50 hover:border-sky-500/60"
-                  : "border-slate-200 bg-white shadow-sm hover:border-sky-400"
+                  ? `border-slate-800 bg-slate-900/70 shadow-black/20 ${PROJECT_ACCENTS[project.accent].border}`
+                  : `border-slate-200 bg-white shadow-sm ${PROJECT_ACCENTS[project.accent].border}`
               }`}
             >
+              <div
+                aria-hidden="true"
+                className={`absolute inset-x-0 top-0 z-10 h-1 bg-gradient-to-r ${PROJECT_ACCENTS[project.accent].stripe}`}
+              />
+              <div
+                aria-hidden="true"
+                className={`pointer-events-none absolute -right-12 -top-12 h-32 w-32 rounded-full blur-3xl ${PROJECT_ACCENTS[project.accent].glow}`}
+              />
               <figure
                 className={`-mx-5 -mt-5 mb-5 overflow-hidden rounded-t-2xl border-b ${
                   isDarkMode
@@ -371,7 +438,9 @@ const CloudDevOpsProjectGrid = ({ onSelectProject }) => {
                   {project.screenshotCaption}
                 </figcaption>
               </figure>
-              <p className="text-xs font-bold uppercase tracking-wider text-sky-500">
+              <p
+                className={`w-fit rounded-full border px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider ${PROJECT_ACCENTS[project.accent].badge}`}
+              >
                 {project.category}
               </p>
               <h3 className="mt-2 text-lg font-bold text-slate-900 dark:text-white">
@@ -408,7 +477,7 @@ const CloudDevOpsProjectGrid = ({ onSelectProject }) => {
                 <button
                   type="button"
                   onClick={() => onSelectProject?.(project)}
-                  className="inline-flex items-center gap-2 rounded text-xs font-bold text-sky-600 hover:text-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500 dark:text-sky-400"
+                  className={`inline-flex items-center gap-2 rounded text-xs font-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500 ${PROJECT_ACCENTS[project.accent].link}`}
                 >
                   Project details <FaArrowRight aria-hidden="true" size={10} />
                 </button>
